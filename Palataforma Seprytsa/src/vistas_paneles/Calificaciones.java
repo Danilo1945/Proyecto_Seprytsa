@@ -8,7 +8,9 @@ package vistas_paneles;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,11 +24,7 @@ import tabla.MyScrollbarUI;
  * @author Danilo
  */
 public class Calificaciones extends javax.swing.JPanel {
-      
-    
-    
-    
-    
+
     /**
      * Creates new form Panel_Home
      */
@@ -34,13 +32,18 @@ public class Calificaciones extends javax.swing.JPanel {
         initComponents();
         // jLabel6.setBorder(no);
 
+        docente_menu2.getVerticalScrollBar().setUI(new MyScrollbarUI());
+        docente_menu2.getHorizontalScrollBar().setUI(new MyScrollbarUI());
         docente_menu.getVerticalScrollBar().setUI(new MyScrollbarUI());
         docente_menu.getHorizontalScrollBar().setUI(new MyScrollbarUI());
 
-        consutarTabla_Docentes();
         control_botones();
         nofocus();
         vaciar_cajas();
+        txt_codigo.setEnabled(false);
+
+        ///////// cargo combo periodo
+        consultar_periodo_academico(cbox_periodo_aca);
 
     }
 
@@ -54,13 +57,8 @@ public class Calificaciones extends javax.swing.JPanel {
     public Connection cn = cone1.conexion(direccionBD, usuarioBD, contraBD);
     // la conexion se hereda en cn
 
-    int caja1 = 0;
-    int caja2 = 0;
-    int caja3 = 0;
-    int caja4 = 0;
-    int caja5 = 0;
-    int caja6 = 0;
-    int caja7 = 0;
+    int cod_cal=0;
+    int posicion=0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,67 +70,43 @@ public class Calificaciones extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        docente_menu = new javax.swing.JScrollPane();
-        Tabla_docentes = new rojerusan.RSTableMetro();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        txt_identificativo = new javax.swing.JLabel();
         btn_buscar = new rojerusan.RSButtonMetro();
         cbox_buscar = new rojerusan.RSComboMetro();
         txt_buscar = new rojerusan.RSMetroTextPlaceHolder();
         btn_nuevo = new rojerusan.RSButtonMetro();
         btn_guardar = new rojerusan.RSButtonMetro();
-        txt_nombre = new rojerusan.RSMetroTextPlaceHolder();
-        txt_codigo = new rojerusan.RSMetroTextPlaceHolder();
-        txt_apellido = new rojerusan.RSMetroTextPlaceHolder();
-        txt_telefono = new rojerusan.RSMetroTextPlaceHolder();
-        Txt_fecha = new rojeru_san.componentes.RSDateChooser();
-        cbox_nacionalidad = new rojerusan.RSComboMetro();
-        txt_direccion = new rojerusan.RSMetroTextPlaceHolder();
-        btn_actualizar = new rojerusan.RSButtonMetro();
-        btn_eliminar = new rojerusan.RSButtonMetro();
+        txt_calificacion = new rojerusan.RSMetroTextPlaceHolder();
+        cbox_diplomados = new rojerusan.RSComboMetro();
+        txt_N_faltas = new rojerusan.RSMetroTextPlaceHolder();
         btn_refrescar = new rojerusan.RSButtonMetro();
         btn_reportes = new rojerusan.RSButtonMetro();
+        cbox_periodo_aca = new rojerusan.RSComboMetro();
+        txt_nombre = new rojerusan.RSMetroTextPlaceHolder();
+        txt_apellido = new rojerusan.RSMetroTextPlaceHolder();
+        btn_siguiente = new rojerusan.RSButtonMetro();
+        cbox_Horarios = new rojerusan.RSComboMetro();
+        docente_menu2 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        docente_menu = new javax.swing.JScrollPane();
+        Tabla_calificaciones = new rojerusan.RSTableMetro();
+        txt_codigo = new rojerusan.RSMetroTextPlaceHolder();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        docente_menu.setBackground(new java.awt.Color(21, 96, 136));
-
-        Tabla_docentes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        Tabla_docentes.setColorBackgoundHead(new java.awt.Color(21, 96, 136));
-        Tabla_docentes.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        Tabla_docentes.setColorBordeHead(new java.awt.Color(21, 96, 136));
-        Tabla_docentes.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        Tabla_docentes.setColorFilasForeground1(new java.awt.Color(21, 96, 136));
-        Tabla_docentes.setColorFilasForeground2(new java.awt.Color(21, 96, 136));
-        Tabla_docentes.setColorSelBackgound(new java.awt.Color(27, 108, 155));
-        Tabla_docentes.setGridColor(new java.awt.Color(255, 255, 255));
-        Tabla_docentes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tabla_docentesMouseClicked(evt);
-            }
-        });
-        docente_menu.setViewportView(Tabla_docentes);
-
         jPanel1.setBackground(new java.awt.Color(21, 96, 136));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/calificaciones_52px.png"))); // NOI18N
-        jLabel1.setText("       Calificaciones");
+        txt_identificativo.setBackground(new java.awt.Color(255, 255, 255));
+        txt_identificativo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txt_identificativo.setForeground(new java.awt.Color(255, 255, 255));
+        txt_identificativo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/calificaciones_52px.png"))); // NOI18N
+        txt_identificativo.setText("       Calificaciones");
 
         btn_buscar.setBackground(new java.awt.Color(21, 96, 136));
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/buscar_52px.png"))); // NOI18N
@@ -143,7 +117,7 @@ public class Calificaciones extends javax.swing.JPanel {
         });
 
         cbox_buscar.setBackground(new java.awt.Color(21, 96, 136));
-        cbox_buscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buscar Por..", "Código", "Nombre", "Apellido" }));
+        cbox_buscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buscar Por..", "Código Matrícula", "Código del Estudiante", "Apellido del Estudiante" }));
         cbox_buscar.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
         cbox_buscar.setColorArrow(new java.awt.Color(21, 96, 136));
         cbox_buscar.setColorBorde(new java.awt.Color(21, 96, 136));
@@ -163,6 +137,11 @@ public class Calificaciones extends javax.swing.JPanel {
         txt_buscar.setDisabledTextColor(new java.awt.Color(102, 102, 255));
         txt_buscar.setPhColor(new java.awt.Color(27, 108, 155));
         txt_buscar.setPlaceholder("Buscar:");
+        txt_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_buscarActionPerformed(evt);
+            }
+        });
         txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_buscarKeyReleased(evt);
@@ -175,7 +154,7 @@ public class Calificaciones extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_identificativo, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cbox_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,7 +169,7 @@ public class Calificaciones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_identificativo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -220,119 +199,53 @@ public class Calificaciones extends javax.swing.JPanel {
             }
         });
 
-        txt_nombre.setForeground(new java.awt.Color(27, 108, 155));
-        txt_nombre.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_nombre.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txt_nombre.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_nombre.setPlaceholder("Nombres:");
-        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+        txt_calificacion.setForeground(new java.awt.Color(27, 108, 155));
+        txt_calificacion.setBorderColor(new java.awt.Color(21, 96, 136));
+        txt_calificacion.setBotonColor(new java.awt.Color(21, 96, 136));
+        txt_calificacion.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_calificacion.setDisabledTextColor(new java.awt.Color(21, 96, 136));
+        txt_calificacion.setPhColor(new java.awt.Color(27, 108, 155));
+        txt_calificacion.setPlaceholder("Calificación:");
+        txt_calificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreActionPerformed(evt);
+                txt_calificacionActionPerformed(evt);
             }
         });
-        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_calificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_nombreKeyTyped(evt);
+                txt_calificacionKeyTyped(evt);
             }
         });
 
-        txt_codigo.setForeground(new java.awt.Color(27, 108, 155));
-        txt_codigo.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_codigo.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txt_codigo.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_codigo.setPlaceholder("Código:");
-
-        txt_apellido.setForeground(new java.awt.Color(27, 108, 155));
-        txt_apellido.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_apellido.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txt_apellido.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_apellido.setPlaceholder("Apellidos:");
-        txt_apellido.addActionListener(new java.awt.event.ActionListener() {
+        cbox_diplomados.setBackground(new java.awt.Color(21, 96, 136));
+        cbox_diplomados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diplomados:" }));
+        cbox_diplomados.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
+        cbox_diplomados.setColorArrow(new java.awt.Color(21, 96, 136));
+        cbox_diplomados.setColorBorde(new java.awt.Color(27, 108, 155));
+        cbox_diplomados.setColorFondo(new java.awt.Color(21, 96, 136));
+        cbox_diplomados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbox_diplomados.setName(""); // NOI18N
+        cbox_diplomados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_apellidoActionPerformed(evt);
+                cbox_diplomadosActionPerformed(evt);
             }
         });
-        txt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+
+        txt_N_faltas.setForeground(new java.awt.Color(27, 108, 155));
+        txt_N_faltas.setBorderColor(new java.awt.Color(21, 96, 136));
+        txt_N_faltas.setBotonColor(new java.awt.Color(21, 96, 136));
+        txt_N_faltas.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_N_faltas.setDisabledTextColor(new java.awt.Color(27, 108, 155));
+        txt_N_faltas.setPhColor(new java.awt.Color(27, 108, 155));
+        txt_N_faltas.setPlaceholder("Número de faltas:");
+        txt_N_faltas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_N_faltasActionPerformed(evt);
+            }
+        });
+        txt_N_faltas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_apellidoKeyTyped(evt);
-            }
-        });
-
-        txt_telefono.setForeground(new java.awt.Color(27, 108, 155));
-        txt_telefono.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_telefono.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_telefono.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_telefono.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_telefono.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txt_telefono.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_telefono.setPlaceholder("Teléfono:");
-        txt_telefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_telefonoActionPerformed(evt);
-            }
-        });
-        txt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_telefonoKeyTyped(evt);
-            }
-        });
-
-        Txt_fecha.setForeground(new java.awt.Color(21, 96, 136));
-        Txt_fecha.setColorBackground(new java.awt.Color(21, 96, 136));
-        Txt_fecha.setColorButtonHover(new java.awt.Color(21, 96, 136));
-        Txt_fecha.setColorDiaActual(new java.awt.Color(21, 96, 136));
-        Txt_fecha.setColorForeground(new java.awt.Color(21, 96, 136));
-        Txt_fecha.setFormatoFecha("dd-MM-yyyy");
-        Txt_fecha.setFuente(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Txt_fecha.setPlaceholder("FECHA DE NACIMIENTO:");
-
-        cbox_nacionalidad.setBackground(new java.awt.Color(51, 51, 255));
-        cbox_nacionalidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nacionalidad", "Ecuatoriano", "Peruano", "Colombiano", "Cubano" }));
-        cbox_nacionalidad.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
-        cbox_nacionalidad.setColorArrow(new java.awt.Color(21, 96, 136));
-        cbox_nacionalidad.setColorBorde(new java.awt.Color(27, 108, 155));
-        cbox_nacionalidad.setColorFondo(new java.awt.Color(21, 96, 136));
-        cbox_nacionalidad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        cbox_nacionalidad.setName(""); // NOI18N
-
-        txt_direccion.setForeground(new java.awt.Color(27, 108, 155));
-        txt_direccion.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_direccion.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_direccion.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_direccion.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_direccion.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txt_direccion.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_direccion.setPlaceholder("Dirección:");
-        txt_direccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_direccionActionPerformed(evt);
-            }
-        });
-
-        btn_actualizar.setBackground(new java.awt.Color(21, 96, 136));
-        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/actualizar_52px.png"))); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
-
-        btn_eliminar.setBackground(new java.awt.Color(21, 96, 136));
-        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/eliminar_52px.png"))); // NOI18N
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
+                txt_N_faltasKeyTyped(evt);
             }
         });
 
@@ -354,6 +267,148 @@ public class Calificaciones extends javax.swing.JPanel {
             }
         });
 
+        cbox_periodo_aca.setBackground(new java.awt.Color(21, 96, 136));
+        cbox_periodo_aca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Periodo académico:" }));
+        cbox_periodo_aca.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
+        cbox_periodo_aca.setColorArrow(new java.awt.Color(21, 96, 136));
+        cbox_periodo_aca.setColorBorde(new java.awt.Color(27, 108, 155));
+        cbox_periodo_aca.setColorFondo(new java.awt.Color(21, 96, 136));
+        cbox_periodo_aca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbox_periodo_aca.setName(""); // NOI18N
+        cbox_periodo_aca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbox_periodo_acaActionPerformed(evt);
+            }
+        });
+
+        txt_nombre.setForeground(new java.awt.Color(27, 108, 155));
+        txt_nombre.setBorderColor(new java.awt.Color(21, 96, 136));
+        txt_nombre.setBotonColor(new java.awt.Color(21, 96, 136));
+        txt_nombre.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_nombre.setDisabledTextColor(new java.awt.Color(21, 96, 136));
+        txt_nombre.setPhColor(new java.awt.Color(27, 108, 155));
+        txt_nombre.setPlaceholder("Nombres:");
+        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreActionPerformed(evt);
+            }
+        });
+        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombreKeyTyped(evt);
+            }
+        });
+
+        txt_apellido.setForeground(new java.awt.Color(27, 108, 155));
+        txt_apellido.setBorderColor(new java.awt.Color(21, 96, 136));
+        txt_apellido.setBotonColor(new java.awt.Color(21, 96, 136));
+        txt_apellido.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_apellido.setDisabledTextColor(new java.awt.Color(21, 96, 136));
+        txt_apellido.setPhColor(new java.awt.Color(27, 108, 155));
+        txt_apellido.setPlaceholder("Apellidos:");
+        txt_apellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_apellidoActionPerformed(evt);
+            }
+        });
+        txt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_apellidoKeyTyped(evt);
+            }
+        });
+
+        btn_siguiente.setBackground(new java.awt.Color(21, 96, 136));
+        btn_siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/open_50pxpx.png"))); // NOI18N
+        btn_siguiente.setText("Siguiente");
+        btn_siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_siguienteActionPerformed(evt);
+            }
+        });
+
+        cbox_Horarios.setBackground(new java.awt.Color(21, 96, 136));
+        cbox_Horarios.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Horarios:" }));
+        cbox_Horarios.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
+        cbox_Horarios.setColorArrow(new java.awt.Color(21, 96, 136));
+        cbox_Horarios.setColorBorde(new java.awt.Color(27, 108, 155));
+        cbox_Horarios.setColorFondo(new java.awt.Color(21, 96, 136));
+        cbox_Horarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbox_Horarios.setName(""); // NOI18N
+        cbox_Horarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbox_HorariosActionPerformed(evt);
+            }
+        });
+
+        docente_menu2.setBackground(new java.awt.Color(21, 96, 136));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        Tabla_calificaciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "", "", ""
+            }
+        ));
+        Tabla_calificaciones.setColorBackgoundHead(new java.awt.Color(21, 96, 136));
+        Tabla_calificaciones.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        Tabla_calificaciones.setColorBordeHead(new java.awt.Color(21, 96, 136));
+        Tabla_calificaciones.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        Tabla_calificaciones.setColorFilasForeground1(new java.awt.Color(21, 96, 136));
+        Tabla_calificaciones.setColorFilasForeground2(new java.awt.Color(21, 96, 136));
+        Tabla_calificaciones.setColorSelBackgound(new java.awt.Color(21, 96, 136));
+        Tabla_calificaciones.setGridColor(new java.awt.Color(255, 255, 255));
+        Tabla_calificaciones.setSelectionBackground(new java.awt.Color(21, 96, 136));
+        Tabla_calificaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_calificacionesMouseClicked(evt);
+            }
+        });
+        docente_menu.setViewportView(Tabla_calificaciones);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(docente_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 418, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(docente_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+        );
+
+        docente_menu2.setViewportView(jPanel3);
+
+        txt_codigo.setForeground(new java.awt.Color(27, 108, 155));
+        txt_codigo.setBorderColor(new java.awt.Color(21, 96, 136));
+        txt_codigo.setBotonColor(new java.awt.Color(21, 96, 136));
+        txt_codigo.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_codigo.setDisabledTextColor(new java.awt.Color(21, 96, 136));
+        txt_codigo.setPhColor(new java.awt.Color(27, 108, 155));
+        txt_codigo.setPlaceholder("Código matrícula:");
+        txt_codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codigoActionPerformed(evt);
+            }
+        });
+        txt_codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_codigoKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(21, 96, 136));
+        jLabel1.setForeground(new java.awt.Color(21, 96, 136));
+        jLabel1.setText("Calificación:");
+
+        jLabel2.setBackground(new java.awt.Color(21, 96, 136));
+        jLabel2.setForeground(new java.awt.Color(21, 96, 136));
+        jLabel2.setText("Faltas:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -362,32 +417,32 @@ public class Calificaciones extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_N_faltas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_calificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbox_diplomados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbox_Horarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbox_nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(58, Short.MAX_VALUE))
-                    .addComponent(docente_menu)))
+                        .addGap(0, 0, 0)
+                        .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(docente_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,34 +453,40 @@ public class Calificaciones extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
-                        .addComponent(docente_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))
+                        .addComponent(docente_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbox_Horarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbox_diplomados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addGap(2, 2, 2)
+                        .addComponent(txt_calificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbox_nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_N_faltas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        cbox_nacionalidad.getAccessibleContext().setAccessibleName("");
-        cbox_nacionalidad.getAccessibleContext().setAccessibleDescription("");
+        cbox_diplomados.getAccessibleContext().setAccessibleName("");
+        cbox_diplomados.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -435,286 +496,108 @@ public class Calificaciones extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefonoActionPerformed
+    private void txt_calificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_calificacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_telefonoActionPerformed
-
-    private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_apellidoActionPerformed
-
-    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreActionPerformed
+    }//GEN-LAST:event_txt_calificacionActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         try {
-
-            String codigo = txt_codigo.getText().toString();
-            String nombre = txt_nombre.getText().toString();
-            String apellido = txt_apellido.getText().toString();
-            String direccion = txt_direccion.getText().toString();
-            String telefono = txt_telefono.getText().toString();
-
-            String formatoFecha = "yy-MM-dd";
-            Date fecha = Txt_fecha.getDatoFecha();
-            SimpleDateFormat formateador = new SimpleDateFormat(formatoFecha);
-            String fecha_opt = formateador.format(fecha);
-            String fecha_final = fecha_opt;
-
-            String nacionalidad = cbox_nacionalidad.getSelectedItem().toString();
-
-//      if(codigo.isEmpty()){
-//                alerta("Error","El Campo Codigo esta vacio" ,"/Img_alertas/Error_100px.png");
-//         
-//          txt_codigo.requestFocus();
-//           }
-            //    JOptionPane.showMessageDialog(null, Txt_fecha.getDatoFecha());
-            try {
-                PreparedStatement pst;
-                pst = cn.prepareStatement("INSERT INTO `docente`(`cod_doc`, `Nombre_doc`, `Apellido_doc`, `Direccion_doc`, `telefono_doc`, `fecha_nacimiento_doc`, `nacionalidad`) VALUES (?,?,?,?,?,?,?)");
-
-                pst.setString(1, codigo);
-                pst.setString(2, nombre);
-                pst.setString(3, apellido);
-                pst.setString(4, direccion);
-                pst.setString(5, telefono);
-                pst.setString(6, fecha_final);
-                pst.setString(7, nacionalidad);
-
-                pst.executeUpdate();
-                alerta("Notificación", "Datos Guardados exitosamente", "/Img_alertas/satisfactoriamente_100px.png");
-
-                //           JOptionPane.showMessageDialog(null, "se guardo el datos " + Tabla_dis.getValueAt(i, 0).toString() + " y " + Tabla_dis.getValueAt(i, 1).toString());
-            } catch (SQLException ex) {
-
-                alerta("Error", "No se pudo guardar " + ex, "/Img_alertas/Error_100px.png");
-
-                Logger.getLogger(Docentes.class.getName()).log(Level.SEVERE, null, ex);
+            btn_siguiente.setEnabled(true);
+            Float nota=Float.valueOf(txt_calificacion.getText().toString());
+            int Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
+            String Cod_mat=txt_codigo.getText().toString();
+            int indicador=0;
+            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
+               JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=1;
             }
+            
+            if((nota>-1)&&(nota<11)&&(Faltas>-1)&&(Faltas<11)){
+                 // JOptionPane.showMessageDialog(null,"estoy en la cal");
+                 ingresar_calificacion(nota, Faltas, indicador, cod_cal, Cod_mat);
 
-            consutarTabla_Docentes();
-            btn_True_false();
-            vaciar_cajas();
-
-        } catch (Exception ex) {
-
-            alerta("Error", "Faltan Campos de LLenar " + ex, "/Img_alertas/Error_100px.png");
-
-            txt_codigo.requestFocus();
-
+            }else{
+             alerta("Error", "Faltan campos de llenar o el numero exede al permitido " , "/Img_alertas/Error_100px.png"); 
+                txt_calificacion.setFocusable(true);
+                
+            }
+            
+            
+            
+        } catch (Exception e) {
+             alerta("Error", "No se pudo ingresar la calificación " + e, "/Img_alertas/Error_100px.png");
         }
 
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
-        // TODO add your handling code here:
-        
-         
-         
-         nuevo();
+
+        nuevo();
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
-    private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
+    private void txt_N_faltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_N_faltasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_direccionActionPerformed
+    }//GEN-LAST:event_txt_N_faltasActionPerformed
 
     private void cbox_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_buscarActionPerformed
         // TODO add your handling code here:
-        String Campo=cbox_buscar.getSelectedItem().toString();
-          switch (Campo) {
+        String Campo = cbox_buscar.getSelectedItem().toString();
+        switch (Campo) {
 //Buscar Por.., Código, Nombre, Apellido
             case "Buscar Por..":
-               
+
                 txt_buscar.setEnabled(false);
-                 consutarTabla_Docentes();
-                 btn_True_false();
-                 vaciar_cajas();
+                //consutarTabla_Docentes();
+                btn_True_false();
+                vaciar_cajas();
                 break;
-            case "Código":
+            case "Código Matrícula":
                 txt_buscar.setEnabled(true);
 
-                 nuevo();
-                
+                nuevo();
+
                 break;
-                case "Nombre":
-                    txt_buscar.setEnabled(true);
-                    nuevo();
-                
+            case "Código del Estudiante":
+                txt_buscar.setEnabled(true);
+
+                nuevo();
+
                 break;
-                case "Apellido":
-                    txt_buscar.setEnabled(true);
-                 nuevo();
+            case "Apellido del Estudiante":
+                txt_buscar.setEnabled(true);
+
+                nuevo();
                 break;
         }
-        
-        
+
+
     }//GEN-LAST:event_cbox_buscarActionPerformed
-
-    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-
-
-        // TODO add your handling code here:
-        int res = confirmar("Error", "Seguro que desea actualizar este campo ", "/Img_alertas/Error_100px.png");
-
-            if (res == 1) {
-         
-        
-        String codigo = txt_codigo.getText().toString();
-        String nombre = txt_nombre.getText().toString();
-        String apellido = txt_apellido.getText().toString();
-        String direccion = txt_direccion.getText().toString();
-        String telefono = txt_telefono.getText().toString();
-        String formatoFecha = "yy-MM-dd";
-        Date fecha = Txt_fecha.getDatoFecha();
-        SimpleDateFormat formateador = new SimpleDateFormat(formatoFecha);
-        String fecha_opt = formateador.format(fecha);
-        String fecha_final = fecha_opt;
-        String nacionalidad = cbox_nacionalidad.getSelectedItem().toString();
-        //alerta("Notificacion", "Datos Guardados exitosamente" , "/Img_alertas/satisfactoriamente_.png");
-        try {
-
-            PreparedStatement pst = cn.prepareStatement("UPDATE `docente` SET `Nombre_doc`=?,`Apellido_doc`=?,`Direccion_doc`=?,`telefono_doc`=?,`fecha_nacimiento_doc`=?,`nacionalidad`=? WHERE docente.cod_doc='" + codigo + "'");
-
-            pst.setString(1, nombre);
-            pst.setString(2, apellido);
-            pst.setString(3, direccion);
-            pst.setString(4, telefono);
-            pst.setString(5, fecha_final);
-            pst.setString(6, nacionalidad);
-
-            pst.executeUpdate();
-            alerta("Notificación", "Datos se actualizaron exitosamente ", "/Img_alertas/satisfactoriamente_100px.png");
-
-        } catch (SQLException e) {
-            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
-            alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
-        }
-
-        consutarTabla_Docentes();
-        btn_True_false();
-        vaciar_cajas();
-        
-        
-        
-        
-        
-            }
-            else{
-               alerta("Notificación", "Se cancelo la operación", "/Img_alertas/satisfactoriamente_100px.png"); 
-            }
-    }//GEN-LAST:event_btn_actualizarActionPerformed
-
-    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        try {
-
-//             Alertas wa = new Alertas(null, true);
-//        wa.txt_titu.setText("Alerta");
-//        wa.txt_txt.setText("Seguro que desea eliminar este campo");
-//
-//        wa.txt_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Error_100px.png")));
-//
-//        wa.setVisible(true);
-            int res = confirmar("Error", "Seguro que desea eliminar este campo ", "/Img_alertas/Error_100px.png");
-
-            if (res == 1) {
-
-                // TODO add your handling code here:
-                String codigo = txt_codigo.getText().toString();
-                PreparedStatement pst;
-                pst = cn.prepareStatement("DELETE FROM `docente` WHERE docente.cod_doc=?");
-                pst.setString(1, codigo);
-                pst.executeUpdate();
-                alerta("Notificación", "Datos eliminados exitosamente", "/Img_alertas/satisfactoriamente_100px.png");
-            } else {
-                alerta("Notificación", "Se cancelo la operación", "/Img_alertas/satisfactoriamente_100px.png");
-            }
-
-        } catch (SQLException ex) {
-            alerta("Error", "No se elimino los datos " + ex, "/Img_alertas/Error_100px.png");
-        }
-        consutarTabla_Docentes();
-        btn_True_false();
-        vaciar_cajas();
-
-
-    }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         // TODO add your handling code here:
-        consutarTabla_Docentes();
-        control_botones();
-         txt_buscar.setText("");
-         cbox_buscar. setSelectedIndex(0);
-    }//GEN-LAST:event_btn_refrescarActionPerformed
-
-    private void Tabla_docentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_docentesMouseClicked
         try {
-            // TODO add your handling code here:
-
-            int fila = Tabla_docentes.getSelectedRow();
-
-            if (fila > -1) {
-                //  Txt_Codigo.setText(Integer.toString(fila));
-                txt_codigo.setText(Tabla_docentes.getValueAt(fila, 0).toString());
-                txt_nombre.setText(Tabla_docentes.getValueAt(fila, 1).toString());
-                txt_apellido.setText(Tabla_docentes.getValueAt(fila, 2).toString());
-                txt_direccion.setText(Tabla_docentes.getValueAt(fila, 3).toString());
-                txt_telefono.setText(Tabla_docentes.getValueAt(fila, 4).toString());
-                String strFecha = Tabla_docentes.getValueAt(fila, 5).toString();
-                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha = null;
-                fecha = formatoDelTexto.parse(strFecha);
-                Txt_fecha.setDatoFecha(fecha);  // para insertar fecha
-
-                String seleccion = String.valueOf(Tabla_docentes.getValueAt(fila, 6).toString());
-
-                switch (seleccion) {
-
-                    case "Ecuatoriano":
-
-                        cbox_nacionalidad.setSelectedIndex(1);
-
-                        break;
-
-                    case "Peruano":
-
-                        cbox_nacionalidad.setSelectedIndex(2);
-
-                        break;
-                    case "Colombiano":
-
-                        cbox_nacionalidad.setSelectedIndex(3);
-
-                        break;
-
-                    case "Cubano":
-
-                        cbox_nacionalidad.setSelectedIndex(4);
-
-                        break;
-
-                    default:
-
-                        cbox_nacionalidad.setSelectedIndex(0);
-
-                        break;
-
-                }
-            }
-
-        } catch (ParseException ex) {
-            // Logger.getLogger(Docentes.class.getName()).log(Level.SEVERE, null, ex);
-            alerta("Error", "No a seleccionado la opcion Nuevo" + ex, "/Img_alertas/Error_100px.png");
+            control_botones();
+         String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(resultado, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+                     btn_True_false();
+                     vaciar_cajas(); 
+        } catch (Exception e) {
         }
-
-
-    }//GEN-LAST:event_Tabla_docentesMouseClicked
+       
+    }//GEN-LAST:event_btn_refrescarActionPerformed
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
@@ -724,141 +607,323 @@ public class Calificaciones extends javax.swing.JPanel {
         // TODO add your handling code here:
         String Campo = cbox_buscar.getSelectedItem().toString();
         String txtSql = txt_buscar.getText().toString();
-       
-   String  Campo2= null;
+        String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+
+        String Campo2 = null;
         switch (Campo) {
 //Buscar Por.., Código, Nombre, Apellido
             case "Buscar Por..":
-                
-               
 
                 break;
-            case "Código":
-               
-                Campo2="cod_doc";
-                consutaBD( Campo2,txtSql);
+            case "Código Matrícula":
+
+                Campo2 = "cod_mat";
                 
-                break;
-                case "Nombre":
-                   
-                    Campo2="Nombre_doc";
-                consutaBD( Campo2,txtSql);
-                
-                break;
-                case "Apellido":
+                    // JOptionPane.showMessageDialog(null, resultado);
                   
-                Campo2="Apellido_doc";
-                consutaBD( Campo2,txtSql);
+                consutaBD(resultado, pa, hor, dip,Campo2, txtSql);
+
+                break;
+            case "Código del Estudiante":
+JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
+                Campo2 = "cod_est";
+                consutaBD(resultado, pa, hor, dip,Campo2, txtSql);
+
+                break;
+            case "Apellido del Estudiante":
+
+                Campo2 = "estudiante.cod_est";
+                consutaBD(resultado, pa, hor, dip,Campo2, txtSql);
                 break;
         }
-        
+
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
-          String Campo=cbox_buscar.getSelectedItem().toString();
-          String  Campo2= null;
-            String txtSql = txt_buscar.getText().toString();
-          switch (Campo) {
+        String Campo = cbox_buscar.getSelectedItem().toString();
+        String Campo2 = null;
+        String txtSql = txt_buscar.getText().toString();
+        switch (Campo) {
 //Buscar Por.., Código, Nombre, Apellido
             case "Buscar Por..":
-               
+
                 txt_buscar.setEnabled(false);
-                 consutarTabla_Docentes();
-                 btn_True_false();
-                 vaciar_cajas();
-                 nuevo();
+               // consutarTabla_Docentes();
+                btn_True_false();
+                vaciar_cajas();
+                nuevo();
                 break;
             case "Código":
-                Campo2="cod_doc";
-               consutaBD_sinfiltros( Campo2,txtSql);
-                 
-                 
-                 
+                Campo2 = "cod_doc";
+                consutaBD_sinfiltros(Campo2, txtSql);
+
                 txt_buscar.setEnabled(true);
 
-               
-                
                 break;
-                case "Nombre":
-                    
-                    
-                    Campo2="Nombre_doc";
-               consutaBD_sinfiltros( Campo2,txtSql);
-                
-                    txt_buscar.setEnabled(true);
-                   
-                
+            case "Nombre":
+
+                Campo2 = "Nombre_doc";
+                consutaBD_sinfiltros(Campo2, txtSql);
+
+                txt_buscar.setEnabled(true);
+
                 break;
-                case "Apellido":
-                    
-                     Campo2="Apellido_doc";
-             consutaBD_sinfiltros( Campo2,txtSql);
-                    
-                    txt_buscar.setEnabled(true);
-                 
+            case "Apellido":
+
+                Campo2 = "Apellido_doc";
+                consutaBD_sinfiltros(Campo2, txtSql);
+
+                txt_buscar.setEnabled(true);
+
                 break;
         }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
-    private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
+    private void txt_calificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_calificacionKeyTyped
         // TODO add your handling code here:
-        
-        char digito=evt.getKeyChar();
-      
-        if(!Character.isDigit(digito)){// si no es un numero
-         evt.consume();
+
+        char letra= evt.getKeyChar();
+
+       if(!Character.isDigit(letra) && !(letra=='.')){// si no es letra
+            evt.consume();// cancelo ingreso de la letra
         }
-        
-    }//GEN-LAST:event_txt_telefonoKeyTyped
+
+    }//GEN-LAST:event_txt_calificacionKeyTyped
+
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
 
     private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
         // TODO add your handling code here:
-        char letra=evt.getKeyChar();
-        if(!Character.isLetter(letra) && !Character.isSpaceChar(letra)){// si no es letra
-            evt.consume();// cancelo ingreso de la letra
-        }
     }//GEN-LAST:event_txt_nombreKeyTyped
+
+    private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_apellidoActionPerformed
 
     private void txt_apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidoKeyTyped
         // TODO add your handling code here:
-        char letra=evt.getKeyChar();
-        if(!Character.isLetter(letra) && !Character.isSpaceChar(letra)){// si no es letra
-            evt.consume();// cancelo ingreso de la letra
-        }
     }//GEN-LAST:event_txt_apellidoKeyTyped
 
-    public void consutarTabla_Docentes() {
+    private void btn_siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguienteActionPerformed
+        // TODO add your handling code here:
+      // JOptionPane.showMessageDialog(null, Tabla_calificaciones.getRowCount());
 
-        String consultaBD = "SELECT * FROM `docente`";
-        javax.swing.JTable Tabla = this.Tabla_docentes;
-        // Enviamos los parametros para la consulta de la tabla
-        //  conexion    consulta de la base de datos y el nombre de la tabla
-        String cabesera[] = {"Código", "Nombres", "Apellidos", "Dirección", "Teléfono", "Fecha de Naciemiento", "Nacionalidad"
-        };
-        cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+            if (posicion >=0 &&posicion <Tabla_calificaciones.getRowCount()-1) {
+               posicion=posicion+1;
+                //  Txt_Codigo.setText(Integer.toString(fila));
+                txt_codigo.setText(Tabla_calificaciones.getValueAt(posicion, 0).toString());
+                txt_nombre.setText(Tabla_calificaciones.getValueAt(posicion, 3).toString());
+                txt_apellido.setText(Tabla_calificaciones.getValueAt(posicion, 2).toString());
+                 cod_cal=Integer.parseInt(Tabla_calificaciones.getValueAt(posicion, 4).toString());
+                 txt_calificacion.setText(Tabla_calificaciones.getValueAt(posicion, 5).toString());
+                txt_N_faltas.setText(Tabla_calificaciones.getValueAt(posicion, 6).toString());
+                 Tabla_calificaciones.getSelectionModel().setSelectionInterval(posicion,posicion);;
+            }
+            else{
+                btn_siguiente.setEnabled(false);
+                btn_guardar.setEnabled(false);
+            }
+         
+        
+    }//GEN-LAST:event_btn_siguienteActionPerformed
 
+    private void cbox_periodo_acaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_periodo_acaActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            String comparacion = cbox_periodo_aca.getSelectedItem().toString();
+            if (!(comparacion == "Periodo académico:") && !(comparacion == "")) {
+//   cbox_horarios.removeAllItems();
+//        cbox_horarios.addItem("Horarios:");
+                String Captura = cbox_periodo_aca.getSelectedItem().toString();
+
+                String[] parts = Captura.split("/");
+                String Captura2 = parts[0];
+                // JOptionPane.showMessageDialog(null,cbox_periodo_aca.getSelectedItem().toString());
+
+                consultar_Horarios(Captura2);
+                cbox_Horarios.setEnabled(true);
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+
+    }//GEN-LAST:event_cbox_periodo_acaActionPerformed
+    public String separar(String cadena) {
+        String valor = cadena;
+        String valor2 = "";
+
+        String[] parts = valor.split("/");
+        valor2 = parts[0];
+
+        return valor2;
     }
 
-    public void consutaBD(String Campo, String txtSQL) {
+    public String separar2(String cadena) {
+        String valor = cadena;
+        String valor2 = "";
 
+        String[] parts = valor.split("/");
+        valor2 = parts[1];
+
+        return valor2;
+    }
+    private void cbox_diplomadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_diplomadosActionPerformed
+        // TODO add your handling code here:
+        try {
+            String comparacion1 = cbox_diplomados.getSelectedItem().toString();
+
+            if (!(comparacion1 == "Diplomados:") && !(comparacion1 == "")) {
+
+                String comparacion = txt_identificativo.getText().toString();
+
+                if (!(comparacion == "       Calificaciones") && !(comparacion == "")) {
+                    String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(resultado, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+                    Tabla_calificaciones.setEnabled(true);
+                    cbox_periodo_aca.setEnabled(false);
+                    btn_nuevo.setEnabled(true);
+                    btn_refrescar.setEnabled(true);
+                    btn_reportes.setEnabled(true);
+                  
+                    
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+
+    }//GEN-LAST:event_cbox_diplomadosActionPerformed
+
+    private void cbox_HorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_HorariosActionPerformed
+        // TODO add your handling code here:
+        String comparacion = cbox_Horarios.getSelectedItem().toString();
+        if (!(comparacion == "Horarios:") && !(comparacion == "")) {
+
+            String periodo = separar(cbox_periodo_aca.getSelectedItem().toString());
+            String horario = separar(cbox_Horarios.getSelectedItem().toString());
+//         JOptionPane.showMessageDialog(null, periodo);
+//         JOptionPane.showMessageDialog(null, horario);
+            consultar_Diplomados(periodo, horario);
+            cbox_diplomados.setEnabled(true);
+
+        }
+
+
+    }//GEN-LAST:event_cbox_HorariosActionPerformed
+
+    private void Tabla_calificacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_calificacionesMouseClicked
+        // TODO add your handling code here:
+        
+    //    JOptionPane.showMessageDialog(docente_menu, evt);
+            int fila = Tabla_calificaciones.getSelectedRow();
+
+            if (fila > -1) {
+               posicion=fila;
+                //  Txt_Codigo.setText(Integer.toString(fila));
+                txt_codigo.setText(Tabla_calificaciones.getValueAt(fila, 0).toString());
+                txt_nombre.setText(Tabla_calificaciones.getValueAt(fila, 3).toString());
+                txt_apellido.setText(Tabla_calificaciones.getValueAt(fila, 2).toString());
+                 cod_cal=Integer.parseInt(Tabla_calificaciones.getValueAt(fila, 4).toString());
+                 txt_calificacion.setText(Tabla_calificaciones.getValueAt(fila, 5).toString());
+                txt_N_faltas.setText(Tabla_calificaciones.getValueAt(fila, 6).toString());
+            }
+        
+        txt_calificacion.setEnabled(true);
+        txt_N_faltas.setEnabled(true);
+        btn_guardar.setEnabled(true);
+        btn_siguiente.setEnabled(true);
+        
+    }//GEN-LAST:event_Tabla_calificacionesMouseClicked
+
+    private void txt_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigoActionPerformed
+
+    private void txt_codigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_codigoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigoKeyTyped
+
+    private void txt_N_faltasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_N_faltasKeyTyped
+        // TODO add your handling code here:
+         char letra= evt.getKeyChar();
+
+       if(!Character.isDigit(letra)){// si no es letra
+            evt.consume();// cancelo ingreso de la letra
+        }
+    }//GEN-LAST:event_txt_N_faltasKeyTyped
+
+    private void txt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_buscarActionPerformed
+
+    
+
+    public void consutaBD(String entidad, String pa, String hor, String dip, String Campo, String txtSQL) {
+
+        
+         try {
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_1.cod_cal_1,calificacion_1.valor_cal,calificacion_1.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_1\n" +
+"WHERE periodo_academico.cod_pa='"+pa+"' \n" +
+"AND horarios.cod_hor="+hor +"\n"+
+"AND diplomados.cod_dip='"+dip+"' \n" +
+"AND periodo_academico.cod_pa=matricula.cod_pa \n" +
+"AND horarios.cod_hor=matricula.cod_hor \n" +
+"AND diplomados.cod_dip=matricula.cod_dip \n" +
+"AND estudiante.cod_est=matricula.cod_est \n" +
+"AND matricula.cod_mat=calificacion_1.cod_mat\n" +
+  " AND "+Campo + " LIKE '" + txtSQL + "_%'"+
+ " ORDER BY estudiante.Apellido_est";
+          //  JOptionPane.showMessageDialog(null, consultaBD);
+            javax.swing.JTable Tabla = this.Tabla_calificaciones;
+            // Enviamos los parametros para la consulta de la tabla
+            //  conexion    consulta de la base de datos y el nombre de la tabla
+            String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Código", "Nota", "Faltas"};
+            cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
         //String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + "='" + txtSQL + "'";
-          String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + " LIKE '" + txtSQL + "_%'";
-          //JOptionPane.showMessageDialog(null, consultaBD);
-        javax.swing.JTable Tabla = this.Tabla_docentes;
+        String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + " LIKE '" + txtSQL + "_%'";
+        //JOptionPane.showMessageDialog(null, consultaBD);
+        javax.swing.JTable Tabla = this.Tabla_calificaciones;
         // Enviamos los parametros para la consulta de la tabla
         //  conexion    consulta de la base de datos y el nombre de la tabla
         String cabesera[] = {"Código", "Nombres", "Apellidos", "Dirección", "Teléfono", "Fecha de Naciemiento", "Nacionalidad"
         };
         cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
 
+        
+        
+        
+        
+        
+        
     }
-     public void consutaBD_sinfiltros(String Campo, String txtSQL) {
+
+    public void consutaBD_sinfiltros(String Campo, String txtSQL) {
 
         String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + "='" + txtSQL + "'";
-         // String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + " LIKE '" + txtSQL + "_%'";
-          //JOptionPane.showMessageDialog(null, consultaBD);
-        javax.swing.JTable Tabla = this.Tabla_docentes;
+        // String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + " LIKE '" + txtSQL + "_%'";
+        //JOptionPane.showMessageDialog(null, consultaBD);
+        javax.swing.JTable Tabla = this.Tabla_calificaciones;
         // Enviamos los parametros para la consulta de la tabla
         //  conexion    consulta de la base de datos y el nombre de la tabla
         String cabesera[] = {"Código", "Nombres", "Apellidos", "Dirección", "Teléfono", "Fecha de Naciemiento", "Nacionalidad"
@@ -868,10 +933,11 @@ public class Calificaciones extends javax.swing.JPanel {
     }
 
     public void control_botones() {
+         btn_siguiente.setEnabled(false);
         btn_guardar.setEnabled(false);
         btn_nuevo.setEnabled(true);
-        btn_actualizar.setEnabled(false);
-        btn_eliminar.setEnabled(false);
+     //   btn_actualizar.setEnabled(false);
+       // btn_eliminar.setEnabled(false);
         btn_reportes.setEnabled(true);
         btn_refrescar.setEnabled(true);
     }
@@ -905,8 +971,8 @@ public class Calificaciones extends javax.swing.JPanel {
 
     private void nofocus() {
         btn_nuevo.setFocusPainted(false);
-        btn_actualizar.setFocusPainted(false);
-        btn_eliminar.setFocusPainted(false);
+        //btn_actualizar.setFocusPainted(false);
+      //  btn_eliminar.setFocusPainted(false);
         btn_reportes.setFocusPainted(false);
         btn_refrescar.setFocusPainted(false);
         btn_guardar.setFocusPainted(false);
@@ -916,74 +982,241 @@ public class Calificaciones extends javax.swing.JPanel {
     private void vaciar_cajas() {
         txt_nombre.setText("");
         txt_apellido.setText("");
-        txt_telefono.setText("");
-        txt_direccion.setText("");
-        cbox_nacionalidad.setSelectedIndex(0);
-        Txt_fecha.setDatoFecha(null);
+        txt_calificacion.setText("");
+        txt_N_faltas.setText("");
         txt_codigo.setText("");
+      
 
         txt_nombre.setEnabled(false);
         txt_apellido.setEnabled(false);
-        txt_telefono.setEnabled(false);
-        txt_direccion.setEnabled(false);
-        cbox_nacionalidad.setEnabled(false);
-        Txt_fecha.setEnabled(false);
-        txt_codigo.setEnabled(false);
-        Tabla_docentes.setEnabled(false);
+
+        cbox_diplomados.setEnabled(false);
         txt_buscar.setEnabled(false);
-         
+        cbox_Horarios.setEnabled(false); 
+        //////////////
+        txt_N_faltas.setEnabled(false);
+        txt_calificacion.setEnabled(false);
+       btn_refrescar.setEnabled(false);
+        cbox_periodo_aca.setEnabled(false);
+       // Tabla_calificaciones.setEnabled(false);
+        btn_reportes.setEnabled(false);
+
     }
 
     private void btn_True_false() {
-        btn_guardar.setEnabled(false);
-        btn_nuevo.setEnabled(true);
-        btn_actualizar.setEnabled(false);
-        btn_eliminar.setEnabled(false);
-        btn_reportes.setEnabled(true);
-        btn_refrescar.setEnabled(true);
-        Tabla_docentes.setEnabled(false);
-      
-    }
-    private void nuevo(){
-        btn_guardar.setEnabled(true);
-        btn_nuevo.setEnabled(false);
-        btn_actualizar.setEnabled(true);
-        btn_eliminar.setEnabled(true);
-        btn_reportes.setEnabled(true);
-        btn_refrescar.setEnabled(true);
-
-        txt_nombre.setEnabled(true);
-        txt_apellido.setEnabled(true);
-        txt_telefono.setEnabled(true);
-        txt_direccion.setEnabled(true);
-        cbox_nacionalidad.setEnabled(true);
-        Txt_fecha.setEnabled(true);
-        txt_codigo.setEnabled(true);
-        Tabla_docentes.setEnabled(true);
-
+       // btn_guardar.setEnabled(false);
+        //btn_nuevo.setEnabled(true);
+    //    btn_actualizar.setEnabled(false);
+        //btn_eliminar.setEnabled(false);
+        btn_reportes.setEnabled(false);
+        btn_refrescar.setEnabled(false);
+        Tabla_calificaciones.setEnabled(false);
+        txt_codigo.setEnabled(false);
+       // btn_siguiente.setEnabled(false);
+     
         
+
     }
+
+    private void nuevo() {
+       // btn_guardar.setEnabled(true);
+        btn_nuevo.setEnabled(false);
+       // btn_actualizar.setEnabled(true);
+      //  btn_eliminar.setEnabled(true);
+        btn_reportes.setEnabled(true);
+      //  btn_refrescar.setEnabled(true);
+       
+
+       // txt_nombre.setEnabled(true);
+       // txt_apellido.setEnabled(true);
+        
+        //cbox_diplomados.setEnabled(true);
+
+        cbox_periodo_aca.setEnabled(true);
+    }
+
+    public void consultar_periodo_academico(rojerusan.RSComboMetro per_aca) {
+
+        try {
+//            cbox_periodo_aca.removeAllItems();
+//            cbox_periodo_aca.addItem("Periodo Académico:");
+            Statement estado;
+            String Nombre_per_aca = "";
+            String codigo = "";
+
+/// hacemos consulata sql
+            estado = cn.createStatement();
+            ResultSet resultado = estado.executeQuery("SELECT *FROM `periodo_academico`");
+
+            while (resultado.next()) {
+                codigo = resultado.getString(1);
+                Nombre_per_aca = resultado.getString(4);
+                per_aca.addItem(codigo + "/" + Nombre_per_aca);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Calificaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    void limpiar_combo(rojerusan.RSComboMetro combo) {
+        for (int i = combo.getItemCount() - 1; i > 0; i--) {
+            combo.removeItemAt(i);
+        }
+    }
+
+    public void consultar_Horarios(String seleccion) {
+        try {
+            String sql_consulta = "SELECT horarios.cod_hor, horarios.rango_dias_hor,horarios.Horario_hor FROM horarios,matricula,periodo_academico "
+                    + "WHERE periodo_academico.cod_pa='" + seleccion + "' AND matricula.cod_hor=horarios.cod_hor AND periodo_academico.cod_pa=matricula.cod_pa ";
+
+            Statement estado;
+            String codigo = "";
+            String dias = "";
+            String horas = "";
+
+            estado = cn.createStatement();
+            ResultSet resultado = estado.executeQuery(sql_consulta);
+            //  cbox_horarios.removeAllItems();
+            limpiar_combo(cbox_Horarios);
+
+            while (resultado.next()) {
+                codigo = resultado.getString(1);
+                dias = resultado.getString(2);
+                horas = resultado.getString(3);
+                cbox_Horarios.addItem(codigo + "/" + dias + "/" + horas);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Calificaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void consultar_Diplomados(String seleccion_pa, String seleccion_ho) {
+        try {
+            String sql_consulta = "select diplomados.cod_dip,diplomados.nombre_dip FROM horarios,matricula,periodo_academico,diplomados\n"
+                    + " WHERE periodo_academico.cod_pa='" + seleccion_pa + "' "
+                    + "AND horarios.cod_hor='" + seleccion_ho + "' "
+                    + "AND horarios.cod_hor= matricula.cod_hor "
+                    + "AND diplomados.cod_dip=matricula.cod_dip "
+                    + "AND periodo_academico.cod_pa=matricula.cod_pa ";
+
+            Statement estado;
+            String codigo = "";
+            String nombre = "";
+
+            estado = cn.createStatement();
+            ResultSet resultado = estado.executeQuery(sql_consulta);
+            limpiar_combo(cbox_diplomados);
+
+            while (resultado.next()) {
+                codigo = codigo = resultado.getString(1);
+                nombre = resultado.getString(2);
+
+                cbox_diplomados.addItem(codigo + "/" + nombre);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Calificaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void preparar_calificaciones(String entidad, String pa, String hor, String dip) {
+        try {
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_1.cod_cal_1,calificacion_1.valor_cal,calificacion_1.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_1\n" +
+"WHERE periodo_academico.cod_pa='"+pa+"' \n" +
+"AND horarios.cod_hor="+hor +"\n"+
+"AND diplomados.cod_dip='"+dip+"' \n" +
+"AND periodo_academico.cod_pa=matricula.cod_pa \n" +
+"AND horarios.cod_hor=matricula.cod_hor \n" +
+"AND diplomados.cod_dip=matricula.cod_dip \n" +
+"AND estudiante.cod_est=matricula.cod_est \n" +
+"AND matricula.cod_mat=calificacion_1.cod_mat\n" +
+"ORDER BY estudiante.Apellido_est";
+          //  JOptionPane.showMessageDialog(null, consultaBD);
+            javax.swing.JTable Tabla = this.Tabla_calificaciones;
+            // Enviamos los parametros para la consulta de la tabla
+            //  conexion    consulta de la base de datos y el nombre de la tabla
+            String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Código", "Nota", "Faltas"};
+            cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+    private void ingresar_calificacion(Float nota, int faltas, int indicador ,int codigo,String cod_mat){
+   
+           if (indicador==1){
+           try {
+
+            PreparedStatement pst = cn.prepareStatement("UPDATE `calificacion_1` SET `cod_mat`=?,`valor_cal`=?,`faltas`=? WHERE calificacion_1.cod_cal_1='" + codigo + "'");
+
+            pst.setString(1, cod_mat);
+            pst.setFloat(2, nota);
+            pst.setInt(3, faltas);
+           
+
+            pst.executeUpdate();
+            alerta("Notificación", "Calificación Ingresada Correctamente", "/Img_alertas/satisfactoriamente_100px.png");
+
+        } catch (SQLException e) {
+            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
+            alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
+        }
+
+                    String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(resultado, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+                     btn_True_false();
+                     vaciar_cajas();
+                    
+         
+ 
+            
+           
+               
+            
+            
+            
+        }  
+      
+       
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSTableMetro Tabla_docentes;
-    private rojeru_san.componentes.RSDateChooser Txt_fecha;
-    private rojerusan.RSButtonMetro btn_actualizar;
+    private rojerusan.RSTableMetro Tabla_calificaciones;
     private rojerusan.RSButtonMetro btn_buscar;
-    private rojerusan.RSButtonMetro btn_eliminar;
     private rojerusan.RSButtonMetro btn_guardar;
     private rojerusan.RSButtonMetro btn_nuevo;
     private rojerusan.RSButtonMetro btn_refrescar;
     private rojerusan.RSButtonMetro btn_reportes;
+    private rojerusan.RSButtonMetro btn_siguiente;
+    private rojerusan.RSComboMetro cbox_Horarios;
     private rojerusan.RSComboMetro cbox_buscar;
-    private rojerusan.RSComboMetro cbox_nacionalidad;
+    private rojerusan.RSComboMetro cbox_diplomados;
+    private rojerusan.RSComboMetro cbox_periodo_aca;
     private javax.swing.JScrollPane docente_menu;
+    private javax.swing.JScrollPane docente_menu2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private rojerusan.RSMetroTextPlaceHolder txt_N_faltas;
     private rojerusan.RSMetroTextPlaceHolder txt_apellido;
     private rojerusan.RSMetroTextPlaceHolder txt_buscar;
+    private rojerusan.RSMetroTextPlaceHolder txt_calificacion;
     private rojerusan.RSMetroTextPlaceHolder txt_codigo;
-    private rojerusan.RSMetroTextPlaceHolder txt_direccion;
+    public javax.swing.JLabel txt_identificativo;
     private rojerusan.RSMetroTextPlaceHolder txt_nombre;
-    private rojerusan.RSMetroTextPlaceHolder txt_telefono;
     // End of variables declaration//GEN-END:variables
 }
