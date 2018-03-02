@@ -33,10 +33,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,17 +49,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="cbox_periodo_aca" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cbox_Horarios" min="-2" pref="219" max="-2" attributes="0"/>
+                  <Component id="cbox_periodo_aca" min="-2" pref="186" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbox_diplomados" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="btn_refrescar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="btn_reportes" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbox_Horarios" min="-2" pref="257" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbox_diplomados" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btn_refrescar1" min="-2" pref="133" max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <Component id="btn_refrescar" min="-2" pref="133" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btn_reportes" min="-2" pref="98" max="-2" attributes="0"/>
               </Group>
-              <Component id="docente_menu2" alignment="1" pref="1069" max="32767" attributes="0"/>
+              <Component id="docente_menu2" alignment="1" pref="0" max="32767" attributes="0"/>
               <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -72,17 +71,16 @@
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_reportes" pref="0" max="32767" attributes="0"/>
+                      <Component id="btn_reportes" pref="75" max="32767" attributes="0"/>
                       <Component id="cbox_diplomados" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="btn_refrescar" min="-2" pref="69" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
                       <Component id="cbox_Horarios" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbox_periodo_aca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_refrescar" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>
+                      <Component id="btn_refrescar1" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="docente_menu2" min="-2" pref="447" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="docente_menu2" min="-2" pref="453" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -270,9 +268,9 @@
               <Color blue="88" green="60" red="15" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Img_menu/refrescar52px.png"/>
+              <Image iconType="3" name="/Img_alertas/Img_sub_menus/construirx52px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Refrescar"/>
+            <Property name="text" type="java.lang.String" value="refrescar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_refrescarActionPerformed"/>
@@ -369,12 +367,18 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="docente_menu" alignment="0" pref="1050" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="docente_menu" pref="2744" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="docente_menu" alignment="0" pref="459" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="docente_menu" min="-2" pref="411" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -461,6 +465,20 @@
             </Container>
           </SubComponents>
         </Container>
+        <Component class="rojerusan.RSButtonMetro" name="btn_refrescar1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="88" green="60" red="15" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Img_alertas/Img_sub_menus/construirx52px.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Generar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_refrescar1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
