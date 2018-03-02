@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -38,11 +39,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="btn_producto1" pref="259" max="32767" attributes="0"/>
-              <Component id="btn_producto2" pref="259" max="32767" attributes="0"/>
-              <Component id="btn_producto3" alignment="0" pref="259" max="32767" attributes="0"/>
-              <Component id="btn_reportes" alignment="0" pref="259" max="32767" attributes="0"/>
-              <Component id="btn_producto4" alignment="0" pref="259" max="32767" attributes="0"/>
+              <Component id="btn_producto1" pref="208" max="32767" attributes="0"/>
+              <Component id="btn_producto2" pref="208" max="32767" attributes="0"/>
+              <Component id="btn_producto3" alignment="0" pref="208" max="32767" attributes="0"/>
+              <Component id="btn_reportes" alignment="0" pref="208" max="32767" attributes="0"/>
+              <Component id="btn_producto4" alignment="0" pref="208" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -71,9 +72,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img_alertas/Img_sub_menus/open_50pxpx.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Primer Producto                      "/>
+            <Property name="text" type="java.lang.String" value="Primer Producto  "/>
             <Property name="actionCommand" type="java.lang.String" value="          "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_producto1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="rojerusan.RSButtonMetro" name="btn_producto2">
           <Properties>
@@ -83,9 +87,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img_alertas/Img_sub_menus/open_50pxpx.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Segundo Producto                   "/>
+            <Property name="text" type="java.lang.String" value="Segundo Producto"/>
             <Property name="actionCommand" type="java.lang.String" value="          "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_producto2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="rojerusan.RSButtonMetro" name="btn_producto3">
           <Properties>
@@ -95,9 +102,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img_alertas/Img_sub_menus/open_50pxpx.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tercer Producto                   "/>
+            <Property name="text" type="java.lang.String" value="Tercer Producto  "/>
             <Property name="actionCommand" type="java.lang.String" value="          "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_producto3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="rojerusan.RSButtonMetro" name="btn_reportes">
           <Properties>
@@ -107,7 +117,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img_alertas/Img_sub_menus/open_50pxpx.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Reportes                          "/>
+            <Property name="text" type="java.lang.String" value="Reportes                "/>
             <Property name="actionCommand" type="java.lang.String" value="          "/>
           </Properties>
           <Events>
@@ -122,9 +132,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img_alertas/Img_sub_menus/open_50pxpx.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cuarto Producto                   "/>
+            <Property name="text" type="java.lang.String" value="Cuarto Producto "/>
             <Property name="actionCommand" type="java.lang.String" value="          "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_producto4ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

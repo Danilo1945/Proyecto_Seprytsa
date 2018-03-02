@@ -131,10 +131,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btn_guardar" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="docente_menu" min="-2" pref="262" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="docente_menu" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

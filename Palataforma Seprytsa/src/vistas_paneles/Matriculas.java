@@ -380,13 +380,13 @@ public class Matriculas extends javax.swing.JPanel {
                             .addComponent(txt_cod_estudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(txt_cod_p_academico, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addComponent(txt_cod_horario, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_cod_p_academico, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_cod_horario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_cod_diplomado, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_cod_est, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txt_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -451,7 +451,7 @@ public class Matriculas extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -464,7 +464,7 @@ public class Matriculas extends javax.swing.JPanel {
             String cod_p_aca=txt_cod_p_academico.getText().toString();
             int cod_horario = Integer.parseInt(txt_cod_horario.getText().toString());
             String cod_diplomados = txt_cod_diplomado.getText().toString();
-           
+           int status=2;
 
 
             try {
@@ -476,12 +476,79 @@ public class Matriculas extends javax.swing.JPanel {
                 pst.setString(3, cod_p_aca);
                 pst.setInt(4,cod_horario);
                 pst.setString(5, cod_diplomados);
-              
-               
-
                 pst.executeUpdate();
+               
+                
+                
+                try {
+                   PreparedStatement ps;
+                ps = cn.prepareStatement("INSERT INTO `calificacion_1`( `cod_mat`, `valor_cal`, `faltas`) VALUES (?,?,?)");
+                
+                ps.setString(1, codigo);
+                ps.setFloat(2, 0);
+                ps.setInt(3, 0);
+                  ps.executeUpdate();
+               
+                
+                
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
+                
+                try {
+                   PreparedStatement pss;
+                pss = cn.prepareStatement("INSERT INTO `calificacion_2`( `cod_mat`, `valor_cal`, `faltas`) VALUES (?,?,?)");
+                
+                pss.setString(1, codigo);
+                pss.setFloat(2, 0);
+                pss.setInt(3, 0);
+                pss.executeUpdate();
+               
+                
+                
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
+                
+                try {
+                   PreparedStatement psss;
+                psss = cn.prepareStatement("INSERT INTO `calificacion_3`( `cod_mat`, `valor_cal`, `faltas`) VALUES (?,?,?)");
+                
+                psss.setString(1, codigo);
+                psss.setFloat(2, 0);
+                psss.setInt(3, 0);
+                psss.executeUpdate();
+               
+                
+                
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
+                
+                 try {
+                   PreparedStatement pssss;
+                pssss = cn.prepareStatement("INSERT INTO `calificacion_4`( `cod_mat`, `valor_cal`, `faltas`) VALUES (?,?,?)");
+                
+                pssss.setString(1, codigo);
+                pssss.setFloat(2, 0);
+                pssss.setInt(3, 0);
+                pssss.executeUpdate();
+               
+                
+                
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
+                
+                
+                
+                
+                
+                
+                
+                
                 alerta("Notificación", "Datos Guardados exitosamente", "/Img_alertas/satisfactoriamente_100px.png");
-
+                
                 //           JOptionPane.showMessageDialog(null, "se guardo el datos " + Tabla_dis.getValueAt(i, 0).toString() + " y " + Tabla_dis.getValueAt(i, 1).toString());
             } catch (SQLException ex) {
 
@@ -505,6 +572,9 @@ public class Matriculas extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    
+    
+    
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_reportesActionPerformed

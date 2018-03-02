@@ -415,7 +415,8 @@ public String Entidad="f";
                  nuevo();
                 
                 break;
-                case "Rango de Horas":
+                case "Rango de Horas":     
+                  
                     txt_buscar.setEnabled(true);
                     nuevo();
                 

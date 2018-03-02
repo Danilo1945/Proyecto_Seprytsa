@@ -5,17 +5,18 @@
  */
 package vistas_paneles;
 
+import controlador.Main;
+import controlador.cambia_panel;
+
 /**
  *
  * @author Danilo
  */
 public class Menu_calificaciones extends javax.swing.JDialog {
 
-
     /**
      * Creates new form Menu_calificaciones
      */
-    
     /**
      * Creates new form NewJDialog
      */
@@ -27,7 +28,7 @@ public class Menu_calificaciones extends javax.swing.JDialog {
         btn_producto3.setFocusPainted(false);
         btn_producto4.setFocusPainted(false);
         btn_reportes.setFocusPainted(false);
-      
+
     }
 
     /**
@@ -47,25 +48,41 @@ public class Menu_calificaciones extends javax.swing.JDialog {
         btn_producto4 = new rojerusan.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         btn_producto1.setBackground(new java.awt.Color(21, 96, 136));
         btn_producto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/open_50pxpx.png"))); // NOI18N
-        btn_producto1.setText("Primer Producto                      ");
+        btn_producto1.setText("Primer Producto  ");
         btn_producto1.setActionCommand("          ");
+        btn_producto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_producto1ActionPerformed(evt);
+            }
+        });
 
         btn_producto2.setBackground(new java.awt.Color(21, 96, 136));
         btn_producto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/open_50pxpx.png"))); // NOI18N
-        btn_producto2.setText("Segundo Producto                   ");
+        btn_producto2.setText("Segundo Producto");
         btn_producto2.setActionCommand("          ");
+        btn_producto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_producto2ActionPerformed(evt);
+            }
+        });
 
         btn_producto3.setBackground(new java.awt.Color(21, 96, 136));
         btn_producto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/open_50pxpx.png"))); // NOI18N
-        btn_producto3.setText("Tercer Producto                   ");
+        btn_producto3.setText("Tercer Producto  ");
         btn_producto3.setActionCommand("          ");
+        btn_producto3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_producto3ActionPerformed(evt);
+            }
+        });
 
         btn_reportes.setBackground(new java.awt.Color(21, 96, 136));
         btn_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/open_50pxpx.png"))); // NOI18N
-        btn_reportes.setText("Reportes                          ");
+        btn_reportes.setText("Reportes                ");
         btn_reportes.setActionCommand("          ");
         btn_reportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,18 +92,23 @@ public class Menu_calificaciones extends javax.swing.JDialog {
 
         btn_producto4.setBackground(new java.awt.Color(21, 96, 136));
         btn_producto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/open_50pxpx.png"))); // NOI18N
-        btn_producto4.setText("Cuarto Producto                   ");
+        btn_producto4.setText("Cuarto Producto ");
         btn_producto4.setActionCommand("          ");
+        btn_producto4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_producto4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_producto1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-            .addComponent(btn_producto2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-            .addComponent(btn_producto3, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-            .addComponent(btn_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-            .addComponent(btn_producto4, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+            .addComponent(btn_producto1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+            .addComponent(btn_producto2, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+            .addComponent(btn_producto3, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+            .addComponent(btn_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+            .addComponent(btn_producto4, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,31 +139,58 @@ public class Menu_calificaciones extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_producto1ActionPerformed
+        // TODO add your handling code here:
+        // if(Entidad=="estudiante"){
+        Main.p.pintar(2);
+        Calificaciones cal = new Calificaciones();
+        new cambia_panel(Main.p.panel_master, cal);
+        cal.txt_identificativo.setText("Calificaciones/Primer Producto");
+
+        //}
+        this.dispose();
+    }//GEN-LAST:event_btn_producto1ActionPerformed
+	private void btn_producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_producto2ActionPerformed
+            // TODO add your handling code here:
+             Main.p.pintar(2);
+        Calificaciones cal = new Calificaciones();
+        new cambia_panel(Main.p.panel_master, cal);
+        cal.txt_identificativo.setText("Calificaciones/Segundo Producto");
+            
+            
+            
+            this.dispose();
+    }//GEN-LAST:event_btn_producto2ActionPerformed
+
+    private void btn_producto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_producto3ActionPerformed
+        // TODO add your handling code here:
+         Main.p.pintar(2);
+        Calificaciones cal = new Calificaciones();
+        new cambia_panel(Main.p.panel_master, cal);
+        cal.txt_identificativo.setText("Calificaciones/Tercer Producto");
+        
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_producto3ActionPerformed
+
+    private void btn_producto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_producto4ActionPerformed
+        // TODO add your handling code here:
+         Main.p.pintar(2);
+        Calificaciones cal = new Calificaciones();
+        new cambia_panel(Main.p.panel_master, cal);
+        cal.txt_identificativo.setText("Calificaciones/Cuarto Producto");
+        
+        this.dispose();
+    }//GEN-LAST:event_btn_producto4ActionPerformed
+
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
+        Main.p.pintar(2);
+        Reporte_califi rc = new Reporte_califi();
+        new cambia_panel(Main.p.panel_master, rc);
+        
         this.dispose();
     }//GEN-LAST:event_btn_reportesActionPerformed
-
-    private void btn_producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_btn_homeActionPerformed
-
-    private void btn_producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_home1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_home1ActionPerformed
-
-    private void btn_producto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_home2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_home2ActionPerformed
-
-    private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_home3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_home3ActionPerformed
-
-    private void btn_producto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_home4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_home4ActionPerformed
 
     /**
      * @param args the command line arguments

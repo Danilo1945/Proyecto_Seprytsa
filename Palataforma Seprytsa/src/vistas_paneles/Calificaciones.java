@@ -41,6 +41,7 @@ public class Calificaciones extends javax.swing.JPanel {
         nofocus();
         vaciar_cajas();
         txt_codigo.setEnabled(false);
+        cbox_periodo_aca.setEnabled(false);
 
         ///////// cargo combo periodo
         consultar_periodo_academico(cbox_periodo_aca);
@@ -508,17 +509,32 @@ public class Calificaciones extends javax.swing.JPanel {
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         try {
-            btn_siguiente.setEnabled(true);
+            
             Float nota=Float.valueOf(txt_calificacion.getText().toString());
             int Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
             String Cod_mat=txt_codigo.getText().toString();
             int indicador=0;
             if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
-               JOptionPane.showMessageDialog(null,"Es el primer producto");
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
                indicador=1;
             }
-            
-            if((nota>-1)&&(nota<11)&&(Faltas>-1)&&(Faltas<11)){
+            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=2;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=3;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=4;
+            }
+                    
+                    
+                    
+                    
+            if((nota>-1)&&(nota<21)&&(Faltas>-1)&&(Faltas<21)){
                  // JOptionPane.showMessageDialog(null,"estoy en la cal");
                  ingresar_calificacion(nota, Faltas, indicador, cod_cal, Cod_mat);
 
@@ -589,11 +605,31 @@ public class Calificaciones extends javax.swing.JPanel {
                     String dip = separar(cbox_diplomados.getSelectedItem().toString());
                     String resultado = separar2(txt_identificativo.getText().toString());
                     // JOptionPane.showMessageDialog(null, resultado);
-                    preparar_calificaciones(resultado, pa, hor, dip);
+                    int indicador=0;
+            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=1;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=2;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=3;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=4;
+            }
+                    
+                    
+                    
+                    preparar_calificaciones(indicador, pa, hor, dip);
                     cbox_diplomados.setEnabled(false);
                     cbox_Horarios.setEnabled(false);
-                     btn_True_false();
-                     vaciar_cajas(); 
+//                     btn_True_false();
+                       vaciar_cajas(); 
         } catch (Exception e) {
         }
        
@@ -605,7 +641,8 @@ public class Calificaciones extends javax.swing.JPanel {
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here:
-        String Campo = cbox_buscar.getSelectedItem().toString();
+        try {
+          String Campo = cbox_buscar.getSelectedItem().toString();
         String txtSql = txt_buscar.getText().toString();
         String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
                     String hor = separar(cbox_Horarios.getSelectedItem().toString());
@@ -613,6 +650,31 @@ public class Calificaciones extends javax.swing.JPanel {
                     String resultado = separar2(txt_identificativo.getText().toString());
 
         String Campo2 = null;
+        
+        int indicador=0;
+            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=1;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=2;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=3;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=4;
+            }
+        
+        
+        
+        
+        
+        
+        
         switch (Campo) {
 //Buscar Por.., Código, Nombre, Apellido
             case "Buscar Por..":
@@ -620,25 +682,28 @@ public class Calificaciones extends javax.swing.JPanel {
                 break;
             case "Código Matrícula":
 
-                Campo2 = "cod_mat";
+                Campo2 = "matricula.cod_mat";
                 
                     // JOptionPane.showMessageDialog(null, resultado);
                   
-                consutaBD(resultado, pa, hor, dip,Campo2, txtSql);
+                consutaBD(indicador, pa, hor, dip,Campo2, txtSql);
 
                 break;
             case "Código del Estudiante":
-JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
-                Campo2 = "cod_est";
-                consutaBD(resultado, pa, hor, dip,Campo2, txtSql);
+//JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
+                Campo2 = "estudiante.cod_est";
+                consutaBD(indicador, pa, hor, dip,Campo2, txtSql);
 
                 break;
             case "Apellido del Estudiante":
 
-                Campo2 = "estudiante.cod_est";
-                consutaBD(resultado, pa, hor, dip,Campo2, txtSql);
+                Campo2 = "estudiante.Apellido_est";
+                consutaBD(indicador, pa, hor, dip,Campo2, txtSql);
                 break;
+        }   
+        } catch (Exception e) {
         }
+       
 
     }//GEN-LAST:event_txt_buscarKeyReleased
 
@@ -723,7 +788,10 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
                  cod_cal=Integer.parseInt(Tabla_calificaciones.getValueAt(posicion, 4).toString());
                  txt_calificacion.setText(Tabla_calificaciones.getValueAt(posicion, 5).toString());
                 txt_N_faltas.setText(Tabla_calificaciones.getValueAt(posicion, 6).toString());
-                 Tabla_calificaciones.getSelectionModel().setSelectionInterval(posicion,posicion);;
+                 Tabla_calificaciones.getSelectionModel().setSelectionInterval(posicion,posicion);
+                 
+                  btn_siguiente.setEnabled(false);
+                  btn_guardar.setEnabled(true);
             }
             else{
                 btn_siguiente.setEnabled(false);
@@ -778,8 +846,26 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
     }
     private void cbox_diplomadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_diplomadosActionPerformed
         // TODO add your handling code here:
+        
         try {
             String comparacion1 = cbox_diplomados.getSelectedItem().toString();
+            int indicador=0;
+            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=1;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=2;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=3;
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=4;
+            }
 
             if (!(comparacion1 == "Diplomados:") && !(comparacion1 == "")) {
 
@@ -791,7 +877,7 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
                     String dip = separar(cbox_diplomados.getSelectedItem().toString());
                     String resultado = separar2(txt_identificativo.getText().toString());
                     // JOptionPane.showMessageDialog(null, resultado);
-                    preparar_calificaciones(resultado, pa, hor, dip);
+                    preparar_calificaciones(indicador, pa, hor, dip);
                     cbox_diplomados.setEnabled(false);
                     cbox_Horarios.setEnabled(false);
                     Tabla_calificaciones.setEnabled(true);
@@ -847,7 +933,7 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
         txt_calificacion.setEnabled(true);
         txt_N_faltas.setEnabled(true);
         btn_guardar.setEnabled(true);
-        btn_siguiente.setEnabled(true);
+        //btn_siguiente.setEnabled(true);
         
     }//GEN-LAST:event_Tabla_calificacionesMouseClicked
 
@@ -874,9 +960,9 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
 
     
 
-    public void consutaBD(String entidad, String pa, String hor, String dip, String Campo, String txtSQL) {
+    public void consutaBD(int pos, String pa, String hor, String dip, String Campo, String txtSQL) {
 
-        
+        if(pos ==1){
          try {
             String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_1.cod_cal_1,calificacion_1.valor_cal,calificacion_1.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_1\n" +
 "WHERE periodo_academico.cod_pa='"+pa+"' \n" +
@@ -888,7 +974,7 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
 "AND estudiante.cod_est=matricula.cod_est \n" +
 "AND matricula.cod_mat=calificacion_1.cod_mat\n" +
   " AND "+Campo + " LIKE '" + txtSQL + "_%'"+
- " ORDER BY estudiante.Apellido_est";
+ " ORDER BY estudiante.Apellido_est ";
           //  JOptionPane.showMessageDialog(null, consultaBD);
             javax.swing.JTable Tabla = this.Tabla_calificaciones;
             // Enviamos los parametros para la consulta de la tabla
@@ -900,15 +986,7 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
         }
         
         
-        //String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + "='" + txtSQL + "'";
-        String consultaBD = "SELECT * FROM `docente` WHERE " + Campo + " LIKE '" + txtSQL + "_%'";
-        //JOptionPane.showMessageDialog(null, consultaBD);
-        javax.swing.JTable Tabla = this.Tabla_calificaciones;
-        // Enviamos los parametros para la consulta de la tabla
-        //  conexion    consulta de la base de datos y el nombre de la tabla
-        String cabesera[] = {"Código", "Nombres", "Apellidos", "Dirección", "Teléfono", "Fecha de Naciemiento", "Nacionalidad"
-        };
-        cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        }
 
         
         
@@ -997,9 +1075,11 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
         txt_N_faltas.setEnabled(false);
         txt_calificacion.setEnabled(false);
        btn_refrescar.setEnabled(false);
-        cbox_periodo_aca.setEnabled(false);
+      //  cbox_periodo_aca.setEnabled(false);
        // Tabla_calificaciones.setEnabled(false);
         btn_reportes.setEnabled(false);
+        btn_refrescar.setEnabled(false);
+        
 
     }
 
@@ -1125,7 +1205,9 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
 
     }
 
-    public void preparar_calificaciones(String entidad, String pa, String hor, String dip) {
+    public void preparar_calificaciones(int pos, String pa, String hor, String dip) {
+       
+        if(pos ==1){
         try {
             String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_1.cod_cal_1,calificacion_1.valor_cal,calificacion_1.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_1\n" +
 "WHERE periodo_academico.cod_pa='"+pa+"' \n" +
@@ -1146,6 +1228,89 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        
+        }
+        
+        if(pos ==2){
+        try {
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_2.cod_cal_2,calificacion_2.valor_cal,calificacion_2.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_2\n" +
+"WHERE periodo_academico.cod_pa='"+pa+"' \n" +
+"AND horarios.cod_hor="+hor +"\n"+
+"AND diplomados.cod_dip='"+dip+"' \n" +
+"AND periodo_academico.cod_pa=matricula.cod_pa \n" +
+"AND horarios.cod_hor=matricula.cod_hor \n" +
+"AND diplomados.cod_dip=matricula.cod_dip \n" +
+"AND estudiante.cod_est=matricula.cod_est \n" +
+"AND matricula.cod_mat=calificacion_2.cod_mat\n" +
+"ORDER BY estudiante.Apellido_est";
+          //  JOptionPane.showMessageDialog(null, consultaBD);
+            javax.swing.JTable Tabla = this.Tabla_calificaciones;
+            // Enviamos los parametros para la consulta de la tabla
+            //  conexion    consulta de la base de datos y el nombre de la tabla
+            String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Código", "Nota", "Faltas"};
+            cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        }
+        if(pos ==3){
+        try {
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_3.cod_cal_3,calificacion_3.valor_cal,calificacion_3.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_3\n" +
+"WHERE periodo_academico.cod_pa='"+pa+"' \n" +
+"AND horarios.cod_hor="+hor +"\n"+
+"AND diplomados.cod_dip='"+dip+"' \n" +
+"AND periodo_academico.cod_pa=matricula.cod_pa \n" +
+"AND horarios.cod_hor=matricula.cod_hor \n" +
+"AND diplomados.cod_dip=matricula.cod_dip \n" +
+"AND estudiante.cod_est=matricula.cod_est \n" +
+"AND matricula.cod_mat=calificacion_3.cod_mat\n" +
+"ORDER BY estudiante.Apellido_est";
+          //  JOptionPane.showMessageDialog(null, consultaBD);
+            javax.swing.JTable Tabla = this.Tabla_calificaciones;
+            // Enviamos los parametros para la consulta de la tabla
+            //  conexion    consulta de la base de datos y el nombre de la tabla
+            String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Código", "Nota", "Faltas"};
+            cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        }
+        if(pos ==4){
+        try {
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,calificacion_4.cod_cal_4,calificacion_4.valor_cal,calificacion_4.faltas FROM horarios, diplomados,matricula,periodo_academico,estudiante,calificacion_4\n" +
+"WHERE periodo_academico.cod_pa='"+pa+"' \n" +
+"AND horarios.cod_hor="+hor +"\n"+
+"AND diplomados.cod_dip='"+dip+"' \n" +
+"AND periodo_academico.cod_pa=matricula.cod_pa \n" +
+"AND horarios.cod_hor=matricula.cod_hor \n" +
+"AND diplomados.cod_dip=matricula.cod_dip \n" +
+"AND estudiante.cod_est=matricula.cod_est \n" +
+"AND matricula.cod_mat=calificacion_4.cod_mat\n" +
+"ORDER BY estudiante.Apellido_est";
+          //  JOptionPane.showMessageDialog(null, consultaBD);
+            javax.swing.JTable Tabla = this.Tabla_calificaciones;
+            // Enviamos los parametros para la consulta de la tabla
+            //  conexion    consulta de la base de datos y el nombre de la tabla
+            String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Código", "Nota", "Faltas"};
+            cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
     }
     private void ingresar_calificacion(Float nota, int faltas, int indicador ,int codigo,String cod_mat){
@@ -1162,35 +1327,138 @@ JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
 
             pst.executeUpdate();
             alerta("Notificación", "Calificación Ingresada Correctamente", "/Img_alertas/satisfactoriamente_100px.png");
-
+            btn_siguiente.setEnabled(true);
+             btn_guardar.setEnabled(false);
+            
         } catch (SQLException e) {
             // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
             alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
         }
+    
+        }
+           
+             if (indicador==2){
+           try {
 
-                    String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+            PreparedStatement pst = cn.prepareStatement("UPDATE `calificacion_2` SET `cod_mat`=?,`valor_cal`=?,`faltas`=? WHERE calificacion_2.cod_cal_2='" + codigo + "'");
+
+            pst.setString(1, cod_mat);
+            pst.setFloat(2, nota);
+            pst.setInt(3, faltas);
+           
+
+            pst.executeUpdate();
+            alerta("Notificación", "Calificación Ingresada Correctamente", "/Img_alertas/satisfactoriamente_100px.png");
+            btn_siguiente.setEnabled(true);
+             btn_guardar.setEnabled(false);
+            
+        } catch (SQLException e) {
+            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
+            alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
+        }
+    
+        }  
+               if (indicador==3){
+           try {
+
+            PreparedStatement pst = cn.prepareStatement("UPDATE `calificacion_3` SET `cod_mat`=?,`valor_cal`=?,`faltas`=? WHERE calificacion_3.cod_cal_3='" + codigo + "'");
+
+            pst.setString(1, cod_mat);
+            pst.setFloat(2, nota);
+            pst.setInt(3, faltas);
+           
+
+            pst.executeUpdate();
+            alerta("Notificación", "Calificación Ingresada Correctamente", "/Img_alertas/satisfactoriamente_100px.png");
+            btn_siguiente.setEnabled(true);
+             btn_guardar.setEnabled(false);
+            
+        } catch (SQLException e) {
+            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
+            alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
+        }
+    
+        }  
+                 if (indicador==4){
+           try {
+
+            PreparedStatement pst = cn.prepareStatement("UPDATE `calificacion_4` SET `cod_mat`=?,`valor_cal`=?,`faltas`=? WHERE calificacion_4.cod_cal_4='" + codigo + "'");
+
+            pst.setString(1, cod_mat);
+            pst.setFloat(2, nota);
+            pst.setInt(3, faltas);
+           
+
+            pst.executeUpdate();
+            alerta("Notificación", "Calificación Ingresada Correctamente", "/Img_alertas/satisfactoriamente_100px.png");
+            btn_siguiente.setEnabled(true);
+             btn_guardar.setEnabled(false);
+            
+        } catch (SQLException e) {
+            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
+            alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
+        }
+    
+        }  
+      
+           
+           
+           
+           
+       actualizar(indicador); 
+    }
+    
+    private void actualizar(int pos){
+        if(pos==1){
+       String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
                     String hor = separar(cbox_Horarios.getSelectedItem().toString());
                     String dip = separar(cbox_diplomados.getSelectedItem().toString());
                     String resultado = separar2(txt_identificativo.getText().toString());
                     // JOptionPane.showMessageDialog(null, resultado);
-                    preparar_calificaciones(resultado, pa, hor, dip);
+                    preparar_calificaciones(1, pa, hor, dip);
                     cbox_diplomados.setEnabled(false);
                     cbox_Horarios.setEnabled(false);
-                     btn_True_false();
-                     vaciar_cajas();
-                    
-         
- 
-            
-           
-               
-            
-            
-            
-        }  
-      
-       
+//                     btn_True_false();
+//                     vaciar_cajas();  
+        }
+         if(pos==2){
+       String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(2, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+//                     btn_True_false();
+//                     vaciar_cajas();  
+        }
+          if(pos==3){
+       String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(3, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+//                     btn_True_false();
+//                     vaciar_cajas();  
+        }
+           if(pos==4){
+       String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(4, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+//                     btn_True_false();
+//                     vaciar_cajas();  
+        }
     }
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSTableMetro Tabla_calificaciones;

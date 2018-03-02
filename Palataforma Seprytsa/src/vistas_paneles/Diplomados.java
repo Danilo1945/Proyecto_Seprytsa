@@ -111,6 +111,7 @@ public class Diplomados extends javax.swing.JPanel {
         Tabla_diplomados.setColorFilasForeground2(new java.awt.Color(21, 96, 136));
         Tabla_diplomados.setColorSelBackgound(new java.awt.Color(27, 108, 155));
         Tabla_diplomados.setGridColor(new java.awt.Color(255, 255, 255));
+        Tabla_diplomados.setSelectionBackground(new java.awt.Color(21, 96, 136));
         Tabla_diplomados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tabla_diplomadosMouseClicked(evt);
@@ -359,7 +360,7 @@ public class Diplomados extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
