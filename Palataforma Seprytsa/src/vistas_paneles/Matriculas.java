@@ -534,16 +534,87 @@ public class Matriculas extends javax.swing.JPanel {
                 pssss.setInt(3, 0);
                 pssss.executeUpdate();
                
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
+                /////////// insertamos ponderados
                 
                 
+                try {
+                   
+                   PreparedStatement pponde;
+                pponde = cn.prepareStatement("INSERT INTO `ponderados`( `cod_mat`, `valor_nota1`, `valor_nota2`, `valor_nota3`, `valor_nota4`, `Suma_notas`, `Total_Faltas`, `equivalencia`)  VALUES (?,?,?,?,?,?,?,?)");
+                
+                pponde.setString(1, codigo);
+                pponde.setFloat(2, 0);
+                pponde.setFloat(3, 0);
+                pponde.setFloat(4, 0);
+                pponde.setFloat(5, 0);
+                pponde.setFloat(6, 0);
+                 pponde.setFloat(7, 0);
+                pponde.setString(8,"REPRUEBA");
+                
+                pponde.executeUpdate();
+               
                 } catch (SQLException ex) {
                     alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
                 }
                 
                 
+                 //// fin ponderados
+                 /// EXAMEN GRACIA
+                 
+                 
+                try {
+                   
+                   PreparedStatement peg;
+                peg = cn.prepareStatement("INSERT INTO `examen_gracia`( `cod_mat`, `valor_ex`, `equivalente_ex`) VALUES (?,?,?)");
                 
+               peg.setString(1, codigo);
+                peg.setFloat(2, 0);
+               peg.setFloat(3, 0);
+                peg.executeUpdate();
+               
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
                 
+                 /// FIN EXAMEN GRACIA
+                 
+                 // reporte final
+                 
+                  try {
+                   
+                   PreparedStatement prf;
+               prf = cn.prepareStatement("INSERT INTO `reporte_final`( `cod_mat`, `equivalencia`, `nota_final`) VALUES (?,?,?)");
                 
+                prf.setString(1, codigo);
+                prf.setString(2,"REPROBADO");
+                prf.setFloat(3, 0);
+               prf.executeUpdate();
+               
+                } catch (SQLException ex) {
+                    alerta("Error", "No se Pudo insertar los datos" + ex, "/Img_alertas/Error_100px.png");
+                }
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
                 
                 
                 

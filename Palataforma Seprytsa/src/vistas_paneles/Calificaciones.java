@@ -510,27 +510,51 @@ public class Calificaciones extends javax.swing.JPanel {
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         try {
             
-            Float nota=Float.valueOf(txt_calificacion.getText().toString());
-            int Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
-            String Cod_mat=txt_codigo.getText().toString();
+            float nota=0;
+            int Faltas=0;
+            String Cod_mat="";
             int indicador=0;
             if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
                //JOptionPane.showMessageDialog(null,"Es el primer producto");
                indicador=1;
+               
+                nota=Float.valueOf(txt_calificacion.getText().toString());
+                Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
+                Cod_mat=txt_codigo.getText().toString();
+             
             }
             if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
                //JOptionPane.showMessageDialog(null,"Es el primer producto");
                indicador=2;
+               nota=Float.valueOf(txt_calificacion.getText().toString());
+                Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
+                Cod_mat=txt_codigo.getText().toString();
+               
             }
             if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
                //JOptionPane.showMessageDialog(null,"Es el primer producto");
                indicador=3;
+               nota=Float.valueOf(txt_calificacion.getText().toString());
+                Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
+                Cod_mat=txt_codigo.getText().toString();
             }
             if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
                //JOptionPane.showMessageDialog(null,"Es el primer producto");
                indicador=4;
+               nota=Float.valueOf(txt_calificacion.getText().toString());
+                Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
+                Cod_mat=txt_codigo.getText().toString();
             }
-                    
+            if(txt_identificativo.getText().toString()=="Calificaciones/Examen Gracia"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=5;
+//              txt_N_faltas.setText(String.valueOf((nota*5)/20)); 
+//              Faltas=Integer.parseInt(txt_N_faltas.getText().toString());
+               nota=Float.valueOf(txt_calificacion.getText().toString());
+                Faltas=0;
+                Cod_mat=txt_codigo.getText().toString();
+            }
+                  
                     
                     
                     
@@ -866,6 +890,10 @@ public class Calificaciones extends javax.swing.JPanel {
                //JOptionPane.showMessageDialog(null,"Es el primer producto");
                indicador=4;
             }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Examen Gracia"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               indicador=5;
+            }
 
             if (!(comparacion1 == "Diplomados:") && !(comparacion1 == "")) {
 
@@ -878,6 +906,8 @@ public class Calificaciones extends javax.swing.JPanel {
                     String resultado = separar2(txt_identificativo.getText().toString());
                     // JOptionPane.showMessageDialog(null, resultado);
                     preparar_calificaciones(indicador, pa, hor, dip);
+                    
+                    
                     cbox_diplomados.setEnabled(false);
                     cbox_Horarios.setEnabled(false);
                     Tabla_calificaciones.setEnabled(true);
@@ -928,10 +958,20 @@ public class Calificaciones extends javax.swing.JPanel {
                  cod_cal=Integer.parseInt(Tabla_calificaciones.getValueAt(fila, 4).toString());
                  txt_calificacion.setText(Tabla_calificaciones.getValueAt(fila, 5).toString());
                 txt_N_faltas.setText(Tabla_calificaciones.getValueAt(fila, 6).toString());
+                
+                 jLabel2.setText("Falta:");
+               txt_N_faltas.setEnabled(true);
+                 if(txt_identificativo.getText().toString()=="Calificaciones/Examen Gracia"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               jLabel2.setText("Equivalencia:");
+               txt_N_faltas.setEnabled(false);
+            }else{
+                     txt_N_faltas.setText(Tabla_calificaciones.getValueAt(fila, 6).toString());
+                 }
             }
         
         txt_calificacion.setEnabled(true);
-        txt_N_faltas.setEnabled(true);
+       // txt_N_faltas.setEnabled(true);
         btn_guardar.setEnabled(true);
         //btn_siguiente.setEnabled(true);
         
@@ -1301,6 +1341,39 @@ public class Calificaciones extends javax.swing.JPanel {
         
         }
         
+         if(pos ==5){
+        try {
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Nombre_est,estudiante.Apellido_est,\n" +
+"examen_gracia.cod_eg,examen_gracia.valor_ex,examen_gracia.equivalente_ex\n" +
+" FROM horarios, \n" +
+" diplomados,\n" +
+" matricula,\n" +
+" periodo_academico,\n" +
+" estudiante,\n" +
+" examen_gracia\n" +
+" WHERE periodo_academico.cod_pa='"+pa+"' \n" +
+" AND horarios.cod_hor="+hor+" \n" +
+" AND diplomados.cod_dip='"+dip+"' \n" +
+" AND periodo_academico.cod_pa=matricula.cod_pa \n" +
+" AND horarios.cod_hor=matricula.cod_hor \n" +
+" AND diplomados.cod_dip=matricula.cod_dip \n" +
+" AND estudiante.cod_est=matricula.cod_est \n" +
+" AND matricula.cod_mat=examen_gracia.cod_mat\n" +
+" AND examen_gracia.indicador=1";
+          //  JOptionPane.showMessageDialog(null, consultaBD);
+            javax.swing.JTable Tabla = this.Tabla_calificaciones;
+            // Enviamos los parametros para la consulta de la tabla
+            //  conexion    consulta de la base de datos y el nombre de la tabla
+            String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Código", "EX.GR.VALOR", "EQUIVALENCIA"};
+            cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        }
+        
+        
+        
         
         
         
@@ -1400,6 +1473,28 @@ public class Calificaciones extends javax.swing.JPanel {
         }
     
         }  
+                 
+                  if (indicador==5 ){
+           try {
+            float eq=(float) ((nota-14)* (0.25));
+            PreparedStatement pstg = cn.prepareStatement("UPDATE `examen_gracia` SET `valor_ex`=?,`equivalente_ex`=? WHERE `cod_eg`='" + codigo + "'");
+
+           
+            pstg.setFloat(1, nota);
+            pstg.setFloat(2, eq);
+           
+
+            pstg.executeUpdate();
+            alerta("Notificación", "Calificación de Gracia Ingresada Correctamente", "/Img_alertas/satisfactoriamente_100px.png");
+            btn_siguiente.setEnabled(true);
+             btn_guardar.setEnabled(false);
+            
+        } catch (SQLException e) {
+            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
+            alerta("Error", "No se pudo actualizar los datos " + e, "/Img_alertas/Error_100px.png");
+        }
+    
+        }
       
            
            
@@ -1457,6 +1552,19 @@ public class Calificaciones extends javax.swing.JPanel {
 //                     btn_True_false();
 //                     vaciar_cajas();  
         }
+           if(pos==5){
+       String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String resultado = separar2(txt_identificativo.getText().toString());
+                    // JOptionPane.showMessageDialog(null, resultado);
+                    preparar_calificaciones(5, pa, hor, dip);
+                    cbox_diplomados.setEnabled(false);
+                    cbox_Horarios.setEnabled(false);
+//                     btn_True_false();
+//                     vaciar_cajas();  
+        }
+           
     }
             
 

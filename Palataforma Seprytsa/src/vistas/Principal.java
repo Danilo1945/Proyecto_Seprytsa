@@ -509,6 +509,9 @@ public class Principal extends javax.swing.JFrame {
     private void btn_cursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cursosActionPerformed
         // TODO add your handling code here:
         pintar(9);
+        
+        Cursos cur= new Cursos();
+        new cambia_panel(panel_master, cur);
     }//GEN-LAST:event_btn_cursosActionPerformed
 
     private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
@@ -529,6 +532,8 @@ public class Principal extends javax.swing.JFrame {
     private void btn_congresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_congresosActionPerformed
         // TODO add your handling code here:
         pintar(10);
+         Congresos con= new Congresos();
+        new cambia_panel(panel_master, con);
 
     }//GEN-LAST:event_btn_congresosActionPerformed
 
@@ -540,11 +545,15 @@ public class Principal extends javax.swing.JFrame {
     private void btn_licenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_licenciasActionPerformed
         // TODO add your handling code here:
         pintar(12);
+        Licencias lic= new  Licencias();
+        new cambia_panel(panel_master, lic);
     }//GEN-LAST:event_btn_licenciasActionPerformed
 
     private void btn_seminariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_seminariosActionPerformed
         // TODO add your handling code here:
         pintar(13);
+         Seminarios sem= new Seminarios();
+        new cambia_panel(panel_master, sem);
     }//GEN-LAST:event_btn_seminariosActionPerformed
 
     private void btn_matriculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matriculasActionPerformed

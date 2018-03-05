@@ -5,6 +5,8 @@
  */
 package vistas_paneles;
 
+import controlador.Main;
+import controlador.cambia_panel;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -188,8 +190,8 @@ public class Reporte_califi extends javax.swing.JPanel {
         });
 
         btn_refrescar.setBackground(new java.awt.Color(21, 96, 136));
-        btn_refrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/construirx52px.png"))); // NOI18N
-        btn_refrescar.setText("refrescar");
+        btn_refrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/supletorio_52px.png"))); // NOI18N
+        btn_refrescar.setText("upletorios");
         btn_refrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_refrescarActionPerformed(evt);
@@ -252,6 +254,7 @@ public class Reporte_califi extends javax.swing.JPanel {
         Tabla_Reporte_calificaciones.setColorFilasForeground1(new java.awt.Color(21, 96, 136));
         Tabla_Reporte_calificaciones.setColorFilasForeground2(new java.awt.Color(21, 96, 136));
         Tabla_Reporte_calificaciones.setColorSelBackgound(new java.awt.Color(21, 96, 136));
+        Tabla_Reporte_calificaciones.setFuenteHead(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Tabla_Reporte_calificaciones.setGridColor(new java.awt.Color(255, 255, 255));
         Tabla_Reporte_calificaciones.setSelectionBackground(new java.awt.Color(21, 96, 136));
         Tabla_Reporte_calificaciones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,7 +269,7 @@ public class Reporte_califi extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(docente_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 2744, Short.MAX_VALUE)
+                .addComponent(docente_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 3026, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -293,16 +296,16 @@ public class Reporte_califi extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbox_Horarios, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(cbox_Horarios, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(cbox_diplomados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_refrescar1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_refrescar1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(docente_menu2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -311,14 +314,15 @@ public class Reporte_califi extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                    .addComponent(cbox_diplomados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbox_Horarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_refrescar1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(btn_refrescar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbox_Horarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbox_diplomados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(docente_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -372,6 +376,11 @@ public class Reporte_califi extends javax.swing.JPanel {
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         // TODO add your handling code here:
+        Main.p.pintar(2);
+        Calificaciones cal = new Calificaciones();
+        new cambia_panel(Main.p.panel_master, cal);
+        cal.txt_identificativo.setText("Calificaciones/Examen Gracia");
+
 
     }//GEN-LAST:event_btn_refrescarActionPerformed
 
@@ -617,11 +626,10 @@ public class Reporte_califi extends javax.swing.JPanel {
                 String hor = separar(cbox_Horarios.getSelectedItem().toString());
                 String dip = separar(cbox_diplomados.getSelectedItem().toString());
 
-            //   JOptionPane.showMessageDialog(null, pa + hor + dip);
-               
+                //   JOptionPane.showMessageDialog(null, pa + hor + dip);
                 //reporte_cali(pa, hor, dip);
                 calcular_reporte(pa, hor, dip);
-                 reporte_cali(pa, hor, dip);
+                reporte_cali(pa, hor, dip);
                 cbox_diplomados.setEnabled(false);
                 cbox_Horarios.setEnabled(false);
                 Tabla_Reporte_calificaciones.setEnabled(true);
@@ -831,48 +839,56 @@ public class Reporte_califi extends javax.swing.JPanel {
     public void reporte_cali(String pa, String hor, String dip) {
 
         try {
-            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,\n" +
-" calificacion_1.valor_cal,\n" +
-" ponderados.valor_nota1,\n" +
-" calificacion_1.faltas,\n" +
-" calificacion_2.valor_cal,\n" +
-" ponderados.valor_nota2,\n" +
-" calificacion_2.faltas,\n" +
-" calificacion_3.valor_cal,\n" +
-" ponderados.valor_nota3,\n" +
-" calificacion_3.faltas,\n" +
-" calificacion_4.valor_cal,\n" +
-" ponderados.valor_nota4,\n" +
-" calificacion_4.faltas,\n" +
-" ponderados.Suma_notas,\n" +
-" ponderados.Total_Faltas,\n" +
-" ponderados.equivalencia\n" +
-" FROM horarios, diplomados,matricula,\n" +
-" periodo_academico,\n" +
-" estudiante,\n" +
-" calificacion_1,\n" +
-" calificacion_2,\n" +
-" calificacion_3,\n" +
-" calificacion_4,\n" +
-" ponderados\n" +
-" WHERE periodo_academico.cod_pa='"+pa+"' \n" +
-" AND horarios.cod_hor="+hor+" \n" +
-" AND diplomados.cod_dip='"+dip+"' \n" +
-" AND periodo_academico.cod_pa=matricula.cod_pa \n" +
-" AND horarios.cod_hor=matricula.cod_hor \n" +
-" AND diplomados.cod_dip=matricula.cod_dip \n" +
-" AND estudiante.cod_est=matricula.cod_est \n" +
-" AND matricula.cod_mat=calificacion_1.cod_mat\n" +
-" AND matricula.cod_mat=calificacion_2.cod_mat\n" +
-" AND matricula.cod_mat=calificacion_3.cod_mat\n" +
-" AND matricula.cod_mat=calificacion_4.cod_mat\n" +
-" AND matricula.cod_mat=ponderados.cod_mat\n" +
-" ORDER BY estudiante.Apellido_est";
-          //  JOptionPane.showMessageDialog(null, consultaBD);
+            String consultaBD = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,\n"
+                    + " calificacion_1.valor_cal,\n"
+                    + " ponderados.valor_nota1,\n"
+                    + " calificacion_1.faltas,\n"
+                    + " calificacion_2.valor_cal,\n"
+                    + " ponderados.valor_nota2,\n"
+                    + " calificacion_2.faltas,\n"
+                    + " calificacion_3.valor_cal,\n"
+                    + " ponderados.valor_nota3,\n"
+                    + " calificacion_3.faltas,\n"
+                    + " calificacion_4.valor_cal,\n"
+                    + " ponderados.valor_nota4,\n"
+                    + " calificacion_4.faltas,\n"
+                    + " ponderados.Suma_notas,\n"
+                    + " ponderados.Total_Faltas,\n"
+                    + " ponderados.equivalencia,\n"
+                    + " examen_gracia.valor_ex,\n"
+                    + " examen_gracia.equivalente_ex,\n"
+                    + " reporte_final.nota_final,\n"
+                    + " reporte_final.equivalencia "
+                    + " FROM horarios, diplomados,matricula,\n"
+                    + " periodo_academico,\n"
+                    + " estudiante,\n"
+                    + " calificacion_1,\n"
+                    + " calificacion_2,\n"
+                    + " calificacion_3,\n"
+                    + " calificacion_4,\n"
+                    + " ponderados ,\n"
+                    + " examen_gracia,\n"
+                    + " reporte_final"
+                    + " WHERE periodo_academico.cod_pa='" + pa + "' \n"
+                    + " AND horarios.cod_hor=" + hor + " \n"
+                    + " AND diplomados.cod_dip='" + dip + "' \n"
+                    + " AND periodo_academico.cod_pa=matricula.cod_pa \n"
+                    + " AND horarios.cod_hor=matricula.cod_hor \n"
+                    + " AND diplomados.cod_dip=matricula.cod_dip \n"
+                    + " AND estudiante.cod_est=matricula.cod_est \n"
+                    + " AND matricula.cod_mat=calificacion_1.cod_mat\n"
+                    + " AND matricula.cod_mat=calificacion_2.cod_mat\n"
+                    + " AND matricula.cod_mat=calificacion_3.cod_mat\n"
+                    + " AND matricula.cod_mat=calificacion_4.cod_mat\n"
+                    + " AND matricula.cod_mat=ponderados.cod_mat\n"
+                    + " AND matricula.cod_mat=examen_gracia.cod_mat\n"
+                    + " AND matricula.cod_mat=reporte_final.cod_mat"
+                    + " ORDER BY estudiante.Apellido_est";
+            //  JOptionPane.showMessageDialog(null, consultaBD);
             javax.swing.JTable Tabla = this.Tabla_Reporte_calificaciones;
             // Enviamos los parametros para la consulta de la tabla
             //  conexion    consulta de la base de datos y el nombre de la tabla
-            String cabesera[] = {"MATRÍCULA", "COD.ESTUDIANTE", "APELLIDOS", "NOMBRES", "NOTA 1","PR.PRO", "PR.PRO.FALTAS", "NOTA 2", "SEG.PRO","SEG.PRO.FALTAS", "NOTA 3", "TER.PRO","TER.PRO.FALTAS", "NOTA 4", "CUA.PRO","CUA.PRO.FALTAS","CAL.FINAL","TOT.FALTAS","EQUIVALENCIA"};
+            String cabesera[] = {"MATRÍCULA", "COD.ESTUDIANTE", "APELLIDOS", "NOMBRES", "NOTA 1", "PR.PRO", "PR.PRO.FALTAS", "NOTA 2", "SEG.PRO", "SEG.PRO.FALTAS", "NOTA 3", "TER.PRO", "TER.PRO.FALTAS", "NOTA 4", "CUA.PRO", "CUA.PRO.FALTAS", "CAL.FINAL", "TOT.FALTAS", "EQUIVALENCIA", "EX.GRACIAS", "EX.GRA.PONDERADO", "CALIFICACION FINAL", "EQUIVALENCIA"};
             cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -951,109 +967,247 @@ public class Reporte_califi extends javax.swing.JPanel {
                 falta3 = resultado.getInt(7);
                 cal4 = resultado.getFloat(8);
                 falta4 = resultado.getInt(9);
-                
-               // JOptionPane.showMessageDialog(null, codigo_matri+" "+cal1+" "+falta1+" "+cal2+" "+falta2+" "+cal3+" "+falta3+" "+cal4+" "+falta4);
-              
-               try {
-                   float s1=((cal1*5)/20);
-                    float s2=((cal2*5)/20);
-                     float s3=((cal3*5)/20);
-                      float s4=((cal4*5)/20);
-                      float stotal=s1+s2+s3+s4;
-                      int ftotal=falta1+falta2+falta3+ falta4;
-                      String ponderado="";
-                      if (stotal>=15 && ftotal<4){
-                          ponderado="APROBADO";
-                           try {
+
+                // JOptionPane.showMessageDialog(null, codigo_matri+" "+cal1+" "+falta1+" "+cal2+" "+falta2+" "+cal3+" "+falta3+" "+cal4+" "+falta4);
+                try {
+                    float s1 = ((cal1 * 5) / 20);
+                    float s2 = ((cal2 * 5) / 20);
+                    float s3 = ((cal3 * 5) / 20);
+                    float s4 = ((cal4 * 5) / 20);
+                    float stotal = s1 + s2 + s3 + s4;
+                    int ftotal = falta1 + falta2 + falta3 + falta4;
+                    String ponderado = "";
+
+                    if (stotal >= 15 && ftotal < 4) {
+                        ponderado = "APROBADO";
+                        try {
                             PreparedStatement psttt = cn.prepareStatement("UPDATE `examen_gracia` SET `indicador`=? WHERE `cod_mat`='" + codigo_matri + "'");
 
-                       psttt.setInt(1,0) ;
-        
-                          psttt.executeUpdate();  
-                          } catch (SQLException ex) {
-                           alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
-          
-                          }
-                          
-                          
-                          
-                      }
-                      if (stotal>=14 && stotal <=14.99){
-                          ponderado="EX.GRACIA";
-                          try {
+                            psttt.setInt(1, 0);
+
+                            psttt.executeUpdate();
+                        } catch (SQLException ex) {
+                            alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
+
+                        }
+                    }
+
+                    if (stotal >= 14 && stotal <= 14.99) {
+                        ponderado = "EX.GRACIA";
+                        try {
                             PreparedStatement pstt = cn.prepareStatement("UPDATE `examen_gracia` SET `indicador`=? WHERE `cod_mat`='" + codigo_matri + "'");
 
-                       pstt.setInt(1,1) ;
-        
-                          pstt.executeUpdate();  
-                          } catch (SQLException ex) {
-                           alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
-          
-                          }
-                          
-            
-            //alerta("Notificación", "Datos se actualizaron exitosamente ", "/Img_alertas/satisfactoriamente_100px.png");
+                            pstt.setInt(1, 1);
 
-        
-                          
-                          
-                          
-                          
-                          
-                          
-                      }
-                      if (stotal<14){
-                          ponderado="REPROBADO";
-                      }
-                      if (ftotal>=4){
-                          ponderado="REPROBADO.FALTAS";
-                      }
-                      
+                            pstt.executeUpdate();
+                        } catch (SQLException ex) {
+                            alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
 
-            PreparedStatement pst = cn.prepareStatement("UPDATE `ponderados` SET `valor_nota1`=?,`valor_nota2`=?,`valor_nota3`=?,`valor_nota4`=?,`Suma_notas`=?,`Total_Faltas`=?,`equivalencia`=? WHERE `cod_mat`='" + codigo_matri + "'");
+                        }
 
-            pst.setFloat(1,s1) ;
-            pst.setFloat(2, s2);
-            pst.setFloat(3, s3);
-            pst.setFloat(4, s4);
-            pst.setFloat(5, stotal);
-            pst.setInt(6, ftotal);
-            pst.setString(7,ponderado );
-            
+                        //alerta("Notificación", "Datos se actualizaron exitosamente ", "/Img_alertas/satisfactoriamente_100px.png");
+                    }
+                    if (stotal < 14) {
+                        ponderado = "REPROBADO";
+                    }
+                    if (ftotal >= 4) {
+                        ponderado = "REPROBADO.FALTAS";
+                    }
 
-            pst.executeUpdate();
-            //alerta("Notificación", "Datos se actualizaron exitosamente ", "/Img_alertas/satisfactoriamente_100px.png");
+                    PreparedStatement pst = cn.prepareStatement("UPDATE `ponderados` SET `valor_nota1`=?,`valor_nota2`=?,`valor_nota3`=?,`valor_nota4`=?,`Suma_notas`=?,`Total_Faltas`=?,`equivalencia`=? WHERE `cod_mat`='" + codigo_matri + "'");
 
-        } catch (SQLException e) {
-            // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
-            
-            alerta("Error", "NO EXISTEN REGISTROS AUN " + e, "/Img_alertas/Error_100px.png");
-       
-        }
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
+                    pst.setFloat(1, s1);
+                    pst.setFloat(2, s2);
+                    pst.setFloat(3, s3);
+                    pst.setFloat(4, s4);
+                    pst.setFloat(5, stotal);
+                    pst.setInt(6, ftotal);
+                    pst.setString(7, ponderado);
+
+                    pst.executeUpdate();
+                    //alerta("Notificación", "Datos se actualizaron exitosamente ", "/Img_alertas/satisfactoriamente_100px.png");
+
+                } catch (SQLException e) {
+                    // JOptionPane.showMessageDialog(null, "ERROR AL GUARDAR LOS DATOS" + e.getMessage());
+
+                    alerta("Error", "NO EXISTEN REGISTROS AUN " + e, "/Img_alertas/Error_100px.png");
+
+                }
+
             }
+///// EXAMEN DE GRACIA Y TODO
 
-//            try {
-//
-//                JOptionPane.showMessageDialog(null, consultaBD);
-//                javax.swing.JTable Tabla = this.Tabla_Reporte_calificaciones;
-//                // Enviamos los parametros para la consulta de la tabla
-//                //  conexion    consulta de la base de datos y el nombre de la tabla
-//                String cabesera[] = {"Matrícula", "Código del estudiante", "Apellido ", "Nombre", "Nota 1", "Faltas", "Nota 2", "Faltas", "Nota 3", "Faltas", "Nota 4", "Faltas"};
-//                cone1.GetTabla_Sincabeseras_sql_bd(cn, consultaBD, Tabla, cabesera);
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(null, e);
-//            }
+            try {
+                Statement estado2;
+
+                String consultaBD2 = "SELECT matricula.cod_mat, estudiante.cod_est,estudiante.Apellido_est,estudiante.Nombre_est,\n"
+                        + " ponderados.Suma_notas,\n"
+                        + " ponderados.Total_Faltas,\n"
+                        + " ponderados.equivalencia,\n"
+                        + " examen_gracia.valor_ex,\n"
+                        + " examen_gracia.equivalente_ex,\n"
+                        + " reporte_final.nota_final,\n"
+                        + " reporte_final.equivalencia\n"
+                        + " FROM horarios, diplomados,matricula,\n"
+                        + " periodo_academico,\n"
+                        + " estudiante,\n"
+                        + " ponderados,\n"
+                        + " examen_gracia,\n"
+                        + " reporte_final\n"
+                        + " WHERE periodo_academico.cod_pa='"+pa+"' \n"
+                        + " AND horarios.cod_hor="+hor+" \n"
+                        + " AND diplomados.cod_dip='"+dip+"' \n"
+                        + " AND periodo_academico.cod_pa=matricula.cod_pa \n"
+                        + " AND horarios.cod_hor=matricula.cod_hor \n"
+                        + " AND diplomados.cod_dip=matricula.cod_dip \n"
+                        + " AND estudiante.cod_est=matricula.cod_est \n"
+                        + " AND matricula.cod_mat=ponderados.cod_mat\n"
+                        + " AND matricula.cod_mat=examen_gracia.cod_mat\n"
+                        + " AND matricula.cod_mat=reporte_final.cod_mat\n"
+                        + " ORDER BY estudiante.Apellido_est";
+                
+                String cod_matri="";
+                float suma_nota=0;
+                String Equivalencia="";
+                float ex_gracia=0;
+                float equi_ex=0;
+                
+                
+                estado2 = cn.createStatement();
+            ResultSet resultado2 = estado2.executeQuery(consultaBD2);
+
+            while (resultado2.next()) {
+                cod_matri = resultado2.getString(1);
+                suma_nota=resultado2.getFloat(5);
+                Equivalencia=resultado2.getString(7);
+                equi_ex=resultado2.getFloat(9);
+                
+              // JOptionPane.showMessageDialog(null, cod_matri+" "+suma_nota+" "+ Equivalencia+" "+equi_ex);
+           switch (Equivalencia) {
+//Buscar Por.., Código, Nombre, Apellido
+            case "APROBADO":
+
+             
+                 
+                  try {
+                            PreparedStatement pstts = cn.prepareStatement("UPDATE `reporte_final` SET `equivalencia`=?,`nota_final`=? WHERE reporte_final.cod_mat='" + cod_matri + "'");
+
+                            pstts.setString(1, "APROBADO");
+                            pstts.setFloat(2, suma_nota+equi_ex);
+
+                            pstts.executeUpdate();
+                        } catch (SQLException ex) {
+                            alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
+
+                        }
+
+                break;
+                 case "EX.GRACIA":
+
+                     float total_suma=suma_nota+equi_ex;
+                     String letra="";
+                     if(total_suma<15){
+                         letra="REPROBADO";
+                     }
+                     if(total_suma>=15){
+                         letra="APROBADO";
+                     }
+                     
+                     
+               
+                 
+                  try {
+                            PreparedStatement pstts = cn.prepareStatement("UPDATE `reporte_final` SET `equivalencia`=?,`nota_final`=? WHERE reporte_final.cod_mat='" + cod_matri + "'");
+
+                            pstts.setString(1, letra);
+                            pstts.setFloat(2, total_suma);
+
+                            pstts.executeUpdate();
+                        } catch (SQLException ex) {
+                            alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
+
+                        }
+
+                break;
+                 case "REPROBADO.FALTAS":
+
+                     float total_suma2=suma_nota+equi_ex;
+                     String letra2="REPROBADO.FALTAS";
+                    
+                     
+                     
+            
+                 
+                  try {
+                            PreparedStatement pstts = cn.prepareStatement("UPDATE `reporte_final` SET `equivalencia`=?,`nota_final`=? WHERE reporte_final.cod_mat='" + cod_matri + "'");
+
+                            pstts.setString(1, letra2);
+                            pstts.setFloat(2, total_suma2);
+
+                            pstts.executeUpdate();
+                        } catch (SQLException ex) {
+                            alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
+
+                        }
+
+                break;
+                 case "REPROBADO":
+
+                     float total_suma3=suma_nota+equi_ex;
+                     String letra3="REPROBADO";
+                    
+                     
+                     
+            
+                 
+                  try {
+                            PreparedStatement pstts = cn.prepareStatement("UPDATE `reporte_final` SET `equivalencia`=?,`nota_final`=? WHERE reporte_final.cod_mat='" + cod_matri + "'");
+
+                            pstts.setString(1, letra3);
+                            pstts.setFloat(2, total_suma3);
+
+                            pstts.executeUpdate();
+                        } catch (SQLException ex) {
+                            alerta("Error", "NO EXISTEN REGISTROS AUN " + ex, "/Img_alertas/Error_100px.png");
+
+                        }
+
+                break;
+               
+           }
+               
+              
+                 
+                 
+             
+             
+            
+             
+             
+             
+             
+             
+             
+             
+             
+             
+            }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            } catch (Exception e) {
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Reporte_califi.class.getName()).log(Level.SEVERE, null, ex);

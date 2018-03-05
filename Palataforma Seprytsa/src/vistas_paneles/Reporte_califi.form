@@ -50,16 +50,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="cbox_periodo_aca" min="-2" pref="186" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbox_Horarios" min="-2" pref="257" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="cbox_Horarios" pref="244" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="cbox_diplomados" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_refrescar1" min="-2" pref="133" max="-2" attributes="0"/>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
-                  <Component id="btn_refrescar" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btn_reportes" min="-2" pref="98" max="-2" attributes="0"/>
+                  <Component id="btn_refrescar1" min="-2" pref="133" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btn_refrescar" min="-2" pref="141" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="btn_reportes" min="-2" pref="141" max="-2" attributes="0"/>
               </Group>
               <Component id="docente_menu2" alignment="1" pref="0" max="32767" attributes="0"/>
               <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
@@ -70,15 +70,18 @@
               <Group type="102" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_reportes" pref="75" max="32767" attributes="0"/>
-                      <Component id="cbox_diplomados" max="32767" attributes="0"/>
-                      <Component id="cbox_Horarios" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbox_periodo_aca" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_refrescar" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="btn_refrescar1" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="btn_refrescar" alignment="3" pref="0" max="32767" attributes="0"/>
+                          <Component id="btn_refrescar1" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="btn_reportes" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="cbox_Horarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbox_diplomados" alignment="3" max="32767" attributes="0"/>
+                          <Component id="cbox_periodo_aca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="docente_menu2" min="-2" pref="447" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
@@ -268,9 +271,9 @@
               <Color blue="88" green="60" red="15" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Img_alertas/Img_sub_menus/construirx52px.png"/>
+              <Image iconType="3" name="/Img_alertas/Img_sub_menus/supletorio_52px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="refrescar"/>
+            <Property name="text" type="java.lang.String" value="upletorios"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_refrescarActionPerformed"/>
@@ -368,7 +371,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="docente_menu" pref="2744" max="32767" attributes="0"/>
+                          <Component id="docente_menu" pref="3026" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -444,6 +447,9 @@
                               <Renderer/>
                             </Column>
                           </TableColumnModel>
+                        </Property>
+                        <Property name="fuenteHead" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="14" style="1"/>
                         </Property>
                         <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
