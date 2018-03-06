@@ -545,8 +545,8 @@ public class Principal extends javax.swing.JFrame {
     private void btn_licenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_licenciasActionPerformed
         // TODO add your handling code here:
         pintar(12);
-        Licencias lic= new  Licencias();
-        new cambia_panel(panel_master, lic);
+        Licencias li= new Licencias();
+        new cambia_panel(panel_master, li);
     }//GEN-LAST:event_btn_licenciasActionPerformed
 
     private void btn_seminariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_seminariosActionPerformed

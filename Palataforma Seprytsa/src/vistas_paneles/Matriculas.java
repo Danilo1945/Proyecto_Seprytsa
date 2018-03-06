@@ -5,7 +5,10 @@
  */
 package vistas_paneles;
 
+import Reportes.Reportes;
 import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -648,6 +651,24 @@ public class Matriculas extends javax.swing.JPanel {
     
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
+           // TODO add your handling code here:
+         
+        // capturamos la pos del mause
+        Point punto = MouseInfo.getPointerInfo().getLocation();
+        int x1 = punto.x;
+        int y1 = punto.y;
+
+        
+      
+
+        Menu_RMatriculas m = new Menu_RMatriculas(null, true);
+        m.setLocation(x1, y1);
+        m.setVisible(true);
+           
+           
+           
+           
+      
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed

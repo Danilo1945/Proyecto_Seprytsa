@@ -5,6 +5,7 @@
  */
 package vistas_paneles;
 
+import Reportes.Reportes;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -606,6 +607,9 @@ public class Periodo_Academico extends javax.swing.JPanel {
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
+           // TODO add your handling code here:
+      Reportes rp= new Reportes();
+      rp.RPeriodeo_aca_general();
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
