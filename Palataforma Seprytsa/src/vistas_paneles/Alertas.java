@@ -38,7 +38,7 @@ public class Alertas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(this);
-        setIconImage(new ImageIcon(getClass().getResource("../Img_menu/SEPRYTSAV_45x45PX.png")).getImage());
+       this. setIconImage(new ImageIcon(getClass().getResource("/Img_menu/SEPRYTSAV_45x45PX.png")).getImage());
 scroll_alert.getVerticalScrollBar().setUI(new MyScrollbarUI());
         scroll_alert.getHorizontalScrollBar().setUI(new MyScrollbarUI());
         

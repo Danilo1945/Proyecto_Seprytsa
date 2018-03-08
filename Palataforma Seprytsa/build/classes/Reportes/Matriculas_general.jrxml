@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc7f396a-54ef-4b9d-a7e5-975491ce4b5b">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="34"/>
+	<property name="ireport.x" value="107"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -105,11 +105,11 @@
 				<reportElement x="0" y="9" width="555" height="32" forecolor="#156088" backcolor="#156088" uuid="c60e462e-f6d8-48e3-950d-c4fd56dca5c0"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="81" y="9" width="425" height="32" forecolor="#FFFFFF" uuid="8ee5b8ac-e0c4-4c54-a8a6-0ceaa2c015d2"/>
+				<reportElement x="90" y="9" width="425" height="32" forecolor="#FFFFFF" uuid="8ee5b8ac-e0c4-4c54-a8a6-0ceaa2c015d2"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nómina General de las Matrículas]]></text>
+				<text><![CDATA[Nómina General de Matrículas]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

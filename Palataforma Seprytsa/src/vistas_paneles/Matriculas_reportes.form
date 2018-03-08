@@ -51,10 +51,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbox_periodo_aca" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txt_apellido" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txt_nombre" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txt_codigo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cbox_periodo_aca" alignment="0" pref="264" max="32767" attributes="0"/>
                       <Component id="cbox_diplomados" alignment="0" max="32767" attributes="0"/>
                       <Component id="cbox_Horarios" alignment="0" max="32767" attributes="0"/>
                       <Component id="btn_reportes" alignment="0" max="32767" attributes="0"/>
@@ -92,13 +89,7 @@
                           <Component id="cbox_Horarios" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cbox_diplomados" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="txt_codigo" min="-2" pref="42" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_nombre" min="-2" pref="42" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_apellido" min="-2" pref="42" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btn_reportes" min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -121,11 +112,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="txt_identificativo" min="-2" pref="496" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
-                      <Component id="cbox_buscar" min="-2" pref="217" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_buscar" min="-2" pref="195" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_buscar" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
@@ -142,13 +129,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btn_buscar" min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txt_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbox_buscar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="btn_buscar" min="-2" pref="48" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -188,65 +169,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscarActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="rojerusan.RSComboMetro" name="cbox_buscar">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Buscar Por.."/>
-                    <StringItem index="1" value="C&#xf3;digo Matr&#xed;cula"/>
-                    <StringItem index="2" value="C&#xf3;digo del Estudiante"/>
-                    <StringItem index="3" value="Apellido del Estudiante"/>
-                  </StringArray>
-                </Property>
-                <Property name="actionCommand" type="java.lang.String" value="comboBoxChanged&#xa;d&#xa;d&#xa;d&#xa;d&#xa;d"/>
-                <Property name="colorArrow" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="colorBorde" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="colorFondo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="1"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbox_buscarActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="rojerusan.RSMetroTextPlaceHolder" name="txt_buscar">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="9b" green="6c" red="1b" type="rgb"/>
-                </Property>
-                <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="66" red="66" type="rgb"/>
-                </Property>
-                <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="9b" green="6c" red="1b" type="rgb"/>
-                </Property>
-                <Property name="placeholder" type="java.lang.String" value="Buscar:"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_buscarActionPerformed"/>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_buscarKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>
@@ -353,60 +275,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbox_periodo_acaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="rojerusan.RSMetroTextPlaceHolder" name="txt_nombre">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="6c" red="1b" type="rgb"/>
-            </Property>
-            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="6c" red="1b" type="rgb"/>
-            </Property>
-            <Property name="placeholder" type="java.lang.String" value="Nombres:"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nombreActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nombreKeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="rojerusan.RSMetroTextPlaceHolder" name="txt_apellido">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="6c" red="1b" type="rgb"/>
-            </Property>
-            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="6c" red="1b" type="rgb"/>
-            </Property>
-            <Property name="placeholder" type="java.lang.String" value="Apellidos:"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_apellidoActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_apellidoKeyTyped"/>
           </Events>
         </Component>
         <Component class="rojerusan.RSComboMetro" name="cbox_Horarios">
@@ -552,33 +420,6 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="rojerusan.RSMetroTextPlaceHolder" name="txt_codigo">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="6c" red="1b" type="rgb"/>
-            </Property>
-            <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="botonColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="88" green="60" red="15" type="rgb"/>
-            </Property>
-            <Property name="phColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="6c" red="1b" type="rgb"/>
-            </Property>
-            <Property name="placeholder" type="java.lang.String" value="C&#xf3;digo matr&#xed;cula:"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_codigoActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_codigoKeyTyped"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

@@ -41,7 +41,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         control_botones();
         nofocus();
         vaciar_cajas();
-        txt_codigo.setEnabled(false);
+//        txt_codigo.setEnabled(false);
         cbox_periodo_aca.setEnabled(false);
 
         ///////// cargo combo periodo
@@ -75,21 +75,16 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         txt_identificativo = new javax.swing.JLabel();
         btn_buscar = new rojerusan.RSButtonMetro();
-        cbox_buscar = new rojerusan.RSComboMetro();
-        txt_buscar = new rojerusan.RSMetroTextPlaceHolder();
         btn_nuevo = new rojerusan.RSButtonMetro();
         cbox_diplomados = new rojerusan.RSComboMetro();
         btn_refrescar = new rojerusan.RSButtonMetro();
         btn_reportes = new rojerusan.RSButtonMetro();
         cbox_periodo_aca = new rojerusan.RSComboMetro();
-        txt_nombre = new rojerusan.RSMetroTextPlaceHolder();
-        txt_apellido = new rojerusan.RSMetroTextPlaceHolder();
         cbox_Horarios = new rojerusan.RSComboMetro();
         docente_menu2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         docente_menu = new javax.swing.JScrollPane();
         Tabla_calificaciones = new rojerusan.RSTableMetro();
-        txt_codigo = new rojerusan.RSMetroTextPlaceHolder();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
@@ -112,38 +107,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
             }
         });
 
-        cbox_buscar.setBackground(new java.awt.Color(21, 96, 136));
-        cbox_buscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buscar Por..", "Código Matrícula", "Código del Estudiante", "Apellido del Estudiante" }));
-        cbox_buscar.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
-        cbox_buscar.setColorArrow(new java.awt.Color(21, 96, 136));
-        cbox_buscar.setColorBorde(new java.awt.Color(21, 96, 136));
-        cbox_buscar.setColorFondo(new java.awt.Color(21, 96, 136));
-        cbox_buscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cbox_buscar.setName(""); // NOI18N
-        cbox_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbox_buscarActionPerformed(evt);
-            }
-        });
-
-        txt_buscar.setForeground(new java.awt.Color(27, 108, 155));
-        txt_buscar.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_buscar.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_buscar.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_buscar.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_buscar.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_buscar.setPlaceholder("Buscar:");
-        txt_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_buscarActionPerformed(evt);
-            }
-        });
-        txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_buscarKeyReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,11 +114,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(txt_identificativo, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(cbox_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
         );
@@ -169,11 +128,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbox_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17))))
         );
 
@@ -229,42 +184,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         cbox_periodo_aca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbox_periodo_acaActionPerformed(evt);
-            }
-        });
-
-        txt_nombre.setForeground(new java.awt.Color(27, 108, 155));
-        txt_nombre.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setDisabledTextColor(new java.awt.Color(21, 96, 136));
-        txt_nombre.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_nombre.setPlaceholder("Nombres:");
-        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreActionPerformed(evt);
-            }
-        });
-        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_nombreKeyTyped(evt);
-            }
-        });
-
-        txt_apellido.setForeground(new java.awt.Color(27, 108, 155));
-        txt_apellido.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setDisabledTextColor(new java.awt.Color(21, 96, 136));
-        txt_apellido.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_apellido.setPlaceholder("Apellidos:");
-        txt_apellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_apellidoActionPerformed(evt);
-            }
-        });
-        txt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_apellidoKeyTyped(evt);
             }
         });
 
@@ -325,24 +244,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
 
         docente_menu2.setViewportView(jPanel3);
 
-        txt_codigo.setForeground(new java.awt.Color(27, 108, 155));
-        txt_codigo.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setDisabledTextColor(new java.awt.Color(21, 96, 136));
-        txt_codigo.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_codigo.setPlaceholder("Código matrícula:");
-        txt_codigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_codigoActionPerformed(evt);
-            }
-        });
-        txt_codigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_codigoKeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -351,10 +252,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                     .addComponent(cbox_diplomados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbox_Horarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_reportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -385,13 +283,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
                         .addComponent(cbox_Horarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbox_diplomados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(txt_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 1, Short.MAX_VALUE))
         );
@@ -418,40 +310,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         nuevo();
     }//GEN-LAST:event_btn_nuevoActionPerformed
 
-    private void cbox_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_buscarActionPerformed
-        // TODO add your handling code here:
-        String Campo = cbox_buscar.getSelectedItem().toString();
-        switch (Campo) {
-//Buscar Por.., Código, Nombre, Apellido
-            case "Buscar Por..":
-
-                txt_buscar.setEnabled(false);
-                //consutarTabla_Docentes();
-                btn_True_false();
-                vaciar_cajas();
-                break;
-            case "Código Matrícula":
-                txt_buscar.setEnabled(true);
-
-                nuevo();
-
-                break;
-            case "Código del Estudiante":
-                txt_buscar.setEnabled(true);
-
-                nuevo();
-
-                break;
-            case "Apellido del Estudiante":
-                txt_buscar.setEnabled(true);
-
-                nuevo();
-                break;
-        }
-
-
-    }//GEN-LAST:event_cbox_buscarActionPerformed
-
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         // TODO add your handling code here:
         try {
@@ -459,25 +317,10 @@ public class Matriculas_reportes extends javax.swing.JPanel {
          String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
                     String hor = separar(cbox_Horarios.getSelectedItem().toString());
                     String dip = separar(cbox_diplomados.getSelectedItem().toString());
-                    String resultado = separar2(txt_identificativo.getText().toString());
+//                    String resultado = separar2(txt_identificativo.getText().toString());
                     // JOptionPane.showMessageDialog(null, resultado);
-                    int indicador=0;
-            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=1;
-            }
-            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=2;
-            }
-            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=3;
-            }
-            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=4;
-            }
+                   
+           
                     
                     
                     
@@ -493,142 +336,65 @@ public class Matriculas_reportes extends javax.swing.JPanel {
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
-        
-                    String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
-                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
-                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
-//                    String Dias=
-        
-        
-        
-//        Reportes rp= new Reportes();
-//      rp.RMatriculas_Parametro(contraBD, usuarioBD, ERROR, contraBD, contraBD, contraBD, contraBD);
-    }//GEN-LAST:event_btn_reportesActionPerformed
-
-    private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
-        // TODO add your handling code here:
         try {
-          String Campo = cbox_buscar.getSelectedItem().toString();
-        String txtSql = txt_buscar.getText().toString();
-        String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
-                    String hor = separar(cbox_Horarios.getSelectedItem().toString());
+            
+                    String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    int hor =Integer.parseInt( separar(cbox_Horarios.getSelectedItem().toString()));
                     String dip = separar(cbox_diplomados.getSelectedItem().toString());
-                    String resultado = separar2(txt_identificativo.getText().toString());
-
-        String Campo2 = null;
-        
-        int indicador=0;
-            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=1;
-            }
-            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=2;
-            }
-            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=3;
-            }
-            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
-               //JOptionPane.showMessageDialog(null,"Es el primer producto");
-               indicador=4;
-            }
+                String Dias=separar2(cbox_Horarios.getSelectedItem().toString(), "/",1);
+                String horas=separar2(cbox_Horarios.getSelectedItem().toString(), "/",2);
+                String dip_txt=separar2(cbox_diplomados.getSelectedItem().toString(), "/",1);
+                String pa_txt=separar2(cbox_periodo_aca.getSelectedItem().toString(), "/",1);
         
         
-        
-        
-        
-        
-        
-        switch (Campo) {
-//Buscar Por.., Código, Nombre, Apellido
-            case "Buscar Por..":
-
-                break;
-            case "Código Matrícula":
-
-                Campo2 = "matricula.cod_mat";
-                
-                    // JOptionPane.showMessageDialog(null, resultado);
-                  
-                consutaBD(indicador, pa, hor, dip,Campo2, txtSql);
-
-                break;
-            case "Código del Estudiante":
-//JOptionPane.showMessageDialog(docente_menu, "ESTOY EN ESTUDIANTE");
-                Campo2 = "estudiante.cod_est";
-                consutaBD(indicador, pa, hor, dip,Campo2, txtSql);
-
-                break;
-            case "Apellido del Estudiante":
-
-                Campo2 = "estudiante.Apellido_est";
-                consutaBD(indicador, pa, hor, dip,Campo2, txtSql);
-                break;
-        }   
+        Reportes rp= new Reportes();
+      rp.RMatriculas_Parametro(pa, dip, hor, pa_txt, dip_txt, Dias, horas);
         } catch (Exception e) {
+            alerta("Error", "Nose puede generar el reporte faltan parámetros,Por favor vuelva intentarlo" + e, "/Img_alertas/Error_100px.png");
         }
-       
-
-    }//GEN-LAST:event_txt_buscarKeyReleased
+      
+    }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
-        String Campo = cbox_buscar.getSelectedItem().toString();
-        String Campo2 = null;
-        String txtSql = txt_buscar.getText().toString();
-        switch (Campo) {
-//Buscar Por.., Código, Nombre, Apellido
-            case "Buscar Por..":
-
-                txt_buscar.setEnabled(false);
-               // consutarTabla_Docentes();
-                btn_True_false();
-                vaciar_cajas();
-                nuevo();
-                break;
-            case "Código":
-                Campo2 = "cod_doc";
-                consutaBD_sinfiltros(Campo2, txtSql);
-
-                txt_buscar.setEnabled(true);
-
-                break;
-            case "Nombre":
-
-                Campo2 = "Nombre_doc";
-                consutaBD_sinfiltros(Campo2, txtSql);
-
-                txt_buscar.setEnabled(true);
-
-                break;
-            case "Apellido":
-
-                Campo2 = "Apellido_doc";
-                consutaBD_sinfiltros(Campo2, txtSql);
-
-                txt_buscar.setEnabled(true);
-
-                break;
-        }
+//        String Campo = cbox_buscar.getSelectedItem().toString();
+//        String Campo2 = null;
+//        String txtSql = txt_buscar.getText().toString();
+//        switch (Campo) {
+////Buscar Por.., Código, Nombre, Apellido
+//            case "Buscar Por..":
+//
+//                txt_buscar.setEnabled(false);
+//               // consutarTabla_Docentes();
+//                btn_True_false();
+//                vaciar_cajas();
+//                nuevo();
+//                break;
+//            case "Código":
+//                Campo2 = "cod_doc";
+//                consutaBD_sinfiltros(Campo2, txtSql);
+//
+////                txt_buscar.setEnabled(true);
+//
+//                break;
+//            case "Nombre":
+//
+//                Campo2 = "Nombre_doc";
+//                consutaBD_sinfiltros(Campo2, txtSql);
+//
+////                txt_buscar.setEnabled(true);
+//
+//                break;
+//            case "Apellido":
+//
+//                Campo2 = "Apellido_doc";
+//                consutaBD_sinfiltros(Campo2, txtSql);
+//
+////                txt_buscar.setEnabled(true);
+//
+//                break;
+//        }
     }//GEN-LAST:event_btn_buscarActionPerformed
-
-    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreActionPerformed
-
-    private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreKeyTyped
-
-    private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_apellidoActionPerformed
-
-    private void txt_apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_apellidoKeyTyped
 
     private void cbox_periodo_acaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_periodo_acaActionPerformed
         // TODO add your handling code here:
@@ -664,12 +430,12 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         return valor2;
     }
 
-    public String separar2(String cadena) {
+    public String separar2(String cadena,String signo,int pos) {
         String valor = cadena;
         String valor2 = "";
 
-        String[] parts = valor.split("/");
-        valor2 = parts[1];
+        String[] parts = valor.split(signo);
+        valor2 = parts[pos];
 
         return valor2;
     }
@@ -683,14 +449,13 @@ public class Matriculas_reportes extends javax.swing.JPanel {
 
             if (!(comparacion1 == "Diplomados:") && !(comparacion1 == "")) {
 
-                String comparacion = txt_identificativo.getText().toString();
-
-                if (!(comparacion == "       Calificaciones") && !(comparacion == "")) {
+              
                     String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
                     String hor = separar(cbox_Horarios.getSelectedItem().toString());
                     String dip = separar(cbox_diplomados.getSelectedItem().toString());
-                    String resultado = separar2(txt_identificativo.getText().toString());
+                   
                     // JOptionPane.showMessageDialog(null, resultado);
+                 //  JOptionPane.showMessageDialog(docente_menu,pa+" "+ " "+hor+" "+dip);
                     preparar_calificaciones( pa, hor, dip);
                     
                     
@@ -703,7 +468,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
                     btn_reportes.setEnabled(true);
                   
                     
-                }
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -732,7 +497,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
     private void Tabla_calificacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_calificacionesMouseClicked
         // TODO add your handling code here:
         
-    //    JOptionPane.showMessageDialog(docente_menu, evt);
+//    //    JOptionPane.showMessageDialog(docente_menu, evt);
 //            int fila = Tabla_calificaciones.getSelectedRow();
 //
 //            if (fila > -1) {
@@ -742,26 +507,14 @@ public class Matriculas_reportes extends javax.swing.JPanel {
 //                txt_nombre.setText(Tabla_calificaciones.getValueAt(fila, 3).toString());
 //                txt_apellido.setText(Tabla_calificaciones.getValueAt(fila, 2).toString());
 //                 cod_cal=Integer.parseInt(Tabla_calificaciones.getValueAt(fila, 4).toString());
-//                 
-                
+////                 
+//            }
                 
                  
         
       
         
     }//GEN-LAST:event_Tabla_calificacionesMouseClicked
-
-    private void txt_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_codigoActionPerformed
-
-    private void txt_codigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_codigoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_codigoKeyTyped
-
-    private void txt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_buscarActionPerformed
 
     
 
@@ -863,18 +616,18 @@ public class Matriculas_reportes extends javax.swing.JPanel {
     }
 
     private void vaciar_cajas() {
-        txt_nombre.setText("");
-        txt_apellido.setText("");
-//        txt_calificacion.setText("");
-//        txt_N_faltas.setText("");
-        txt_codigo.setText("");
-      
-
-        txt_nombre.setEnabled(false);
-        txt_apellido.setEnabled(false);
+//        txt_nombre.setText("");
+//        txt_apellido.setText("");
+////        txt_calificacion.setText("");
+////        txt_N_faltas.setText("");
+//        txt_codigo.setText("");
+//      
+//
+//        txt_nombre.setEnabled(false);
+//        txt_apellido.setEnabled(false);
 
         cbox_diplomados.setEnabled(false);
-        txt_buscar.setEnabled(false);
+//        txt_buscar.setEnabled(false);
         cbox_Horarios.setEnabled(false); 
         //////////////
 //        txt_N_faltas.setEnabled(false);
@@ -896,7 +649,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(false);
         Tabla_calificaciones.setEnabled(false);
-        txt_codigo.setEnabled(false);
+//        txt_codigo.setEnabled(false);
        // btn_siguiente.setEnabled(false);
      
         
@@ -1026,7 +779,7 @@ public class Matriculas_reportes extends javax.swing.JPanel {
 " AND diplomados.cod_dip=matricula.cod_dip \n" +
 " AND estudiante.cod_est=matricula.cod_est \n" +
 " ORDER BY estudiante.Apellido_est";
-          //  JOptionPane.showMessageDialog(null, consultaBD);
+           // JOptionPane.showMessageDialog(null, consultaBD);
             javax.swing.JTable Tabla = this.Tabla_calificaciones;
             // Enviamos los parametros para la consulta de la tabla
             //  conexion    consulta de la base de datos y el nombre de la tabla
@@ -1048,7 +801,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
     private rojerusan.RSButtonMetro btn_refrescar;
     private rojerusan.RSButtonMetro btn_reportes;
     private rojerusan.RSComboMetro cbox_Horarios;
-    private rojerusan.RSComboMetro cbox_buscar;
     private rojerusan.RSComboMetro cbox_diplomados;
     private rojerusan.RSComboMetro cbox_periodo_aca;
     private javax.swing.JScrollPane docente_menu;
@@ -1056,10 +808,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private rojerusan.RSMetroTextPlaceHolder txt_apellido;
-    private rojerusan.RSMetroTextPlaceHolder txt_buscar;
-    private rojerusan.RSMetroTextPlaceHolder txt_codigo;
     public javax.swing.JLabel txt_identificativo;
-    private rojerusan.RSMetroTextPlaceHolder txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,6 +36,14 @@ public class MyScrollbarUI extends BasicScrollBarUI {
         imageTrack = FauxImage.create(32, 32, new Color(27,108,155));
     }
 
+//    public MyScrollbarUI() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    public MyScrollbarUI() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
     @Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
         g.setColor(Color.blue);

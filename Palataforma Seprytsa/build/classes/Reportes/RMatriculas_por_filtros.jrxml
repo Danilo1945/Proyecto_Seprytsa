@@ -123,40 +123,40 @@ ORDER BY estudiante.Apellido_est]]>
 				<text><![CDATA[CENTRO DE CAPACITACION Y EDUCACION CONTINUA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="74" width="96" height="20" uuid="cd2bf2b3-667b-4af1-8b19-30bbf0173926"/>
+				<reportElement x="-3" y="74" width="97" height="20" uuid="cd2bf2b3-667b-4af1-8b19-30bbf0173926"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Periodo Acdémico:]]></text>
+				<text><![CDATA[Periodo Académico:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="184" y="74" width="52" height="20" uuid="0f0f88fa-840e-4f25-b0e4-bcb1f44c56c8"/>
+				<reportElement x="181" y="74" width="52" height="20" uuid="0f0f88fa-840e-4f25-b0e4-bcb1f44c56c8"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Horario:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="236" y="74" width="44" height="20" uuid="8c0e4804-1525-49c7-9513-b5472219305c"/>
+				<reportElement x="220" y="74" width="82" height="20" uuid="8c0e4804-1525-49c7-9513-b5472219305c"/>
 				<textFieldExpression><![CDATA[$P{dias}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="74" width="53" height="20" uuid="93e07f92-219d-46cd-9dd3-df62fd804956"/>
+				<reportElement x="302" y="74" width="80" height="20" uuid="93e07f92-219d-46cd-9dd3-df62fd804956"/>
 				<textFieldExpression><![CDATA[$P{Horas}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="346" y="74" width="59" height="20" uuid="762ffe62-572e-4d3b-8f74-4b69551b812d"/>
+				<reportElement x="382" y="74" width="59" height="20" uuid="762ffe62-572e-4d3b-8f74-4b69551b812d"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Diplomado:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="94" y="74" width="100" height="20" uuid="3df09455-1f4b-4258-ab41-26ef1e62877e"/>
+				<reportElement x="93" y="74" width="100" height="20" uuid="3df09455-1f4b-4258-ab41-26ef1e62877e"/>
 				<textFieldExpression><![CDATA[$P{pa_txt}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="405" y="74" width="100" height="20" uuid="ebb93945-1f95-4f2c-abb0-37208a916074"/>
+				<reportElement x="437" y="74" width="136" height="20" uuid="ebb93945-1f95-4f2c-abb0-37208a916074"/>
 				<textFieldExpression><![CDATA[$P{dip_txt}]]></textFieldExpression>
 			</textField>
 		</band>

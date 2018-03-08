@@ -32,6 +32,11 @@ public class Principal extends javax.swing.JFrame {
     int pos = 0;
     public int menu_calificaciones=0;
     public int sub_menu_calificaciones=0;
+    
+   public Inscripciones ins= new Inscripciones();
+    
+    
+    
 
     /**
      * Creates new form Principal
@@ -40,7 +45,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(this);
-        setIconImage(new ImageIcon(getClass().getResource("../Img_menu/SEPRYTSAV_45x45PX.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Img_menu/SEPRYTSAV_45x45PX.png")).getImage());
 
 // aqui cambiamos colores del scroll bar
         sc_menu.getVerticalScrollBar().setUI(new MyScrollbarUI());
@@ -566,6 +571,9 @@ public class Principal extends javax.swing.JFrame {
     private void btn_inscriptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscriptionsActionPerformed
         // TODO add your handling code here:
         pintar(15);
+        
+         
+        new cambia_panel(panel_master, ins);
     }//GEN-LAST:event_btn_inscriptionsActionPerformed
 
     private void btn_estudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_estudentsActionPerformed
