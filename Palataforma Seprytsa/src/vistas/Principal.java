@@ -35,7 +35,7 @@ public class Principal extends javax.swing.JFrame {
     
    public Inscripciones ins= new Inscripciones();
     
-    
+    public Cronogrma_actividades cro = new Cronogrma_actividades();
     
 
     /**
@@ -600,6 +600,8 @@ public class Principal extends javax.swing.JFrame {
     private void btn_crono_actActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crono_actActionPerformed
         // TODO add your handling code here:
         pintar(4);
+       
+        new cambia_panel(panel_master, cro);
 
     }//GEN-LAST:event_btn_crono_actActionPerformed
 

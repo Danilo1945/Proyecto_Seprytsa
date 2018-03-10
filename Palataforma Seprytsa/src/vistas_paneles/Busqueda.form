@@ -93,12 +93,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txt_codigo" pref="157" max="32767" attributes="0"/>
-                              <Component id="txt_nombre" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="btn_guardar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txt_codigo" pref="157" max="32767" attributes="0"/>
+                          <Component id="txt_nombre" pref="0" max="32767" attributes="0"/>
+                          <Component id="btn_guardar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="40" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -129,7 +127,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txt_nombre" min="-2" pref="42" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_guardar" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="btn_guardar" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                           <Component id="docente_menu" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
                       </Group>
@@ -201,7 +199,7 @@
                   <Color blue="88" green="60" red="15" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img_menu/guardar_52px.png"/>
+                  <Image iconType="3" name="/Img_alertas/Img_sub_menus/icons8_Hand_Cursor_52px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Seleccionar"/>
               </Properties>

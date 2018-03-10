@@ -115,6 +115,19 @@ public class Inscripciones extends javax.swing.JPanel {
              consutarTabla_General(Tabla_Congresos);
         }
         
+            if (indicador == 3) {
+               btn_True_false();
+            limpiar_combo(cbox_buscar);
+            cbox_buscar.addItem("Código");
+            cbox_buscar.addItem("Código del Estudiante");
+            cbox_buscar.addItem("Código de la Licencia");
+           
+           
+            Entidad = "estudiante_licencias";
+            String cabesera[] = {"Código", "Código de la Licencia", "Código del Estudiante"};
+            cabesera_general = cabesera;
+             consutarTabla_General(Tabla_Licencias);
+        }
         
         
         
@@ -690,23 +703,25 @@ public class Inscripciones extends javax.swing.JPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_codigo_sem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(year_sem, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(txt_cod_estudiante_sem, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(txt_cod_sem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_cod_est_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(btn_guardar_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 209, Short.MAX_VALUE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(txt_codigo_sem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(year_sem, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(txt_cod_estudiante_sem, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(txt_cod_sem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_cod_est_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)))
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(btn_nuevo_sem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_nuevo_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_actualizar_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -714,8 +729,8 @@ public class Inscripciones extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(btn_reportes_sem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(btn_refrescar_sem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(docente_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_refrescar_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(docente_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         jPanel11Layout.setVerticalGroup(
@@ -730,9 +745,9 @@ public class Inscripciones extends javax.swing.JPanel {
                             .addComponent(txt_cod_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_cod_est_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_cod_estudiante_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_cod_estudiante_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_cod_est_sem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(year_sem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -922,7 +937,7 @@ public class Inscripciones extends javax.swing.JPanel {
                         .addComponent(btn_guardar_con, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(btn_nuevo_con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -933,7 +948,7 @@ public class Inscripciones extends javax.swing.JPanel {
                         .addComponent(btn_reportes_con, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(btn_refrescar_con, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(docente_menu2)))
+                    .addComponent(docente_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1163,7 +1178,7 @@ public class Inscripciones extends javax.swing.JPanel {
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_cod_est_lic, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_cod_estudiante_lic, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_guardar_lic, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
@@ -1202,7 +1217,7 @@ public class Inscripciones extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1112, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1493,6 +1508,38 @@ if (indicador == 2) {
             }
         }
 
+if (indicador == 3) {
+
+            String Campo = cbox_buscar.getSelectedItem().toString();
+            String txtSql = txt_buscar.getText().toString();
+
+            String Campo2 = null;
+            switch (Campo) {
+                //Buscar Por.., Código, Nombre, Apellido
+                case "Buscar Por..":
+//Buscar Por.., Código, Código del Estudiante, Código del Curso
+                    break;
+                case "Código":
+
+                    Campo2 = "cod_lic_est";
+                    consutaBD(Campo2, txtSql, Tabla_Licencias);
+
+                    break;
+                case "Código del Estudiante":
+
+                    Campo2 = "cod_est";
+                    consutaBD(Campo2, txtSql, Tabla_Licencias);
+
+                    break;
+                case "Código de la Licencia":
+
+                    Campo2 = "cod_lic";
+                    consutaBD(Campo2, txtSql, Tabla_Licencias);
+                    break;
+                     
+            }
+        }
+
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void cbox_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_buscarActionPerformed
@@ -1594,7 +1641,35 @@ if (indicador == 2) {
                 break;
         }
         }
-        
+         if(indicador==3){
+             String Campo = cbox_buscar.getSelectedItem().toString();
+        switch (Campo) {
+            //Buscar Por.., Código, Nombre, Apellido
+            case "Buscar Por..":
+
+                txt_buscar.setEnabled(false);
+                consutarTabla_General(Tabla_cursos);
+                btn_True_false();
+                vaciar_cajas();
+                break;
+            case "Código":
+                txt_buscar.setEnabled(true);
+
+                nuevo();
+
+                break;
+            case "Código del Estudiante":
+                txt_buscar.setEnabled(true);
+                nuevo();
+
+                break;
+            case "Código de la Licencia":
+                txt_buscar.setEnabled(true);
+                nuevo();
+                break;
+                
+        }
+        }
         
         
         
@@ -1754,6 +1829,55 @@ if (indicador == 1) {
                     break;
             }
         }
+            
+            
+            if (indicador == 3) {
+            String Campo = cbox_buscar.getSelectedItem().toString();
+            String Campo2 = null;
+            String txtSql = txt_buscar.getText().toString();
+            switch (Campo) {
+                //Buscar Por.., Código, Nombre, Apellido
+                case "Buscar Por..":
+//Código
+//Código del estudiante
+//Código del periodo académico
+                    txt_buscar.setEnabled(false);
+                    consutarTabla_General(Tabla_Licencias);
+
+                    btn_True_false();
+                    vaciar_cajas();
+                    nuevo();
+                    break;
+                case "Código":
+                    Campo2 = "cod_lic_est";
+                    consutaBD_sinfiltros(Campo2, txtSql, Tabla_Licencias);
+
+                    txt_buscar.setEnabled(true);
+
+                    break;
+                case "Código del Estudiante":
+
+                    Campo2 = "cod_est";
+                    consutaBD_sinfiltros(Campo2, txtSql, Tabla_Licencias);
+
+                    txt_buscar.setEnabled(true);
+
+                    break;
+                case "Código de la Licencia":
+
+                    Campo2 = "cod_lic";
+                    consutaBD_sinfiltros(Campo2, txtSql, Tabla_Licencias);
+
+                    txt_buscar.setEnabled(true);
+
+                    break;
+                   
+
+                   
+            }
+        } 
+            
+            
 
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -2265,10 +2389,30 @@ nuevo();        // TODO add your handling code here:
 
     private void btn_nuevo_licActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevo_licActionPerformed
         // TODO add your handling code here:
+        nuevo();
+        
+        
     }//GEN-LAST:event_btn_nuevo_licActionPerformed
 
     private void Tabla_LicenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_LicenciasMouseClicked
         // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+
+            int fila = Tabla_Licencias.getSelectedRow();
+
+            if (fila > -1) {
+                //  Txt_Codigo.setText(Integer.toString(fila));
+                txt_codigo_lic.setText(Tabla_Licencias.getValueAt(fila, 0).toString());
+                txt_cod_lic.setText(Tabla_Licencias.getValueAt(fila, 1).toString());
+                txt_cod_estudiante_lic.setText(Tabla_Licencias.getValueAt(fila, 2).toString());
+               
+            }
+
+        } catch (Exception ex) {
+            // Logger.getLogger(Docentes.class.getName()).log(Level.SEVERE, null, ex);
+            alerta("Error", "No a seleccionado la opcion Nuevo" + ex, "/Img_alertas/Error_100px.png");
+        }
     }//GEN-LAST:event_Tabla_LicenciasMouseClicked
 
     private void btn_actualizar_licActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizar_licActionPerformed
@@ -2286,7 +2430,7 @@ nuevo();        // TODO add your handling code here:
             //alerta("Notificacion", "Datos Guardados exitosamente" , "/Img_alertas/satisfactoriamente_.png");
             try {
 
-                PreparedStatement pst = cn.prepareStatement("?UPDATE `estudiante_licencias` SET `cod_lic`=?,`cod_est`=?WHERE estudiante_licencias.cod_lic_est='" + codigo + "'");
+                PreparedStatement pst = cn.prepareStatement("UPDATE `estudiante_licencias` SET `cod_lic`=?,`cod_est`=?WHERE estudiante_licencias.cod_lic_est='" + codigo + "'");
 
                 pst.setString(1, cod_licencia);
                 pst.setString(2, cod_estudiante);
@@ -2311,6 +2455,29 @@ nuevo();        // TODO add your handling code here:
 
     private void btn_eliminar_licActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar_licActionPerformed
         // TODO add your handling code here:
+         try {
+
+            int res = confirmar("Alerta", "Seguro que desea eliminar este campo ", "/Img_alertas/Error_100px.png");
+
+            if (res == 1) {
+
+                // TODO add your handling code here:
+                String codigo = txt_codigo_lic.getText().toString();
+                PreparedStatement pst;
+                pst = cn.prepareStatement("DELETE FROM `estudiante_licencias` WHERE estudiante_licencias.cod_lic_est=?");
+                pst.setString(1, codigo);
+                pst.executeUpdate();
+                alerta("Notificación", "Datos eliminados exitosamente", "/Img_alertas/satisfactoriamente_100px.png");
+            } else {
+                alerta("Notificación", "Se cancelo la operación", "/Img_alertas/satisfactoriamente_100px.png");
+            }
+
+        } catch (SQLException ex) {
+            alerta("Error", "No se elimino los datos " + ex, "/Img_alertas/Error_100px.png");
+        }
+        consutarTabla_General(Tabla_Licencias);
+        btn_True_false();
+        vaciar_cajas();
     }//GEN-LAST:event_btn_eliminar_licActionPerformed
 
     private void btn_reportes_licActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportes_licActionPerformed

@@ -610,28 +610,31 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_codigo_sem" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="btn_guardar_sem" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="209" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="txt_codigo_sem" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="year_sem" alignment="1" pref="187" max="32767" attributes="0"/>
-                                      <Component id="txt_cod_estudiante_sem" alignment="1" pref="187" max="32767" attributes="0"/>
+                                      <Component id="year_sem" alignment="1" pref="197" max="32767" attributes="0"/>
+                                      <Component id="txt_cod_estudiante_sem" alignment="1" pref="197" max="32767" attributes="0"/>
                                       <Component id="txt_cod_sem" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btn_sem" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                                      <Component id="btn_cod_est_sem" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="btn_sem" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <Component id="btn_cod_est_sem" min="-2" pref="98" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btn_guardar_sem" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="btn_nuevo_sem" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_nuevo_sem" pref="0" max="32767" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="btn_actualizar_sem" min="-2" pref="154" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -639,9 +642,9 @@
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="btn_reportes_sem" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                  <Component id="btn_refrescar_sem" max="32767" attributes="0"/>
+                                  <Component id="btn_refrescar_sem" min="-2" pref="203" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="docente_menu1" min="-2" pref="789" max="-2" attributes="0"/>
+                              <Component id="docente_menu1" min="-2" pref="752" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
@@ -660,9 +663,9 @@
                                       <Component id="btn_sem" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btn_cod_est_sem" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="txt_cod_estudiante_sem" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_cod_estudiante_sem" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="btn_cod_est_sem" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="year_sem" min="-2" max="-2" attributes="0"/>
@@ -990,7 +993,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="btn_nuevo_con" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -1002,7 +1005,7 @@
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="btn_refrescar_con" min="-2" pref="166" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="docente_menu2" max="32767" attributes="0"/>
+                              <Component id="docente_menu2" min="-2" pref="752" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1383,7 +1386,7 @@
                                       <Component id="btn_cod_est_lic" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="txt_cod_estudiante_lic" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btn_guardar_lic" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>

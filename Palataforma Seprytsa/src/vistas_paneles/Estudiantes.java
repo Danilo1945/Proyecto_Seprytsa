@@ -1001,6 +1001,7 @@ public class Estudiantes extends javax.swing.JPanel {
         txt_apellido.setText("");
         txt_telefono.setText("");
         txt_direccion.setText("");
+        Txt_fecha.setDatoFecha(null);
         cbox_nacionalidad.setSelectedIndex(0);
          cbox_tipo_sangre.setSelectedIndex(0);
         Txt_fecha.setDatoFecha(null);

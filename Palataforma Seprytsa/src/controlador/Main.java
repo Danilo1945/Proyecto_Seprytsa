@@ -21,6 +21,7 @@ public  static Principal p= new Principal();
         
         
         p.setVisible(true);
+        Reloj_fecha r=new Reloj_fecha();
        
     }
      
