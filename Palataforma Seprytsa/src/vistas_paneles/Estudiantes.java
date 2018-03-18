@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabla.MyScrollbarUI;
 import Reportes.*;
+import java.awt.MouseInfo;
+import java.awt.Point;
 
 /**
  *
@@ -688,7 +690,7 @@ public class Estudiantes extends javax.swing.JPanel {
                 Date fecha = null;
                 fecha = formatoDelTexto.parse(strFecha);
                 Txt_fecha.setDatoFecha(fecha);  // para insertar fecha
-
+              btn_reportes.setEnabled(true);
                 String seleccion = String.valueOf(Tabla_estudiantes.getValueAt(fila, 6).toString());
 
                 switch (seleccion) {
@@ -800,8 +802,40 @@ public class Estudiantes extends javax.swing.JPanel {
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
-      Reportes rp= new Reportes();
-      rp.REstudiante_general();
+//      Reportes rp= new Reportes();
+
+Point punto = MouseInfo.getPointerInfo().getLocation();
+        int x1 = punto.x;
+        int y1 = punto.y;
+         Menu_RGeneral mr = new Menu_RGeneral(null,true);
+         mr.setLocation(x1, y1);
+        mr.setVisible(true);
+       
+        String cod=txt_codigo.getText().toString();
+        
+        
+         Reportes rp= new Reportes();
+         
+         //JOptionPane.showMessageDialog(docente_menu, cod);
+        if(cod==" "){
+            alerta("Error", "No se a seleccionado ningun Item" , "/Img_alertas/Error_100px.png");  
+        }else{
+        if(mr.estatus==0){
+//            Individual
+
+      rp.REstudiante_Parametro(cod);
+      
+        }
+        if(mr.estatus==1){
+        
+           rp.REstudiante_general();
+        }
+        vaciar_cajas();
+        }
+        
+         consutarTabla_Estudiantes();
+        btn_True_false();
+        vaciar_cajas();
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -1017,6 +1051,7 @@ public class Estudiantes extends javax.swing.JPanel {
         txt_codigo.setEnabled(false);
         Tabla_estudiantes.setEnabled(false);
         txt_buscar.setEnabled(false);
+             btn_reportes.setEnabled(false);
          
     }
 
@@ -1025,7 +1060,7 @@ public class Estudiantes extends javax.swing.JPanel {
         btn_nuevo.setEnabled(true);
         btn_actualizar.setEnabled(false);
         btn_eliminar.setEnabled(false);
-        btn_reportes.setEnabled(true);
+        btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(true);
         Tabla_estudiantes.setEnabled(false);
       
@@ -1035,7 +1070,7 @@ public class Estudiantes extends javax.swing.JPanel {
         btn_nuevo.setEnabled(false);
         btn_actualizar.setEnabled(true);
         btn_eliminar.setEnabled(true);
-        btn_reportes.setEnabled(true);
+        //btn_reportes.setEnabled(true);
         btn_refrescar.setEnabled(true);
 
         txt_nombre.setEnabled(true);

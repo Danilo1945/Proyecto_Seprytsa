@@ -74,7 +74,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         txt_identificativo = new javax.swing.JLabel();
-        btn_buscar = new rojerusan.RSButtonMetro();
         btn_nuevo = new rojerusan.RSButtonMetro();
         cbox_diplomados = new rojerusan.RSComboMetro();
         btn_refrescar = new rojerusan.RSButtonMetro();
@@ -99,14 +98,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         txt_identificativo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/matriculas_52px.png"))); // NOI18N
         txt_identificativo.setText("Reportes Estudiantes Matriculados");
 
-        btn_buscar.setBackground(new java.awt.Color(21, 96, 136));
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/buscar_52px.png"))); // NOI18N
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,22 +105,14 @@ public class Matriculas_reportes extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(txt_identificativo, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
+                .addContainerGap(498, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_identificativo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
+                .addComponent(txt_identificativo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btn_nuevo.setBackground(new java.awt.Color(21, 96, 136));
@@ -354,47 +337,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
         }
       
     }//GEN-LAST:event_btn_reportesActionPerformed
-
-    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        // TODO add your handling code here:
-//        String Campo = cbox_buscar.getSelectedItem().toString();
-//        String Campo2 = null;
-//        String txtSql = txt_buscar.getText().toString();
-//        switch (Campo) {
-////Buscar Por.., Código, Nombre, Apellido
-//            case "Buscar Por..":
-//
-//                txt_buscar.setEnabled(false);
-//               // consutarTabla_Docentes();
-//                btn_True_false();
-//                vaciar_cajas();
-//                nuevo();
-//                break;
-//            case "Código":
-//                Campo2 = "cod_doc";
-//                consutaBD_sinfiltros(Campo2, txtSql);
-//
-////                txt_buscar.setEnabled(true);
-//
-//                break;
-//            case "Nombre":
-//
-//                Campo2 = "Nombre_doc";
-//                consutaBD_sinfiltros(Campo2, txtSql);
-//
-////                txt_buscar.setEnabled(true);
-//
-//                break;
-//            case "Apellido":
-//
-//                Campo2 = "Apellido_doc";
-//                consutaBD_sinfiltros(Campo2, txtSql);
-//
-////                txt_buscar.setEnabled(true);
-//
-//                break;
-//        }
-    }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void cbox_periodo_acaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_periodo_acaActionPerformed
         // TODO add your handling code here:
@@ -796,7 +738,6 @@ public class Matriculas_reportes extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSTableMetro Tabla_calificaciones;
-    private rojerusan.RSButtonMetro btn_buscar;
     private rojerusan.RSButtonMetro btn_nuevo;
     private rojerusan.RSButtonMetro btn_refrescar;
     private rojerusan.RSButtonMetro btn_reportes;

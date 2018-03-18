@@ -11,7 +11,9 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -1279,17 +1281,19 @@ public class Inscripciones extends javax.swing.JPanel {
 
 
     private void btn_reportes_curActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportes_curActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
-
-        // capturamos la pos del mause
-        Point punto = MouseInfo.getPointerInfo().getLocation();
-        int x1 = punto.x;
-        int y1 = punto.y;
-
-        Menu_RMatriculas m = new Menu_RMatriculas(null, true);
-        m.setLocation(x1, y1);
-        m.setVisible(true);
+      try {
+          Menu_RInscripciones_General mi= new Menu_RInscripciones_General(null, true);
+         
+          rojerusan.RSComboMetro  combo=mi.cbox_OPCIONES;  
+          String enti="cursos";
+            consultar_Combo(combo, enti);
+            mi.codigo_general=0;
+            mi.txt_TITULO_CORRESPONDE.setText("CURSOS");
+                mi.setVisible(true);     
+                    
+        } catch (Exception e) {
+             alerta("Error", "A ocurrido un error al tratar de generar el reporte: " + e, "/Img_alertas/Error_100px.png");
+        }
 
 
     }//GEN-LAST:event_btn_reportes_curActionPerformed
@@ -2083,6 +2087,19 @@ if (indicador == 1) {
 
     private void btn_reportes_semActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportes_semActionPerformed
         // TODO add your handling code here:
+        try {
+          Menu_RInscripciones_General mi= new Menu_RInscripciones_General(null, true);
+         
+          rojerusan.RSComboMetro  combo=mi.cbox_OPCIONES;  
+          String enti="seminarios";
+            consultar_Combo(combo, enti);
+            mi.codigo_general=0;
+            mi.txt_TITULO_CORRESPONDE.setText("SEMINARIOS");
+                mi.setVisible(true);     
+                    
+        } catch (Exception e) {
+             alerta("Error", "A ocurrido un error al tratar de generar el reporte: " + e, "/Img_alertas/Error_100px.png");
+        }
     }//GEN-LAST:event_btn_reportes_semActionPerformed
 
     private void btn_refrescar_semActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar_semActionPerformed
@@ -2295,6 +2312,19 @@ nuevo();        // TODO add your handling code here:
 
     private void btn_reportes_conActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportes_conActionPerformed
         // TODO add your handling code here:
+         try {
+          Menu_RInscripciones_General mi= new Menu_RInscripciones_General(null, true);
+         
+          rojerusan.RSComboMetro  combo=mi.cbox_OPCIONES;  
+          String enti="congresos";
+            consultar_Combo(combo, enti);
+            mi.codigo_general=0;
+            mi.txt_TITULO_CORRESPONDE.setText("CONGRESOS");
+                mi.setVisible(true);     
+                    
+        } catch (Exception e) {
+             alerta("Error", "A ocurrido un error al tratar de generar el reporte: " + e, "/Img_alertas/Error_100px.png");
+        }
     }//GEN-LAST:event_btn_reportes_conActionPerformed
 
     private void btn_refrescar_conActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar_conActionPerformed
@@ -2482,31 +2512,46 @@ nuevo();        // TODO add your handling code here:
 
     private void btn_reportes_licActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportes_licActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
+          Menu_RInscripciones_General mi= new Menu_RInscripciones_General(null, true);
+         
+          rojerusan.RSComboMetro  combo=mi.cbox_OPCIONES;  
+          String enti="licencias";
+            consultar_Combo(combo, enti);
+            mi.codigo_general=0;
+            mi.txt_TITULO_CORRESPONDE.setText("LICENCIAS");
+                mi.setVisible(true);     
+                    
+        } catch (Exception e) {
+             alerta("Error", "A ocurrido un error al tratar de generar el reporte: " + e, "/Img_alertas/Error_100px.png");
+        }
+        
+    }//GEN-LAST:event_btn_reportes_licActionPerformed
+public void consultar_Combo(rojerusan.RSComboMetro combo, String entidad) {
 
-            int res = confirmar("Alerta", "Seguro que desea eliminar este campo ", "/Img_alertas/Error_100px.png");
+        try {
+//            cbox_periodo_aca.removeAllItems();
+//            cbox_periodo_aca.addItem("Periodo Académico:");
+            Statement estado;
+            String Nombre_per_aca = "";
+            String codigo = "";
 
-            if (res == 1) {
+/// hacemos consulata sql
+            estado = cn.createStatement();
+            ResultSet resultado = estado.executeQuery("SELECT *FROM "+entidad);
 
-                // TODO add your handling code here:
-                String codigo = txt_codigo_con.getText().toString();
-                PreparedStatement pst;
-                pst = cn.prepareStatement("DELETE FROM `estudiante_licencias` WHERE estudiante_licencias.cod_lic_est=?");
-                pst.setString(1, codigo);
-                pst.executeUpdate();
-                alerta("Notificación", "Datos eliminados exitosamente", "/Img_alertas/satisfactoriamente_100px.png");
-            } else {
-                alerta("Notificación", "Se cancelo la operación", "/Img_alertas/satisfactoriamente_100px.png");
+            while (resultado.next()) {
+                codigo = resultado.getString(1);
+                Nombre_per_aca = resultado.getString(2);
+                combo.addItem(codigo + "/" + Nombre_per_aca);
+
             }
 
         } catch (SQLException ex) {
-            alerta("Error", "No se elimino los datos " + ex, "/Img_alertas/Error_100px.png");
+            Logger.getLogger(Calificaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
-        consutarTabla_General(Tabla_Licencias);
-        btn_True_false();
-        vaciar_cajas();
-    }//GEN-LAST:event_btn_reportes_licActionPerformed
 
+    }
     private void btn_refrescar_licActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar_licActionPerformed
         // TODO add your handling code here:
          consutarTabla_General(Tabla_Licencias);
@@ -2705,6 +2750,7 @@ nuevo();        // TODO add your handling code here:
     }
 
     private void nuevo() {
+        btn_guardar_cur.setEnabled(true);
           txt_cod_estudiante_lic.setEnabled(true);
         txt_cod_lic.setEnabled(true);
         txt_codigo_lic.setEnabled(true);

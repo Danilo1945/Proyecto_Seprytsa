@@ -8,6 +8,8 @@ package vistas_paneles;
 import controlador.Main;
 import controlador.cambia_panel;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +28,9 @@ import tabla.MyScrollbarUI;
  * @author Danilo
  */
 public class Reporte_califi extends javax.swing.JPanel {
-
+private String cod_mat="";
+private  String nombres="";
+private String Apellidos="";
     /**
      * Creates new form Panel_Home
      */
@@ -47,6 +51,68 @@ public class Reporte_califi extends javax.swing.JPanel {
 
         ///////// cargo combo periodo
         consultar_periodo_academico(cbox_periodo_aca);
+        
+        
+//        Para seleccionar una fila de un JTable con el botón derecho se debe utilizar el siguiente código:
+
+        Tabla_Reporte_calificaciones.addMouseListener(new MouseAdapter() {
+                                   public void mousePressed(MouseEvent e) {
+                             if(e.getButton()==3)   {     
+//                             JOptionPane.showMessageDialog(docente_menu, "Es un click derecho");
+                             if(cod_mat==""){
+                                 alerta("Alerta", "No se a seleccionado un item, Por favor vuelva intentarlo", "/Img_alertas/satisfactoriamente_100px.png");
+                             }else{
+                             String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    int hor =Integer.parseInt( separar(cbox_Horarios.getSelectedItem().toString()));
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                    String Dias=separar2(cbox_Horarios.getSelectedItem().toString(), "/",1);
+                String horas=separar2(cbox_Horarios.getSelectedItem().toString(), "/",2);
+                String dip_txt=separar2(cbox_diplomados.getSelectedItem().toString(), "/",1);
+                String pa_txt=separar2(cbox_periodo_aca.getSelectedItem().toString(), "/",1);
+              
+                    
+                    
+                    
+      Menu_RCal rcal = new Menu_RCal(null, true);
+       rcal.txt_matricula.setText(cod_mat);
+       rcal.txt_nombres.setText(nombres);
+       rcal.txt_apellidos.setText(Apellidos);
+       rcal.txt_matricula.setEnabled(false);
+       rcal.txt_apellidos.setEditable(false);
+       rcal.txt_nombres.setEditable(false);
+       rcal.hor=hor;
+       rcal.dip=dip;
+       rcal.pa=pa;
+       
+       rcal.Dias=Dias;
+       rcal.dip_txt=dip_txt;
+       rcal.horas=horas;
+       rcal.pa_txt=pa_txt;
+       cod_mat="";
+
+       rcal.setVisible(true);
+
+      
+                             
+                             
+                             
+                             
+                                   }// fin else
+                             
+                             
+                             
+                             
+                             
+                             
+                             }
+                             
+                                   }
+                                  
+                               }
+        );
+        
+        
+        
 
     }
 
@@ -80,7 +146,6 @@ public class Reporte_califi extends javax.swing.JPanel {
         txt_buscar = new rojerusan.RSMetroTextPlaceHolder();
         cbox_diplomados = new rojerusan.RSComboMetro();
         btn_refrescar = new rojerusan.RSButtonMetro();
-        btn_reportes = new rojerusan.RSButtonMetro();
         cbox_periodo_aca = new rojerusan.RSComboMetro();
         cbox_Horarios = new rojerusan.RSComboMetro();
         docente_menu2 = new javax.swing.JScrollPane();
@@ -198,15 +263,6 @@ public class Reporte_califi extends javax.swing.JPanel {
             }
         });
 
-        btn_reportes.setBackground(new java.awt.Color(21, 96, 136));
-        btn_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/reportes52px.png"))); // NOI18N
-        btn_reportes.setText("Reportes");
-        btn_reportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reportesActionPerformed(evt);
-            }
-        });
-
         cbox_periodo_aca.setBackground(new java.awt.Color(21, 96, 136));
         cbox_periodo_aca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Periodo académico:" }));
         cbox_periodo_aca.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
@@ -274,9 +330,7 @@ public class Reporte_califi extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(docente_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+            .addComponent(docente_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
         );
 
         docente_menu2.setViewportView(jPanel3);
@@ -297,15 +351,13 @@ public class Reporte_califi extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(cbox_periodo_aca, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(cbox_Horarios, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addComponent(cbox_Horarios, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(cbox_diplomados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(159, 159, 159)
                 .addComponent(btn_refrescar1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(docente_menu2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -315,10 +367,9 @@ public class Reporte_califi extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_refrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_refrescar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_refrescar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cbox_Horarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cbox_diplomados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -344,7 +395,15 @@ public class Reporte_califi extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+public String separar2(String cadena,String signo,int pos) {
+        String valor = cadena;
+        String valor2 = "";
 
+        String[] parts = valor.split(signo);
+        valor2 = parts[pos];
+
+        return valor2;
+    }
     private void cbox_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbox_buscarActionPerformed
         // TODO add your handling code here:
         String Campo = cbox_buscar.getSelectedItem().toString();
@@ -383,10 +442,6 @@ public class Reporte_califi extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btn_refrescarActionPerformed
-
-    private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         // TODO add your handling code here:
@@ -512,18 +567,17 @@ public class Reporte_califi extends javax.swing.JPanel {
 //        // TODO add your handling code here:
 //
 //        //    JOptionPane.showMessageDialog(docente_menu, evt);
-//        int fila = Tabla_Reporte_calificaciones.getSelectedRow();
+        int fila = Tabla_Reporte_calificaciones.getSelectedRow();
 //
-//        if (fila > -1) {
-//            posicion = fila;
-//            //  Txt_Codigo.setText(Integer.toString(fila));
-////                txt_codigo.setText(Tabla_calificaciones.getValueAt(fila, 0).toString());
-////                txt_nombre.setText(Tabla_calificaciones.getValueAt(fila, 3).toString());
-////                txt_apellido.setText(Tabla_calificaciones.getValueAt(fila, 2).toString());
-//            cod_cal = Integer.parseInt(Tabla_Reporte_calificaciones.getValueAt(fila, 4).toString());
-////                 txt_calificacion.setText(Tabla_calificaciones.getValueAt(fila, 5).toString());
-////                txt_N_faltas.setText(Tabla_calificaciones.getValueAt(fila, 6).toString());
-//        }
+        if (fila > -1) {
+            posicion = fila;
+            
+             
+                 cod_mat=Tabla_Reporte_calificaciones.getValueAt(fila, 0).toString();
+                nombres=Tabla_Reporte_calificaciones.getValueAt(fila, 3).toString();
+               Apellidos=Tabla_Reporte_calificaciones.getValueAt(fila, 2).toString();
+                 
+        }
 //
 ////        txt_calificacion.setEnabled(true);
 ////        txt_N_faltas.setEnabled(true);
@@ -633,10 +687,10 @@ public class Reporte_califi extends javax.swing.JPanel {
                 cbox_diplomados.setEnabled(false);
                 cbox_Horarios.setEnabled(false);
                 Tabla_Reporte_calificaciones.setEnabled(true);
-                cbox_periodo_aca.setEnabled(false);
+                cbox_periodo_aca.setEnabled(true);
 //                    btn_nuevo.setEnabled(true);
                 btn_refrescar.setEnabled(true);
-                btn_reportes.setEnabled(true);
+              //  btn_reportes.setEnabled(true);
 
             }
         } catch (Exception e) {
@@ -689,7 +743,7 @@ public class Reporte_califi extends javax.swing.JPanel {
 //        btn_nuevo.setEnabled(true);
         //   btn_actualizar.setEnabled(false);
         // btn_eliminar.setEnabled(false);
-        btn_reportes.setEnabled(true);
+        //btn_reportes.setEnabled(true);
         btn_refrescar.setEnabled(true);
     }
 
@@ -722,7 +776,7 @@ public class Reporte_califi extends javax.swing.JPanel {
 
     private void nofocus() {
 
-        btn_reportes.setFocusPainted(false);
+//        btn_reportes.setFocusPainted(false);
         btn_refrescar.setFocusPainted(false);
 
     }
@@ -734,13 +788,13 @@ public class Reporte_califi extends javax.swing.JPanel {
         cbox_Horarios.setEnabled(false);
 
         btn_refrescar.setEnabled(false);
-        btn_reportes.setEnabled(false);
+//        btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(false);
 
     }
 
     private void btn_True_false() {
-        btn_reportes.setEnabled(false);
+//        btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(false);
         Tabla_Reporte_calificaciones.setEnabled(false);
 
@@ -1220,7 +1274,6 @@ public class Reporte_califi extends javax.swing.JPanel {
     private rojerusan.RSButtonMetro btn_buscar;
     private rojerusan.RSButtonMetro btn_refrescar;
     private rojerusan.RSButtonMetro btn_refrescar1;
-    private rojerusan.RSButtonMetro btn_reportes;
     private rojerusan.RSComboMetro cbox_Horarios;
     private rojerusan.RSComboMetro cbox_buscar;
     private rojerusan.RSComboMetro cbox_diplomados;

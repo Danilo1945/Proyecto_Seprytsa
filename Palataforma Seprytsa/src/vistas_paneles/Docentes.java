@@ -7,6 +7,8 @@ package vistas_paneles;
 
 import Reportes.Reportes;
 import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -38,6 +40,8 @@ public class Docentes extends javax.swing.JPanel {
         control_botones();
         nofocus();
         vaciar_cajas();
+        btn_reportes.setEnabled(false);
+        btn_True_false();
 
     }
 
@@ -51,13 +55,7 @@ public class Docentes extends javax.swing.JPanel {
     public Connection cn = cone1.conexion(direccionBD, usuarioBD, contraBD);
     // la conexion se hereda en cn
 
-    int caja1 = 0;
-    int caja2 = 0;
-    int caja3 = 0;
-    int caja4 = 0;
-    int caja5 = 0;
-    int caja6 = 0;
-    int caja7 = 0;
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -668,6 +666,7 @@ public class Docentes extends javax.swing.JPanel {
                 Date fecha = null;
                 fecha = formatoDelTexto.parse(strFecha);
                 Txt_fecha.setDatoFecha(fecha);  // para insertar fecha
+                btn_reportes.setEnabled(true);
 
                 String seleccion = String.valueOf(Tabla_docentes.getValueAt(fila, 6).toString());
 
@@ -715,8 +714,38 @@ public class Docentes extends javax.swing.JPanel {
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
-        Reportes rp= new Reportes();
+          Point punto = MouseInfo.getPointerInfo().getLocation();
+        int x1 = punto.x;
+        int y1 = punto.y;
+         Menu_RGeneral mr = new Menu_RGeneral(null,true);
+         mr.setLocation(x1, y1);
+        mr.setVisible(true);
+       
+        String cod=txt_codigo.getText().toString();
+        
+        
+         Reportes rp= new Reportes();
+         
+        // JOptionPane.showMessageDialog(docente_menu, cod);
+        if(cod==" "){
+            alerta("Error", "No se a seleccionado ningun Item" , "/Img_alertas/Error_100px.png");  
+        }else{
+        if(mr.estatus==0){
+//            Individual
+
+      rp.RDocente_Parametro(cod);
+      
+        }
+        if(mr.estatus==1){
+        
       rp.RDocente_general();
+        }
+        vaciar_cajas();
+        }
+        
+         consutarTabla_Docentes();
+        btn_True_false();
+        vaciar_cajas();
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -938,9 +967,10 @@ public class Docentes extends javax.swing.JPanel {
         btn_nuevo.setEnabled(true);
         btn_actualizar.setEnabled(false);
         btn_eliminar.setEnabled(false);
-        btn_reportes.setEnabled(true);
+        btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(true);
         Tabla_docentes.setEnabled(false);
+        btn_reportes.setEnabled(false);
       
     }
     private void nuevo(){
@@ -948,7 +978,7 @@ public class Docentes extends javax.swing.JPanel {
         btn_nuevo.setEnabled(false);
         btn_actualizar.setEnabled(true);
         btn_eliminar.setEnabled(true);
-        btn_reportes.setEnabled(true);
+        
         btn_refrescar.setEnabled(true);
 
         txt_nombre.setEnabled(true);
@@ -959,6 +989,7 @@ public class Docentes extends javax.swing.JPanel {
         Txt_fecha.setEnabled(true);
         txt_codigo.setEnabled(true);
         Tabla_docentes.setEnabled(true);
+      
 
         
     }

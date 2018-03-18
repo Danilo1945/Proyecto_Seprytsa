@@ -5,7 +5,10 @@
  */
 package vistas_paneles;
 
+import Reportes.Reportes;
 import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -658,9 +661,153 @@ public class Calificaciones extends javax.swing.JPanel {
         }
        
     }//GEN-LAST:event_btn_refrescarActionPerformed
+ public String separar2(String cadena,String signo,int pos) {
+        String valor = cadena;
+        String valor2 = "";
 
+        String[] parts = valor.split(signo);
+        valor2 = parts[pos];
+
+        return valor2;
+    }
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
+         try {
         // TODO add your handling code here:
+        Point punto = MouseInfo.getPointerInfo().getLocation();
+        int x1 = punto.x;
+        int y1 = punto.y;
+
+        
+        String pa = separar(cbox_periodo_aca.getSelectedItem().toString());
+                    int hor =Integer.parseInt( separar(cbox_Horarios.getSelectedItem().toString()));
+                    String dip = separar(cbox_diplomados.getSelectedItem().toString());
+                String Dias=separar2(cbox_Horarios.getSelectedItem().toString(), "/",1);
+                String horas=separar2(cbox_Horarios.getSelectedItem().toString(), "/",2);
+                String dip_txt=separar2(cbox_diplomados.getSelectedItem().toString(), "/",1);
+                String pa_txt=separar2(cbox_periodo_aca.getSelectedItem().toString(), "/",1);
+                String cedula=txt_codigo.getText().toString();
+                int tipo_cali=0;
+           
+               String tipocali_txt="";
+
+     
+       
+        
+        
+        int estatus=Reporte_estatus(x1,y1);
+        
+        if(estatus==0){
+           
+          //  
+          if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               tipo_cali=1;
+                 tipocali_txt="Primer Producto";
+                 
+                 // JOptionPane.showMessageDialog(docente_menu, pa+" "+ dip+" "+hor+" "+ pa_txt+" "+ dip_txt+" "+ Dias+" "+ horas+" "+ tipo_cali+" "+ tipocali_txt);
+        
+        Reportes rp= new Reportes();
+      rp.RCalificaciones_Individual(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt,cedula);
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+                tipo_cali=2;
+                 tipocali_txt="Segundo Producto";
+                  Reportes rp= new Reportes();
+      rp.RCalificaciones_Individual(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt,cedula);
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+                tipo_cali=3;
+                 tipocali_txt="Tercer Producto";
+                  Reportes rp= new Reportes();
+ rp.RCalificaciones_Individual(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt,cedula);
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+                tipo_cali=4;
+                 tipocali_txt="Cuarto Producto";
+                  Reportes rp= new Reportes();
+ rp.RCalificaciones_Individual(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt,cedula);
+            }
+          
+            
+            
+           if(txt_identificativo.getText().toString()=="Calificaciones/Examen Gracia"){
+            //   JOptionPane.showMessageDialog(null,cedula);
+              
+                  Reportes rp= new Reportes();
+                  rp.RGracia_Individual(pa, dip, hor, pa_txt, dip_txt, Dias, horas,cedula);
+            }  
+            
+            
+          
+        }
+        
+        
+        
+        
+        ////////////////////////////////////////
+        
+        
+        
+        if(estatus==1){
+             
+            if(txt_identificativo.getText().toString()=="Calificaciones/Primer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+               tipo_cali=1;
+                 tipocali_txt="Primer Producto";
+                 
+                 // JOptionPane.showMessageDialog(docente_menu, pa+" "+ dip+" "+hor+" "+ pa_txt+" "+ dip_txt+" "+ Dias+" "+ horas+" "+ tipo_cali+" "+ tipocali_txt);
+        
+        Reportes rp= new Reportes();
+      rp.RCalificaciones_General(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt);
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Segundo Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+                tipo_cali=2;
+                 tipocali_txt="Segundo Producto";
+                  Reportes rp= new Reportes();
+      rp.RCalificaciones_General(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt);
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Tercer Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+                tipo_cali=3;
+                 tipocali_txt="Tercer Producto";
+                  Reportes rp= new Reportes();
+      rp.RCalificaciones_General(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt);
+            }
+            if(txt_identificativo.getText().toString()=="Calificaciones/Cuarto Producto"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+                tipo_cali=4;
+                 tipocali_txt="Cuarto Producto";
+                  Reportes rp= new Reportes();
+      rp.RCalificaciones_General(pa, dip, hor, pa_txt, dip_txt, Dias, horas, tipo_cali, tipocali_txt);
+            }
+            
+              if(txt_identificativo.getText().toString()=="Calificaciones/Examen Gracia"){
+               //JOptionPane.showMessageDialog(null,"Es el primer producto");
+              
+                  Reportes rp= new Reportes();
+      rp.RGracia_General(pa, dip, hor, pa_txt, dip_txt, Dias, horas);
+            }
+            
+            
+            
+            
+            
+        }    
+//       Calificaciones/Examen Gracia
+  
+        } catch (Exception e) {
+            alerta("Error", "Nose A seleccionado ningun Item ,Por favor vuelva intentarlo" + e, "/Img_alertas/Error_100px.png");
+        }
+      
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -914,7 +1061,7 @@ public class Calificaciones extends javax.swing.JPanel {
                     cbox_periodo_aca.setEnabled(false);
                     btn_nuevo.setEnabled(true);
                     btn_refrescar.setEnabled(true);
-                    btn_reportes.setEnabled(true);
+                    btn_reportes.setEnabled(false);
                   
                     
                 }
@@ -965,15 +1112,19 @@ public class Calificaciones extends javax.swing.JPanel {
                //JOptionPane.showMessageDialog(null,"Es el primer producto");
                jLabel2.setText("Equivalencia:");
                txt_N_faltas.setEnabled(false);
+                btn_reportes.setEnabled(true);
             }else{
                      txt_N_faltas.setText(Tabla_calificaciones.getValueAt(fila, 6).toString());
+                      btn_reportes.setEnabled(true);
                  }
             }
         
         txt_calificacion.setEnabled(true);
        // txt_N_faltas.setEnabled(true);
         btn_guardar.setEnabled(true);
-        //btn_siguiente.setEnabled(true);
+        //btn_siguiente.setEnabled(true);}
+       
+                
         
     }//GEN-LAST:event_Tabla_calificacionesMouseClicked
 
@@ -1566,7 +1717,22 @@ public class Calificaciones extends javax.swing.JPanel {
         }
            
     }
-            
+       
+    
+    
+    public int Reporte_estatus(int x1,int x2) {
+
+        int estatus = 9;
+        Menu_RGeneral Rg = new Menu_RGeneral(null, true);
+       Rg.setLocation(x1, x2);
+
+       
+        Rg.setVisible(true);
+
+        estatus = Rg.estatus;
+
+        return estatus;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojerusan.RSTableMetro Tabla_calificaciones;

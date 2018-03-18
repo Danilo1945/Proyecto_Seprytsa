@@ -29,7 +29,7 @@ public class conectar {
          try {
             Class.forName("com.mysql.jdbc.Driver");
           conectar=DriverManager.getConnection(this.direccionBD,this.usuarioBD,this.contraBD); 
-           JOptionPane.showMessageDialog(null,"Conexión exitosa");// mensaje de notificacion
+           //JOptionPane.showMessageDialog(null,"Conexión exitosa");// mensaje de notificacion
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());// mensaje de notificacion
         }

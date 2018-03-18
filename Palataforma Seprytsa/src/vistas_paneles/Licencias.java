@@ -5,6 +5,7 @@
  */
 package vistas_paneles;
 
+import Reportes.Reportes;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -651,6 +652,9 @@ public class Licencias extends javax.swing.JPanel {
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
+        
+        Reportes rp= new Reportes(); 
+        rp.RLicencias_general();
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -872,6 +876,7 @@ public class Licencias extends javax.swing.JPanel {
       
     }
     private void nuevo(){
+        
         btn_guardar.setEnabled(true);
         btn_nuevo.setEnabled(false);
         btn_actualizar.setEnabled(true);

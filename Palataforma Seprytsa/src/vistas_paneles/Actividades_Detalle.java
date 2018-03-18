@@ -80,7 +80,7 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         Atender = new rojerusan.RSButtonMetro();
-        btn_Cancelar4 = new rojerusan.RSButtonMetro();
+        btn_Cancelar = new rojerusan.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_tarea_general = new javax.swing.JTextArea();
@@ -109,12 +109,12 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
             }
         });
 
-        btn_Cancelar4.setBackground(new java.awt.Color(21, 96, 136));
-        btn_Cancelar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/cancelar_52px.png"))); // NOI18N
-        btn_Cancelar4.setText("Cancelar");
-        btn_Cancelar4.addActionListener(new java.awt.event.ActionListener() {
+        btn_Cancelar.setBackground(new java.awt.Color(21, 96, 136));
+        btn_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/cancelar_52px.png"))); // NOI18N
+        btn_Cancelar.setText("Cancelar");
+        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Cancelar4ActionPerformed(evt);
+                btn_CancelarActionPerformed(evt);
             }
         });
 
@@ -179,7 +179,7 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
                 .addGap(34, 34, 34)
                 .addComponent(Atender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(btn_Cancelar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
@@ -219,7 +219,7 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Atender, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Cancelar4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -263,11 +263,11 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
-    private void btn_Cancelar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cancelar4ActionPerformed
+    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
         doClose(RET_CANCEL);        // TODO add your handling code here:
          Main.p.cro.atender(0);
          confirmar(0);
-    }//GEN-LAST:event_btn_Cancelar4ActionPerformed
+    }//GEN-LAST:event_btn_CancelarActionPerformed
 
     private void AtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtenderActionPerformed
         // TODO add your handling code here:
@@ -350,8 +350,8 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSButtonMetro Atender;
-    private rojerusan.RSButtonMetro btn_Cancelar4;
+    public rojerusan.RSButtonMetro Atender;
+    public rojerusan.RSButtonMetro btn_Cancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel10;

@@ -581,7 +581,7 @@ public class Periodo_Academico extends javax.swing.JPanel {
                 txt_nombre.setText(Tabla_periodo_academico.getValueAt(fila, 3).toString());
               
                 
-                 
+                  btn_reportes.setEnabled(true);
                 SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
                  SimpleDateFormat formatoDelTexto2 = new SimpleDateFormat("yyyy-MM-dd");
                  
@@ -610,6 +610,7 @@ public class Periodo_Academico extends javax.swing.JPanel {
            // TODO add your handling code here:
       Reportes rp= new Reportes();
       rp.RPeriodeo_aca_general();
+      
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -804,7 +805,7 @@ public class Periodo_Academico extends javax.swing.JPanel {
         btn_nuevo.setEnabled(true);
         btn_actualizar.setEnabled(false);
         btn_eliminar.setEnabled(false);
-        btn_reportes.setEnabled(true);
+        btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(true);
         Tabla_periodo_academico.setEnabled(false);
       
@@ -814,7 +815,7 @@ public class Periodo_Academico extends javax.swing.JPanel {
         btn_nuevo.setEnabled(false);
         btn_actualizar.setEnabled(true);
         btn_eliminar.setEnabled(true);
-        btn_reportes.setEnabled(true);
+       
         btn_refrescar.setEnabled(true);
 
         txt_nombre.setEnabled(true);

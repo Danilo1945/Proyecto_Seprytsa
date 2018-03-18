@@ -20,11 +20,13 @@ String hora, minutos, segundos, dias, meses, anios, dia_sem,mes_act;
     Calendar calendario;
     Thread h1;
      Thread h2;
+    
    public Reloj_fecha(){
         h1 = new Thread(this);
         h1.start();
          h2 = new Thread(this);
         h2.start();
+       
    }
     
     
@@ -68,6 +70,14 @@ String hora, minutos, segundos, dias, meses, anios, dia_sem,mes_act;
                 Thread.sleep(50000);
             }catch(InterruptedException e){}
         }
+       
+        
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -75,7 +85,8 @@ String hora, minutos, segundos, dias, meses, anios, dia_sem,mes_act;
     
     
    private void calcula() {
-        Calendar fecha = Calendar.getInstance();
+       try {
+         Calendar fecha = Calendar.getInstance();
         int hora_sistema = fecha.get(Calendar.HOUR_OF_DAY);
 	 int minuto_sistema = fecha.get(Calendar.MINUTE);
          int segundo=fecha.get(Calendar.SECOND);
@@ -128,7 +139,7 @@ String hora, minutos, segundos, dias, meses, anios, dia_sem,mes_act;
 
 		String dia_semana=   strDays[fecha.get(Calendar.DAY_OF_WEEK) - 1];
          
-         String mes_actual=strMes[Integer.parseInt(mes)];
+         String mes_actual=strMes[Integer.parseInt(mes)-1];
          
          
          
@@ -161,12 +172,16 @@ String hora, minutos, segundos, dias, meses, anios, dia_sem,mes_act;
                      anios=anio;
                      dia_sem=dia_semana;
                      mes_act=mes_actual;
-    }  
     
     
     
     
     
     
+      
+       } catch (Exception e) {
+           
+       }
+        
     
-}
+   }}

@@ -3,29 +3,43 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Reportes.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/controlador/Main.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Estudiantes.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Reportes.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Busqueda.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Actividades_Detalle.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Busquedad_Actividades.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Cursos.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Alertas.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Licencias.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Inscripciones.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Inscripciones%20_curso.jrxml</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Inscripciones%20_seminarios.jrxml</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Seminarios.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Cronograma_Actividades_SET.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Periodo_Academico.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Matriculas.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Inscripciones%20_Licencias.jrxml</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Cronogrma_actividades.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Menu_calificaciones.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Menu_RCal.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas/Principal.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/modelo/conectar.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Licencias.jrxml</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Diplomados.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Panel_Home.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Inscripciones%20_congresos.jrxml</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Calificaciones.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Cursos_general.jrxml</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/COngresos_General.jrxml</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Horarios.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/controlador/Reloj_fecha.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Menu_RGeneral.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Docentes.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/tabla/MyScrollbarUI.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Matriculas_reportes.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Menu_RInscripciones_General.java</file>
+            <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/Reportes/Seminarios.jrxml</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Menu_RMatriculas.java</file>
             <file>file:/C:/workpase_java/Proyecto_Seprytsa/Palataforma%20Seprytsa/src/vistas_paneles/Congresos.java</file>
         </group>

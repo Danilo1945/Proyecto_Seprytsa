@@ -7,6 +7,8 @@ package vistas_paneles;
 
 import Reportes.Reportes;
 import java.awt.Color;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,7 +25,7 @@ import tabla.MyScrollbarUI;
  * @author Danilo
  */
 public class Horarios extends javax.swing.JPanel {
-
+private int codigo=0;
     /**
      * Creates new form Panel_Home
      */
@@ -38,6 +40,8 @@ public class Horarios extends javax.swing.JPanel {
         control_botones();
         nofocus();
         vaciar_cajas();
+        btn_reportes.setEnabled(false);
+        
 
     }
 
@@ -95,13 +99,13 @@ public class Horarios extends javax.swing.JPanel {
 
         Tabla_horarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         Tabla_horarios.setColorBackgoundHead(new java.awt.Color(21, 96, 136));
@@ -564,7 +568,7 @@ public class Horarios extends javax.swing.JPanel {
                
                 
                
-
+btn_reportes.setEnabled(true);
               
                 
             }
@@ -579,8 +583,44 @@ public class Horarios extends javax.swing.JPanel {
 
     private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
         // TODO add your handling code here:
-         Reportes rp= new Reportes();
-      rp.RHorarios_general();
+           Point punto = MouseInfo.getPointerInfo().getLocation();
+      
+      int x1 = punto.x;
+        int y1 = punto.y;
+         Menu_RGeneral mr = new Menu_RGeneral(null,true);
+         mr.setLocation(x1, y1);
+        mr.setVisible(true);
+       
+        String cod=txt_codigo.getText().toString();
+        
+        
+         Reportes rp= new Reportes(); 
+         
+         //JOptionPane.showMessageDialog(docente_menu, cod);
+        if(cod==" "){
+            alerta("Error", "No se a seleccionado ningun Item" , "/Img_alertas/Error_100px.png");  
+        }else{
+        if(mr.estatus==0){
+//            Individual
+
+      rp.RHorarios_Individual(Integer.parseInt(cod));
+      
+        }
+        if(mr.estatus==1){
+        
+           rp.RHorarios_general();
+        }
+        vaciar_cajas();
+        }
+        
+         consutarTabla_Horarios();
+        btn_True_false();
+        vaciar_cajas();
+      
+      
+      
+      
+      
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
@@ -793,7 +833,7 @@ public class Horarios extends javax.swing.JPanel {
         btn_nuevo.setEnabled(true);
         btn_actualizar.setEnabled(false);
         btn_eliminar.setEnabled(false);
-        btn_reportes.setEnabled(true);
+        btn_reportes.setEnabled(false);
         btn_refrescar.setEnabled(true);
         Tabla_horarios.setEnabled(false);
       
@@ -803,7 +843,7 @@ public class Horarios extends javax.swing.JPanel {
         btn_nuevo.setEnabled(false);
         btn_actualizar.setEnabled(true);
         btn_eliminar.setEnabled(true);
-        btn_reportes.setEnabled(true);
+        
         btn_refrescar.setEnabled(true);
 
         txt_rango_dias.setEnabled(true);
