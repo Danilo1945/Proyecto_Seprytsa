@@ -9,12 +9,23 @@ import vistas_paneles.*;
 import controlador.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.UnsupportedEncodingException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.xml.bind.DatatypeConverter;
+import modelo.Datos;
 import tabla.MyScrollbarUI;
 
 /**
@@ -32,7 +43,26 @@ public int codigo_general=0;
      */
     public static final int RET_OK = 1;
      public  int  respuesta=3;
-
+ 
+      Datos d= new Datos();
+      String direccionBD = d.getDireccionBD();
+      String usuarioBD = d.getUsuarioBD();
+      String contraBD = d.getContraBD();
+    
+    
+    
+    // Instanciamos la clase conectar 
+    modelo.conectar cone1 = new modelo.conectar();
+    // realizamos la conexion
+    public Connection cn = cone1.conexion(direccionBD, usuarioBD, contraBD);
+    // la conexion se hereda en cn
+      
+      
+      
+      
+      
+      
+      
     /**
      * Creates new form Alertas
      */
@@ -41,8 +71,8 @@ public int codigo_general=0;
         initComponents();
         this.setLocationRelativeTo(this);
        this. setIconImage(new ImageIcon(getClass().getResource("/Img_menu/SEPRYTSAV_45x45PX.png")).getImage());
-jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
-        jScrollPane1.getHorizontalScrollBar().setUI(new MyScrollbarUI());
+//jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
+//        jScrollPane1.getHorizontalScrollBar().setUI(new MyScrollbarUI());
         
         
         
@@ -78,17 +108,23 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        temp = new javax.swing.JLabel();
+        temp1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        Atender = new rojerusan.RSButtonMetro();
+        iniciar_sesion = new rojerusan.RSButtonMetro();
         jPanel2 = new javax.swing.JPanel();
-        txt_asunto_general = new rojerusan.RSMetroTextPlaceHolder();
+        txt_usuario = new rojerusan.RSMetroTextPlaceHolder();
         txt_titu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        rSPasswordTextPlaceHolder1 = new rojerusan.RSPasswordTextPlaceHolder();
+        txt_contrasenia = new rojerusan.RSPasswordTextPlaceHolder();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
+
+        temp.setText("jLabel4");
+
+        temp1.setText("jLabel4");
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -100,11 +136,11 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        Atender.setBackground(new java.awt.Color(21, 96, 136));
-        Atender.setText("Iniciar Sesión");
-        Atender.addActionListener(new java.awt.event.ActionListener() {
+        iniciar_sesion.setBackground(new java.awt.Color(21, 96, 136));
+        iniciar_sesion.setText("Iniciar Sesión");
+        iniciar_sesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtenderActionPerformed(evt);
+                iniciar_sesionActionPerformed(evt);
             }
         });
 
@@ -119,17 +155,22 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        txt_asunto_general.setForeground(new java.awt.Color(27, 108, 155));
-        txt_asunto_general.setBorderColor(new java.awt.Color(21, 96, 136));
-        txt_asunto_general.setBotonColor(new java.awt.Color(21, 96, 136));
-        txt_asunto_general.setCaretColor(new java.awt.Color(21, 96, 136));
-        txt_asunto_general.setDisabledTextColor(new java.awt.Color(102, 102, 255));
-        txt_asunto_general.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        txt_asunto_general.setPhColor(new java.awt.Color(27, 108, 155));
-        txt_asunto_general.setPlaceholder("Usuario:");
-        txt_asunto_general.addActionListener(new java.awt.event.ActionListener() {
+        txt_usuario.setForeground(new java.awt.Color(27, 108, 155));
+        txt_usuario.setBorderColor(new java.awt.Color(21, 96, 136));
+        txt_usuario.setBotonColor(new java.awt.Color(21, 96, 136));
+        txt_usuario.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_usuario.setDisabledTextColor(new java.awt.Color(102, 102, 255));
+        txt_usuario.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txt_usuario.setPhColor(new java.awt.Color(27, 108, 155));
+        txt_usuario.setPlaceholder("Usuario:");
+        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_asunto_generalActionPerformed(evt);
+                txt_usuarioActionPerformed(evt);
+            }
+        });
+        txt_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_usuarioKeyTyped(evt);
             }
         });
 
@@ -148,21 +189,24 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
         jLabel2.setForeground(new java.awt.Color(21, 96, 136));
         jLabel2.setText("Contraseña:");
 
-        rSPasswordTextPlaceHolder1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(21, 96, 136), 2));
-        rSPasswordTextPlaceHolder1.setForeground(new java.awt.Color(21, 96, 136));
-        rSPasswordTextPlaceHolder1.setText("12345");
-        rSPasswordTextPlaceHolder1.setCaretColor(new java.awt.Color(21, 96, 136));
-        rSPasswordTextPlaceHolder1.setDisabledTextColor(new java.awt.Color(21, 96, 136));
-        rSPasswordTextPlaceHolder1.setDragEnabled(true);
-        rSPasswordTextPlaceHolder1.setPhColor(new java.awt.Color(21, 96, 136));
-        rSPasswordTextPlaceHolder1.setSelectionColor(new java.awt.Color(21, 96, 136));
+        txt_contrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(21, 96, 136), 2));
+        txt_contrasenia.setForeground(new java.awt.Color(21, 96, 136));
+        txt_contrasenia.setCaretColor(new java.awt.Color(21, 96, 136));
+        txt_contrasenia.setDisabledTextColor(new java.awt.Color(21, 96, 136));
+        txt_contrasenia.setDragEnabled(true);
+        txt_contrasenia.setPhColor(new java.awt.Color(21, 96, 136));
+        txt_contrasenia.setSelectionColor(new java.awt.Color(21, 96, 136));
+        txt_contrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_contraseniaKeyTyped(evt);
+            }
+        });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_alertas/Img_sub_menus/Detalle_52px.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_menu/usuario_100px.png"))); // NOI18N
 
-        jLabel5.setBackground(new java.awt.Color(21, 96, 136));
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(21, 96, 136));
-        jLabel5.setText("Cambiar la contraseña");
+        info.setBackground(new java.awt.Color(21, 96, 136));
+        info.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        info.setForeground(new java.awt.Color(21, 96, 136));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -171,9 +215,6 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(txt_titu))
                     .addGroup(jPanel10Layout.createSequentialGroup()
@@ -181,36 +222,37 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txt_asunto_general, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(rSPasswordTextPlaceHolder1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(Atender, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txt_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(iniciar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel3)))
                 .addContainerGap(41, Short.MAX_VALUE))
+            .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel3)
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addComponent(txt_titu)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_asunto_general, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rSPasswordTextPlaceHolder1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Atender, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(iniciar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -251,21 +293,43 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
-    private void AtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtenderActionPerformed
+    private void iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar_sesionActionPerformed
         // TODO add your handling code here:
        
         
-        Main.p.cro.atender(1);
+       
          
-         doClose(RET_OK);
-        confirmar(1);
-        
+////        
+//
+//        
+String usuario=txt_usuario.getText();
+String contrasenia=txt_contrasenia.getText();
+        //JOptionPane.showMessageDialog(null, usuario+"    "+contrasenia);
+ if(this.txt_usuario.getText().equals("") || this.txt_contrasenia.getText().equals("")){
+            this.info.setText("¡Usuario y contraseña Obligatorio!");
+            this.txt_usuario.requestFocus();
+        }else{
+         verifica(usuario, contrasenia);
+        }
+       
+//     confirmar(1);
+// 
 
-    }//GEN-LAST:event_AtenderActionPerformed
+    }//GEN-LAST:event_iniciar_sesionActionPerformed
 
-    private void txt_asunto_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_asunto_generalActionPerformed
+    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_asunto_generalActionPerformed
+    }//GEN-LAST:event_txt_usuarioActionPerformed
+
+    private void txt_usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usuarioKeyTyped
+        // TODO add your handling code here:
+        info.setText(" ");
+    }//GEN-LAST:event_txt_usuarioKeyTyped
+
+    private void txt_contraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contraseniaKeyTyped
+        // TODO add your handling code here:
+    info.setText(" ");
+    }//GEN-LAST:event_txt_contraseniaKeyTyped
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -287,7 +351,67 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
         return respuesta;
         
     }
+  public int  Estatus(){
+      
+      return  respuesta;
+  }
+     
+  
+  private int verifica(String usuario,String Contrasenia) {
+      int respuesta=9;
+      
+      Statement estado;
+       
+//
+     
+        
 
+        /// hacemos consulata sql
+        try {
+
+            estado = cn.createStatement();
+            ResultSet resultado = estado.executeQuery("SELECT * FROM `usuarios` ");
+            String a="";
+            String b="";
+            int indicador1=9;
+        
+            while (resultado.next()) {
+               a=resultado.getString(2);
+               b=resultado.getString(3);
+                     if(a.equals(usuario)&& b.equals(Contrasenia)){
+                        indicador1=1;
+          
+                         //JOptionPane.showMessageDialog(rootPane, "es igual");
+               }
+               
+                     
+                     
+            }
+
+            
+            
+            
+             if(indicador1==1){
+                  this.dispose();
+                    doClose(RET_OK);  
+                Main.init();
+                    
+            }else{
+                 info.setText("Intente de nuevo por favor");   
+              this.txt_usuario.requestFocus();
+                }
+
+            //   JOptionPane.showMessageDialog(null,nom_semilla );
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+  
+        
+        
+        
+      return respuesta;
+  }
     /**
      * @param args the command line arguments
      */
@@ -334,17 +458,19 @@ jScrollPane1.getVerticalScrollBar().setUI(new MyScrollbarUI());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public rojerusan.RSButtonMetro Atender;
+    private javax.swing.JLabel info;
+    public rojerusan.RSButtonMetro iniciar_sesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel9;
-    private rojerusan.RSPasswordTextPlaceHolder rSPasswordTextPlaceHolder1;
-    public rojerusan.RSMetroTextPlaceHolder txt_asunto_general;
+    private javax.swing.JLabel temp;
+    private javax.swing.JLabel temp1;
+    private rojerusan.RSPasswordTextPlaceHolder txt_contrasenia;
     public javax.swing.JLabel txt_titu;
+    public rojerusan.RSMetroTextPlaceHolder txt_usuario;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;

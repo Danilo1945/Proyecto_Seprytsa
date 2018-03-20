@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modelo.Datos;
 import tabla.MyScrollbarUI;
 
 /**
@@ -42,9 +43,10 @@ public class Cursos extends javax.swing.JPanel {
     }
 
     ////conex
-    String direccionBD = "jdbc:mysql://localhost:3307/seprytsa";
-    String usuarioBD = "root";
-    String contraBD = "";
+    Datos d= new Datos();
+      String direccionBD = d.getDireccionBD();
+      String usuarioBD = d.getUsuarioBD();
+      String contraBD = d.getContraBD();
     // Instanciamos la clase conectar 
     modelo.conectar cone1 = new modelo.conectar();
     // realizamos la conexion

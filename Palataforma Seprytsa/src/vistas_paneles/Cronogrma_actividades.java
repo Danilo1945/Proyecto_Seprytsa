@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import modelo.Datos;
 import tabla.MyScrollbarUI;
 
 /**
@@ -71,9 +72,10 @@ public class Cronogrma_actividades extends javax.swing.JPanel {
          
 
     ////conex
-    String direccionBD = "jdbc:mysql://localhost:3307/seprytsa";
-    String usuarioBD = "root";
-    String contraBD = "";
+    Datos d= new Datos();
+      String direccionBD = d.getDireccionBD();
+      String usuarioBD = d.getUsuarioBD();
+      String contraBD = d.getContraBD();
     // Instanciamos la clase conectar 
     modelo.conectar cone1 = new modelo.conectar();
     // realizamos la conexion
@@ -124,7 +126,6 @@ public class Cronogrma_actividades extends javax.swing.JPanel {
         });
 
         cbox_buscar.setBackground(new java.awt.Color(21, 96, 136));
-        cbox_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(21, 96, 136), 3));
         cbox_buscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buscar Por..", "Fecha", "Fecha y Hora" }));
         cbox_buscar.setActionCommand("comboBoxChanged\nd\nd\nd\nd\nd");
         cbox_buscar.setColorArrow(new java.awt.Color(21, 96, 136));
@@ -178,7 +179,7 @@ public class Cronogrma_actividades extends javax.swing.JPanel {
                         .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbox_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -252,8 +253,8 @@ public class Cronogrma_actividades extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_nuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_fh, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(docente_menu, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))

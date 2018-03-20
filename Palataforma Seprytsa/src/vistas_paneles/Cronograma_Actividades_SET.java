@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import modelo.Datos;
 import tabla.MyScrollbarUI;
 
 /**
@@ -25,9 +26,10 @@ import tabla.MyScrollbarUI;
  * @author Danilo
  */
 public class Cronograma_Actividades_SET extends javax.swing.JDialog {
- String direccionBD = "jdbc:mysql://localhost:3307/seprytsa";
-    String usuarioBD = "root";
-    String contraBD = "";
+Datos d= new Datos();
+      String direccionBD = d.getDireccionBD();
+      String usuarioBD = d.getUsuarioBD();
+      String contraBD = d.getContraBD();
     // Instanciamos la clase conectar 
     modelo.conectar cone1 = new modelo.conectar();
     // realizamos la conexion

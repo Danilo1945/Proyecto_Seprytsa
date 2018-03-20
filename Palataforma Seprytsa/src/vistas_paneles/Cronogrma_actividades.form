@@ -69,9 +69,9 @@
               <Group type="102" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btn_nuevo" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="txt_fh" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="txt_fh" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="docente_menu" pref="445" max="32767" attributes="0"/>
@@ -116,7 +116,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbox_buscar" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_hora" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="txt_fecha" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
@@ -163,13 +163,6 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="88" green="60" red="15" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder thickness="3">
-                      <Color PropertyName="color" blue="88" green="60" red="15" type="rgb"/>
-                    </LineBorder>
-                  </Border>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">

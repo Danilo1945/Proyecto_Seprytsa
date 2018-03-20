@@ -286,8 +286,8 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btn_califications" min="-2" pref="67" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                              <Component id="btn_crono_cali" min="-2" pref="67" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btn_crono_cali" min="-2" pref="0" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_crono_act" min="-2" pref="67" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_docente" min="-2" pref="67" max="-2" attributes="0"/>
@@ -310,8 +310,8 @@
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Component id="btn_seminarios" min="-2" pref="67" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btn_oec" min="-2" pref="67" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btn_oec" min="-2" pref="0" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_inscriptions" min="-2" pref="67" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_matriculas" min="-2" pref="67" max="-2" attributes="0"/>

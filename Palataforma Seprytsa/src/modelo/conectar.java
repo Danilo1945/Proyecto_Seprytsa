@@ -31,7 +31,7 @@ public class conectar {
           conectar=DriverManager.getConnection(this.direccionBD,this.usuarioBD,this.contraBD); 
            //JOptionPane.showMessageDialog(null,"Conexión exitosa");// mensaje de notificacion
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());// mensaje de notificacion
+            JOptionPane.showMessageDialog(null,"No se pudo conectar Revise Que este conectado el servidor: "+e.getMessage());// mensaje de notificacion
         }
         return conectar;
     }

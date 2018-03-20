@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import modelo.Datos;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -39,9 +40,10 @@ import vistas_paneles.Alertas;
  * @author Danilo
  */
 public class Reportes {
-    String direccionBD = "jdbc:mysql://localhost:3307/seprytsa";
-    String usuarioBD = "root";
-    String contraBD = "";
+   Datos d= new Datos();
+      String direccionBD = d.getDireccionBD();
+      String usuarioBD = d.getUsuarioBD();
+      String contraBD = d.getContraBD();
     // Instanciamos la clase conectar 
     modelo.conectar cone1 = new modelo.conectar();
     // realizamos la conexion

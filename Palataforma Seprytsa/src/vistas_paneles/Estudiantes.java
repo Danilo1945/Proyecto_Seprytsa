@@ -19,6 +19,7 @@ import tabla.MyScrollbarUI;
 import Reportes.*;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import modelo.Datos;
 
 /**
  *
@@ -44,9 +45,10 @@ public class Estudiantes extends javax.swing.JPanel {
     }
 
     ////conex
-    String direccionBD = "jdbc:mysql://localhost:3307/seprytsa";
-    String usuarioBD = "root";
-    String contraBD = "";
+   Datos d= new Datos();
+      String direccionBD = d.getDireccionBD();
+      String usuarioBD = d.getUsuarioBD();
+      String contraBD = d.getContraBD();
     // Instanciamos la clase conectar 
     modelo.conectar cone1 = new modelo.conectar();
     // realizamos la conexion
